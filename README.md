@@ -1,7 +1,7 @@
 Zoho API C#.NET SDK
 ===================================
 
-![Zoho Logo](https://raw.githubusercontent.com/teference/zoho-dotnet/master/zoho-logo.png)
+<img src="https://raw.githubusercontent.com/teference/zoho-dotnet/master/zoho-logo.png" alt="Zoho Logo" width="300" height="255">
 
 ###Zoho API implementation in C#.NET
 
