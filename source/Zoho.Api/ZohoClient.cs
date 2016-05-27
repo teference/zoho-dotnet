@@ -2,43 +2,24 @@
 {
     #region Namespace
 
-    using System;
+    using Internals;
 
     #endregion
 
     public sealed class ZohoClient : IZohoClient
     {
-        #region Variable declaration
-
-        internal bool isConfigSet;
-
-        #endregion
-
         #region Constructor
 
         public ZohoClient()
         {
+            this.ZsProductApi = new ZsProductApi(this);
+            this.ZsPlanApi = new ZsPlanApi(this);
         }
 
         public ZohoClient(ZohoConfig configuration) : this()
         {
-            if(null == configuration)
-            {
-                return;
-            }
-
-            if(string.IsNullOrEmpty(configuration.OrganizationId) || configuration.OrganizationId.Trim() == string.Empty)
-            {
-                throw new ArgumentNullException("Zoho config - Organization Id cannot be null");
-            }
-
-            if (string.IsNullOrEmpty(configuration.AuthToken) || configuration.AuthToken.Trim() == string.Empty)
-            {
-                throw new ArgumentNullException("Zoho config - Authorization token cannot be null");
-            }
-
+            configuration.CheckConfig();
             this.Configuration = configuration;
-            this.isConfigSet = true;
         }
 
         #endregion
@@ -46,6 +27,9 @@
         #region Properties
 
         public ZohoConfig Configuration { get; set; }
+
+        public IZsProductApi ZsProductApi { get; private set; }
+        public IZsPlanApi ZsPlanApi { get; private set; }
 
         #endregion
     }
