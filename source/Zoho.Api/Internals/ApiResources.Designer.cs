@@ -70,6 +70,24 @@ namespace Teference.Zoho.Api.Internals {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to coupons/{0}.
+        /// </summary>
+        internal static string ZsDeleteCoupon {
+            get {
+                return ResourceManager.GetString("ZsDeleteCoupon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to customers/{0}.
+        /// </summary>
+        internal static string ZsDeleteCustomer {
+            get {
+                return ResourceManager.GetString("ZsDeleteCustomer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to plans/{0}.
         /// </summary>
         internal static string ZsDeletePlan {
@@ -102,6 +120,42 @@ namespace Teference.Zoho.Api.Internals {
         internal static string ZsGetAddonsAll {
             get {
                 return ResourceManager.GetString("ZsGetAddonsAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to coupons/{0}.
+        /// </summary>
+        internal static string ZsGetCoupon {
+            get {
+                return ResourceManager.GetString("ZsGetCoupon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to coupons.
+        /// </summary>
+        internal static string ZsGetCouponsAll {
+            get {
+                return ResourceManager.GetString("ZsGetCouponsAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to customers/{0}.
+        /// </summary>
+        internal static string ZsGetCustomer {
+            get {
+                return ResourceManager.GetString("ZsGetCustomer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to customers.
+        /// </summary>
+        internal static string ZsGetCustomersAll {
+            get {
+                return ResourceManager.GetString("ZsGetCustomersAll", resourceCulture);
             }
         }
         
@@ -169,6 +223,42 @@ namespace Teference.Zoho.Api.Internals {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to coupons.
+        /// </summary>
+        internal static string ZsPostCoupon {
+            get {
+                return ResourceManager.GetString("ZsPostCoupon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to coupons/{0}/markasactive.
+        /// </summary>
+        internal static string ZsPostCouponMarkActive {
+            get {
+                return ResourceManager.GetString("ZsPostCouponMarkActive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to coupons/{0}/markasinactive.
+        /// </summary>
+        internal static string ZsPostCouponMarkInActive {
+            get {
+                return ResourceManager.GetString("ZsPostCouponMarkInActive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to customers.
+        /// </summary>
+        internal static string ZsPostCustomer {
+            get {
+                return ResourceManager.GetString("ZsPostCustomer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to plans.
         /// </summary>
         internal static string ZsPostPlan {
@@ -228,6 +318,24 @@ namespace Teference.Zoho.Api.Internals {
         internal static string ZsPutAddon {
             get {
                 return ResourceManager.GetString("ZsPutAddon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to coupons/{0}.
+        /// </summary>
+        internal static string ZsPutCoupon {
+            get {
+                return ResourceManager.GetString("ZsPutCoupon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to customers/{0}.
+        /// </summary>
+        internal static string ZsPutCustomer {
+            get {
+                return ResourceManager.GetString("ZsPutCustomer", resourceCulture);
             }
         }
         

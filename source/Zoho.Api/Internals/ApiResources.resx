@@ -120,6 +120,12 @@
   <data name="ZsDeleteAddon" xml:space="preserve">
     <value>addons/{0}</value>
   </data>
+  <data name="ZsDeleteCoupon" xml:space="preserve">
+    <value>coupons/{0}</value>
+  </data>
+  <data name="ZsDeleteCustomer" xml:space="preserve">
+    <value>customers/{0}</value>
+  </data>
   <data name="ZsDeletePlan" xml:space="preserve">
     <value>plans/{0}</value>
   </data>
@@ -131,6 +137,18 @@
   </data>
   <data name="ZsGetAddonsAll" xml:space="preserve">
     <value>addons</value>
+  </data>
+  <data name="ZsGetCoupon" xml:space="preserve">
+    <value>coupons/{0}</value>
+  </data>
+  <data name="ZsGetCouponsAll" xml:space="preserve">
+    <value>coupons</value>
+  </data>
+  <data name="ZsGetCustomer" xml:space="preserve">
+    <value>customers/{0}</value>
+  </data>
+  <data name="ZsGetCustomersAll" xml:space="preserve">
+    <value>customers</value>
   </data>
   <data name="ZsGetPlan" xml:space="preserve">
     <value>plans/{0}</value>
@@ -153,6 +171,18 @@
   <data name="ZsPostAddonMarkInActive" xml:space="preserve">
     <value>addons/{0}/markasinactive</value>
   </data>
+  <data name="ZsPostCoupon" xml:space="preserve">
+    <value>coupons</value>
+  </data>
+  <data name="ZsPostCouponMarkActive" xml:space="preserve">
+    <value>coupons/{0}/markasactive</value>
+  </data>
+  <data name="ZsPostCouponMarkInActive" xml:space="preserve">
+    <value>coupons/{0}/markasinactive</value>
+  </data>
+  <data name="ZsPostCustomer" xml:space="preserve">
+    <value>customers</value>
+  </data>
   <data name="ZsPostPlan" xml:space="preserve">
     <value>plans</value>
   </data>
@@ -173,6 +203,12 @@
   </data>
   <data name="ZsPutAddon" xml:space="preserve">
     <value>addons/{0}</value>
+  </data>
+  <data name="ZsPutCoupon" xml:space="preserve">
+    <value>coupons/{0}</value>
+  </data>
+  <data name="ZsPutCustomer" xml:space="preserve">
+    <value>customers/{0}</value>
   </data>
   <data name="ZsPutPlan" xml:space="preserve">
     <value>plans/{0}</value>
