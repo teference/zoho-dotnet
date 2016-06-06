@@ -117,14 +117,50 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ZsDeleteAddon" xml:space="preserve">
+    <value>addons/{0}</value>
+  </data>
+  <data name="ZsDeletePlan" xml:space="preserve">
+    <value>plans/{0}</value>
+  </data>
   <data name="ZsDeleteProduct" xml:space="preserve">
     <value>products/{0}</value>
+  </data>
+  <data name="ZsGetAddon" xml:space="preserve">
+    <value>addons/{0}</value>
+  </data>
+  <data name="ZsGetAddonsAll" xml:space="preserve">
+    <value>addons</value>
+  </data>
+  <data name="ZsGetPlan" xml:space="preserve">
+    <value>plans/{0}</value>
+  </data>
+  <data name="ZsGetPlansAll" xml:space="preserve">
+    <value>plans</value>
   </data>
   <data name="ZsGetProduct" xml:space="preserve">
     <value>products/{0}</value>
   </data>
   <data name="ZsGetProductsAll" xml:space="preserve">
     <value>products</value>
+  </data>
+  <data name="ZsPostAddon" xml:space="preserve">
+    <value>addons</value>
+  </data>
+  <data name="ZsPostAddonMarkActive" xml:space="preserve">
+    <value>addons/{0}/markasactive</value>
+  </data>
+  <data name="ZsPostAddonMarkInActive" xml:space="preserve">
+    <value>addons/{0}/markasinactive</value>
+  </data>
+  <data name="ZsPostPlan" xml:space="preserve">
+    <value>plans</value>
+  </data>
+  <data name="ZsPostPlanMarkActive" xml:space="preserve">
+    <value>plans/{0}/markasactive</value>
+  </data>
+  <data name="ZsPostPlanMarkInActive" xml:space="preserve">
+    <value>plans/{0}/markasinactive</value>
   </data>
   <data name="ZsPostProduct" xml:space="preserve">
     <value>products</value>
@@ -134,6 +170,12 @@
   </data>
   <data name="ZsPostProductMarkInActive" xml:space="preserve">
     <value>products/{0}/markasinactive</value>
+  </data>
+  <data name="ZsPutAddon" xml:space="preserve">
+    <value>addons/{0}</value>
+  </data>
+  <data name="ZsPutPlan" xml:space="preserve">
+    <value>plans/{0}</value>
   </data>
   <data name="ZsPutProduct" xml:space="preserve">
     <value>products/{0}</value>

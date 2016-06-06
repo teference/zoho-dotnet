@@ -3,8 +3,6 @@
     #region Namespace
 
     using System.Threading.Tasks;
-    using Models;
-    using System.Collections.Generic;
 
     #endregion
 
@@ -16,11 +14,11 @@
         Task<ZsProducts> GetAllAsync();
         Task<ZsProducts> GetAllAsync(string authToken, string organizationId);
 
-        Task<ZsProduct> CreateAsync(string name, string description = "", IEnumerable<string> notificationEmails = null, string redirectUrl = null);
-        Task<ZsProduct> CreateAsync(string authToken, string organizationId, string name, string description = "", IEnumerable<string> notificationEmails = null, string redirectUrl = null);
+        Task<ZsProduct> CreateAsync(ZsProductInput createInput);
+        Task<ZsProduct> CreateAsync(string authToken, string organizationId, ZsProductInput createInput);
 
-        Task<ZsProduct> UpdateAsync(string id, string name, string description = "", IEnumerable<string> notificationEmails = null, string redirectUrl = null);
-        Task<ZsProduct> UpdateAsync(string authToken, string organizationId, string id, string name, string description = "", IEnumerable<string> notificationEmails = null, string redirectUrl = null);
+        Task<ZsProduct> UpdateAsync(string id, ZsProductInput updateInput);
+        Task<ZsProduct> UpdateAsync(string authToken, string organizationId, string id, ZsProductInput updateInput);
 
         Task<bool> DeleteAsync(string id);
         Task<bool> DeleteAsync(string authToken, string organizationId, string id);

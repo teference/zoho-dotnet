@@ -61,11 +61,65 @@ namespace Teference.Zoho.Api.Internals {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to addons/{0}.
+        /// </summary>
+        internal static string ZsDeleteAddon {
+            get {
+                return ResourceManager.GetString("ZsDeleteAddon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to plans/{0}.
+        /// </summary>
+        internal static string ZsDeletePlan {
+            get {
+                return ResourceManager.GetString("ZsDeletePlan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to products/{0}.
         /// </summary>
         internal static string ZsDeleteProduct {
             get {
                 return ResourceManager.GetString("ZsDeleteProduct", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to addons/{0}.
+        /// </summary>
+        internal static string ZsGetAddon {
+            get {
+                return ResourceManager.GetString("ZsGetAddon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to addons.
+        /// </summary>
+        internal static string ZsGetAddonsAll {
+            get {
+                return ResourceManager.GetString("ZsGetAddonsAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to plans/{0}.
+        /// </summary>
+        internal static string ZsGetPlan {
+            get {
+                return ResourceManager.GetString("ZsGetPlan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to plans.
+        /// </summary>
+        internal static string ZsGetPlansAll {
+            get {
+                return ResourceManager.GetString("ZsGetPlansAll", resourceCulture);
             }
         }
         
@@ -84,6 +138,60 @@ namespace Teference.Zoho.Api.Internals {
         internal static string ZsGetProductsAll {
             get {
                 return ResourceManager.GetString("ZsGetProductsAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to addons.
+        /// </summary>
+        internal static string ZsPostAddon {
+            get {
+                return ResourceManager.GetString("ZsPostAddon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to addons/{0}/markasactive.
+        /// </summary>
+        internal static string ZsPostAddonMarkActive {
+            get {
+                return ResourceManager.GetString("ZsPostAddonMarkActive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to addons/{0}/markasinactive.
+        /// </summary>
+        internal static string ZsPostAddonMarkInActive {
+            get {
+                return ResourceManager.GetString("ZsPostAddonMarkInActive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to plans.
+        /// </summary>
+        internal static string ZsPostPlan {
+            get {
+                return ResourceManager.GetString("ZsPostPlan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to plans/{0}/markasactive.
+        /// </summary>
+        internal static string ZsPostPlanMarkActive {
+            get {
+                return ResourceManager.GetString("ZsPostPlanMarkActive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to plans/{0}/markasinactive.
+        /// </summary>
+        internal static string ZsPostPlanMarkInActive {
+            get {
+                return ResourceManager.GetString("ZsPostPlanMarkInActive", resourceCulture);
             }
         }
         
@@ -111,6 +219,24 @@ namespace Teference.Zoho.Api.Internals {
         internal static string ZsPostProductMarkInActive {
             get {
                 return ResourceManager.GetString("ZsPostProductMarkInActive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to addons/{0}.
+        /// </summary>
+        internal static string ZsPutAddon {
+            get {
+                return ResourceManager.GetString("ZsPutAddon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to plans/{0}.
+        /// </summary>
+        internal static string ZsPutPlan {
+            get {
+                return ResourceManager.GetString("ZsPutPlan", resourceCulture);
             }
         }
         

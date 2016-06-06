@@ -6,8 +6,7 @@
 
         ZohoConfig Configuration { get; set; }
 
-        IZsProductApi ZsProductApi { get; }
-        IZsPlanApi ZsPlanApi { get; }
+        ISubscriptionApi Subscription { get; }
 
         #endregion
     }

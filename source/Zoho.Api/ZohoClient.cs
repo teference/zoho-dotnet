@@ -12,8 +12,7 @@
 
         public ZohoClient()
         {
-            this.ZsProductApi = new ZsProductApi(this);
-            this.ZsPlanApi = new ZsPlanApi(this);
+            this.Subscription = new SubscriptionApi(this);
         }
 
         public ZohoClient(ZohoConfig configuration) : this()
@@ -27,9 +26,7 @@
         #region Properties
 
         public ZohoConfig Configuration { get; set; }
-
-        public IZsProductApi ZsProductApi { get; private set; }
-        public IZsPlanApi ZsPlanApi { get; private set; }
+        public ISubscriptionApi Subscription { get; private set; }
 
         #endregion
     }

@@ -1,4 +1,4 @@
-﻿namespace Teference.Zoho.Api.Models
+﻿namespace Teference.Zoho.Api
 {
     public sealed class ZsPlan
     {

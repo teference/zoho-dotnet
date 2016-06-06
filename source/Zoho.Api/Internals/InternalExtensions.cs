@@ -3,10 +3,12 @@
     #region Namespace
 
     using Internals;
+    using Newtonsoft.Json;
     using System;
     using System.Globalization;
     using System.Net.Http;
     using System.Net.Http.Headers;
+    using System.Threading.Tasks;
 
     #endregion
 
@@ -66,6 +68,52 @@
             if (string.IsNullOrEmpty(organizationId) || organizationId.Trim() == string.Empty)
             {
                 throw new ArgumentNullException("Zoho API configuration - Organization Id cannot be null");
+            }
+        }
+
+        internal static async Task<ProcessEntity<T>> ProcessResponse<T>(this HttpResponseMessage response)
+        {
+            if(null == response)
+            {
+                throw new ArgumentNullException("response");
+            }
+
+            if (!response.IsSuccessStatusCode)
+            {
+                ZsErrorJson errorResponse = null;
+                try
+                {
+                    var rawErrorResponse = await response.Content.ReadAsStringAsync();
+                    errorResponse = JsonConvert.DeserializeObject<ZsErrorJson>(rawErrorResponse);
+                }
+                catch (Exception exception)
+                {
+                    return new ProcessEntity<T> { Error = new InvalidOperationException("API call did not completed successfully or response parse error occurred", exception) };
+                }
+
+                if(null == errorResponse || string.IsNullOrWhiteSpace(errorResponse.Message))
+                {
+                    return new ProcessEntity<T> { Error = new InvalidOperationException("API call did not completed successfully or response parse error occurred") };
+                }
+
+                return new ProcessEntity<T> { Error = new InvalidOperationException(errorResponse.Message) };
+            }
+            else
+            {
+                if(typeof(T) == (typeof(bool)))
+                {
+                    return new ProcessEntity<T> { Data = (T)(object)response.IsSuccessStatusCode };
+                }
+
+                try
+                {
+                    var rawResponseContent = await response.Content.ReadAsStringAsync();
+                    return new ProcessEntity<T> { Data = JsonConvert.DeserializeObject<T>(rawResponseContent) };
+                }
+                catch (Exception exception)
+                {
+                    return new ProcessEntity<T> { Error = new InvalidOperationException("API call did not completed successfully or response parse error occurred", exception) };
+                }
             }
         }
     }

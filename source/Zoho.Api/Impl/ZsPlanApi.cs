@@ -3,7 +3,6 @@
     #region Namespace
 
     using Internals;
-    using Models;
     using Newtonsoft.Json;
     using System.Net.Http;
     using System.Threading.Tasks;
