@@ -14,7 +14,7 @@
         {
             this.PricingScheme = ZsAddonPricingScheme.Unit;
             this.Type = ZsAddonType.Recurring;
-            this.IntervalUnit = ZsAddonIntervalUnit.Monthly;
+            this.IntervalUnit = ZsIntervalUnit.Monthly;
             this.IsApplicableToAllPlans = true;
         }
 
@@ -42,7 +42,7 @@
         }
 
         [JsonIgnore]
-        public ZsAddonIntervalUnit IntervalUnit { get; set; }
+        public ZsIntervalUnit IntervalUnit { get; set; }
 
         [JsonProperty("interval_unit")]
         public string IntervalUnitRaw

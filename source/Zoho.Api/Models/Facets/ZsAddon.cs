@@ -32,7 +32,7 @@
         internal string PricingSchemeRaw { get; set; }
 
         [JsonIgnore]
-        internal ZsAddonPricingScheme PricingScheme
+        public ZsAddonPricingScheme PricingScheme
         {
             get
             {

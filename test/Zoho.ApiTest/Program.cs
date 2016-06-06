@@ -32,6 +32,20 @@
     }
 }
 
+//var result3 = await zohoClient.Subscription.Plans.CreateAsync(new ZsPlanCreate
+//{
+//    Code = "plancode01",
+//    Name = "Plan Code 01",
+//    RecurringPrice = 30.50,
+//    Interval = 1,
+//    IntervalUnit = ZsIntervalUnit.Yearly,
+//    BillingCycles = 24,
+//    TrailPeriod = 120,
+//    SetupFee = 12.12,
+//    Description = "Plan code description 01",
+//    ProductId = "244077000000072123"
+//});
+
 //var addonAddResult = await zohoClient.Subscription.Addons.CreateAsync(new ZsAddonCreate
 //{
 //    Code = "addcode01",

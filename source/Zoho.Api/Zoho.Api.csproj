@@ -60,11 +60,12 @@
     <Compile Include="Internals\ZsErrorJson.cs" />
     <Compile Include="Internals\ZsPlanJson.cs" />
     <Compile Include="Internals\ZsProductJson.cs" />
-    <Compile Include="Models\Enums\ZsAddonIntervalUnit.cs" />
+    <Compile Include="Models\Enums\ZsIntervalUnit.cs" />
     <Compile Include="Models\Enums\ZsAddonPricingScheme.cs" />
     <Compile Include="Models\Enums\ZsAddonType.cs" />
     <Compile Include="Models\Enums\ZsStatus.cs" />
     <Compile Include="Models\Facets\ZsAddon.cs" />
+    <Compile Include="Models\Facets\ZsPlanAddon.cs" />
     <Compile Include="Models\Facets\ZsPriceBracket.cs" />
     <Compile Include="Models\Facets\ZsAddons.cs" />
     <Compile Include="Models\Facets\ZsPlan.cs" />
@@ -75,6 +76,8 @@
     <Compile Include="Models\Facets\ZsProduct.cs" />
     <Compile Include="Models\Inputs\ZsAddonCreate.cs" />
     <Compile Include="Models\Inputs\ZsAddonUpdate.cs" />
+    <Compile Include="Models\Inputs\ZsPlanCreate.cs" />
+    <Compile Include="Models\Inputs\ZsPlanUpdate.cs" />
     <Compile Include="Models\Inputs\ZsProductInput.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ZohoClient.cs" />

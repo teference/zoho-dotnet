@@ -6,7 +6,9 @@
 
     #endregion
 
-    internal sealed class ZsPlanJson
+    internal sealed class ZsPlanJson : ZsErrorJson
     {
+        [JsonProperty("plan")]
+        public ZsPlan Plan { get; set; }
     }
 }

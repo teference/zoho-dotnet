@@ -49,7 +49,7 @@
             using (var httpClient = new HttpClient())
             {
                 httpClient.Configure(organizationId, authToken);
-                var response = await httpClient.GetAsync(string.Format(CultureInfo.InvariantCulture, ApiResources.ZsGetAddon, code.ToUpperInvariant()));
+                var response = await httpClient.GetAsync(string.Format(CultureInfo.InvariantCulture, ApiResources.ZsGetAddon, code));
                 var processResult = await response.ProcessResponse<ZsAddonJson>();
                 if (null != processResult.Error)
                 {
@@ -105,7 +105,6 @@
                 throw new ArgumentException(validationResult);
             }
 
-            createInput.Code = createInput.Code.ToUpperInvariant();
             using (var httpClient = new HttpClient())
             {
                 httpClient.Configure(organizationId, authToken);
@@ -142,7 +141,7 @@
                 throw new ArgumentNullException("updateInput");
             }
 
-            if (string.IsNullOrEmpty(code) || code == string.Empty)
+            if (string.IsNullOrWhiteSpace(code))
             {
                 throw new ArgumentNullException("Addon code is required");
             }
@@ -164,7 +163,7 @@
                     updateJson,
                     Encoding.UTF8,
                     "application/json");
-                var response = await httpClient.PutAsync(string.Format(CultureInfo.InvariantCulture, ApiResources.ZsPutAddon, code.ToUpperInvariant()), content);
+                var response = await httpClient.PutAsync(string.Format(CultureInfo.InvariantCulture, ApiResources.ZsPutAddon, code), content);
                 var processResult = await response.ProcessResponse<ZsAddonJson>();
                 if (null != processResult.Error)
                 {
@@ -193,7 +192,7 @@
             using (var httpClient = new HttpClient())
             {
                 httpClient.Configure(organizationId, authToken);
-                var response = await httpClient.DeleteAsync(string.Format(CultureInfo.InvariantCulture, ApiResources.ZsDeleteAddon, code.ToUpperInvariant()));
+                var response = await httpClient.DeleteAsync(string.Format(CultureInfo.InvariantCulture, ApiResources.ZsDeleteAddon, code));
                 var processResult = await response.ProcessResponse<bool>();
                 if (null != processResult.Error)
                 {
@@ -223,7 +222,7 @@
             using (var httpClient = new HttpClient())
             {
                 httpClient.Configure(organizationId, authToken);
-                var response = await httpClient.PostAsync(string.Format(CultureInfo.InvariantCulture, ApiResources.ZsPostAddonMarkActive, code.ToUpperInvariant()), null);
+                var response = await httpClient.PostAsync(string.Format(CultureInfo.InvariantCulture, ApiResources.ZsPostAddonMarkActive, code), null);
                 var processResult = await response.ProcessResponse<bool>();
                 if (null != processResult.Error)
                 {
@@ -253,7 +252,7 @@
             using (var httpClient = new HttpClient())
             {
                 httpClient.Configure(organizationId, authToken);
-                var response = await httpClient.PostAsync(string.Format(CultureInfo.InvariantCulture, ApiResources.ZsPostAddonMarkInActive, code.ToUpperInvariant()), null);
+                var response = await httpClient.PostAsync(string.Format(CultureInfo.InvariantCulture, ApiResources.ZsPostAddonMarkInActive, code), null);
                 var processResult = await response.ProcessResponse<bool>();
                 if (null != processResult.Error)
                 {

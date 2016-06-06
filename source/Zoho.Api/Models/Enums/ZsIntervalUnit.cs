@@ -1,6 +1,6 @@
 ﻿namespace Teference.Zoho.Api
 {
-    public enum ZsAddonIntervalUnit
+    public enum ZsIntervalUnit
     {
         Monthly,
         Yearly
