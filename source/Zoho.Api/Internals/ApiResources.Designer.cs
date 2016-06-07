@@ -70,6 +70,15 @@ namespace Teference.Zoho.Api.Internals {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to customers/{0}/cards/{1}.
+        /// </summary>
+        internal static string ZsDeleteCard {
+            get {
+                return ResourceManager.GetString("ZsDeleteCard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to coupons/{0}.
         /// </summary>
         internal static string ZsDeleteCoupon {
@@ -120,6 +129,15 @@ namespace Teference.Zoho.Api.Internals {
         internal static string ZsGetAddonsAll {
             get {
                 return ResourceManager.GetString("ZsGetAddonsAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to customers/{0}/cards/{1}.
+        /// </summary>
+        internal static string ZsGetCard {
+            get {
+                return ResourceManager.GetString("ZsGetCard", resourceCulture);
             }
         }
         
@@ -223,6 +241,15 @@ namespace Teference.Zoho.Api.Internals {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to customers/{0}/cards.
+        /// </summary>
+        internal static string ZsPostCard {
+            get {
+                return ResourceManager.GetString("ZsPostCard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to coupons.
         /// </summary>
         internal static string ZsPostCoupon {
@@ -318,6 +345,15 @@ namespace Teference.Zoho.Api.Internals {
         internal static string ZsPutAddon {
             get {
                 return ResourceManager.GetString("ZsPutAddon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to customers/{0}/cards/{1}.
+        /// </summary>
+        internal static string ZsPutCard {
+            get {
+                return ResourceManager.GetString("ZsPutCard", resourceCulture);
             }
         }
         

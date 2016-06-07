@@ -18,6 +18,8 @@
             this.Addons = new ZsAddonApi(this.zohoClient);
             this.Coupons = new ZsCouponApi(this.zohoClient);
             this.Customers = new ZsCustomerApi(this.zohoClient);
+            this.Cards = new ZsCardApi(this.zohoClient);
+            this.ContactPersons = new ZsContactPersonApi(this.zohoClient);
         }
 
         #endregion
@@ -29,6 +31,8 @@
         public IZsAddonApi Addons { get; private set; }
         public IZsCouponApi Coupons { get; private set; }
         public IZsCustomerApi Customers { get; private set; }
+        public IZsCardApi Cards { get; private set; }
+        public IZsContactPersonApi ContactPersons { get; private set; }
 
         #endregion
     }

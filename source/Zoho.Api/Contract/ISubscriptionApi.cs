@@ -7,5 +7,7 @@
         IZsAddonApi Addons { get; }
         IZsCouponApi Coupons { get; }
         IZsCustomerApi Customers { get; }
+        IZsCardApi Cards { get; }
+        IZsContactPersonApi ContactPersons { get; }
     }
 }
