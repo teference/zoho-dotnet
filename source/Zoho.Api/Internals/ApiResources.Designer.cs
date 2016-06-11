@@ -79,6 +79,15 @@ namespace Teference.Zoho.Api.Internals {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to customers/{0}/contactpersons/{1}.
+        /// </summary>
+        internal static string ZsDeleteContactPerson {
+            get {
+                return ResourceManager.GetString("ZsDeleteContactPerson", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to coupons/{0}.
         /// </summary>
         internal static string ZsDeleteCoupon {
@@ -138,6 +147,24 @@ namespace Teference.Zoho.Api.Internals {
         internal static string ZsGetCard {
             get {
                 return ResourceManager.GetString("ZsGetCard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to customers/{0}/contactpersons/{1}.
+        /// </summary>
+        internal static string ZsGetContactPerson {
+            get {
+                return ResourceManager.GetString("ZsGetContactPerson", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to customers/{0}/contactpersons.
+        /// </summary>
+        internal static string ZsGetContactPersonsAll {
+            get {
+                return ResourceManager.GetString("ZsGetContactPersonsAll", resourceCulture);
             }
         }
         
@@ -250,6 +277,15 @@ namespace Teference.Zoho.Api.Internals {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to customers/{0}/contactpersons.
+        /// </summary>
+        internal static string ZsPostContactPerson {
+            get {
+                return ResourceManager.GetString("ZsPostContactPerson", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to coupons.
         /// </summary>
         internal static string ZsPostCoupon {
@@ -354,6 +390,15 @@ namespace Teference.Zoho.Api.Internals {
         internal static string ZsPutCard {
             get {
                 return ResourceManager.GetString("ZsPutCard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to customers/{0}/contactpersons/{1}.
+        /// </summary>
+        internal static string ZsPutContactPerson {
+            get {
+                return ResourceManager.GetString("ZsPutContactPerson", resourceCulture);
             }
         }
         

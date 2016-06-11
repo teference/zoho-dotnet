@@ -123,6 +123,9 @@
   <data name="ZsDeleteCard" xml:space="preserve">
     <value>customers/{0}/cards/{1}</value>
   </data>
+  <data name="ZsDeleteContactPerson" xml:space="preserve">
+    <value>customers/{0}/contactpersons/{1}</value>
+  </data>
   <data name="ZsDeleteCoupon" xml:space="preserve">
     <value>coupons/{0}</value>
   </data>
@@ -143,6 +146,12 @@
   </data>
   <data name="ZsGetCard" xml:space="preserve">
     <value>customers/{0}/cards/{1}</value>
+  </data>
+  <data name="ZsGetContactPerson" xml:space="preserve">
+    <value>customers/{0}/contactpersons/{1}</value>
+  </data>
+  <data name="ZsGetContactPersonsAll" xml:space="preserve">
+    <value>customers/{0}/contactpersons</value>
   </data>
   <data name="ZsGetCoupon" xml:space="preserve">
     <value>coupons/{0}</value>
@@ -180,6 +189,9 @@
   <data name="ZsPostCard" xml:space="preserve">
     <value>customers/{0}/cards</value>
   </data>
+  <data name="ZsPostContactPerson" xml:space="preserve">
+    <value>customers/{0}/contactpersons</value>
+  </data>
   <data name="ZsPostCoupon" xml:space="preserve">
     <value>coupons</value>
   </data>
@@ -215,6 +227,9 @@
   </data>
   <data name="ZsPutCard" xml:space="preserve">
     <value>customers/{0}/cards/{1}</value>
+  </data>
+  <data name="ZsPutContactPerson" xml:space="preserve">
+    <value>customers/{0}/contactpersons/{1}</value>
   </data>
   <data name="ZsPutCoupon" xml:space="preserve">
     <value>coupons/{0}</value>

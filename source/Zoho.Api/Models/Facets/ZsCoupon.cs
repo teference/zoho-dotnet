@@ -168,6 +168,6 @@
         [JsonProperty("created_time")]
         public DateTime CreatedAt { get; set; }
         [JsonProperty("updated_time")]
-        public DateTime UpdatedAt { get; set; }
+        public DateTime? UpdatedAt { get; set; }
     }
 }

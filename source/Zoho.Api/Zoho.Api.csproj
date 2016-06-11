@@ -82,6 +82,8 @@
     <Compile Include="Models\Enums\ZsStatus.cs" />
     <Compile Include="Models\Facets\ZsAddon.cs" />
     <Compile Include="Models\Facets\ZsCard.cs" />
+    <Compile Include="Models\Facets\ZsContactPerson.cs" />
+    <Compile Include="Models\Facets\ZsContactPersons.cs" />
     <Compile Include="Models\Facets\ZsCoupon.cs" />
     <Compile Include="Models\Facets\ZsCoupons.cs" />
     <Compile Include="Models\Facets\ZsCustomer.cs" />
@@ -101,6 +103,7 @@
     <Compile Include="Models\Inputs\ZsAddonUpdate.cs" />
     <Compile Include="Models\Inputs\ZsCardCreate.cs" />
     <Compile Include="Models\Inputs\ZsCardUpdate.cs" />
+    <Compile Include="Models\Inputs\ZsContactPersonInput.cs" />
     <Compile Include="Models\Inputs\ZsCouponCreate.cs" />
     <Compile Include="Models\Inputs\ZsCouponUpdate.cs" />
     <Compile Include="Models\Inputs\ZsCustomerInput.cs" />
