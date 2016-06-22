@@ -64,7 +64,7 @@
         [JsonProperty("shipping_address")]
         public ZsCustomerAddress ShippingAddress { get; set; }
         [JsonProperty("custom_fields")]
-        public List<ZsCustomerField> CustomFields { get; set; }
+        public List<ZsCustomField> CustomFields { get; set; }
 
         #endregion
 

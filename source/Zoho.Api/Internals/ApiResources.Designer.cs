@@ -241,6 +241,24 @@ namespace Teference.Zoho.Api.Internals {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to subscriptions/{0}.
+        /// </summary>
+        internal static string ZsGetSubscription {
+            get {
+                return ResourceManager.GetString("ZsGetSubscription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to subscriptions.
+        /// </summary>
+        internal static string ZsGetSubscriptionsAll {
+            get {
+                return ResourceManager.GetString("ZsGetSubscriptionsAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to addons.
         /// </summary>
         internal static string ZsPostAddon {
@@ -376,6 +394,15 @@ namespace Teference.Zoho.Api.Internals {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to subscriptions.
+        /// </summary>
+        internal static string ZsPostSubscription {
+            get {
+                return ResourceManager.GetString("ZsPostSubscription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to addons/{0}.
         /// </summary>
         internal static string ZsPutAddon {
@@ -435,6 +462,15 @@ namespace Teference.Zoho.Api.Internals {
         internal static string ZsPutProduct {
             get {
                 return ResourceManager.GetString("ZsPutProduct", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to subscriptions/{0}.
+        /// </summary>
+        internal static string ZsPutSubscription {
+            get {
+                return ResourceManager.GetString("ZsPutSubscription", resourceCulture);
             }
         }
         

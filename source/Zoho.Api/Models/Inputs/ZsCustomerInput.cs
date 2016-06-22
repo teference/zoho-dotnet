@@ -45,7 +45,7 @@
         public string Notes { get; set; }
 
         [JsonProperty("custom_fields")]
-        public List<ZsCustomerField> CustomFields { get; set; }
+        public List<ZsCustomField> CustomFields { get; set; }
 
         internal string Validate()
         {

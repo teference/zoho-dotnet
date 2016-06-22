@@ -9,5 +9,6 @@
         IZsCustomerApi Customers { get; }
         IZsCardApi Cards { get; }
         IZsContactPersonApi ContactPersons { get; }
+        IZsSubscriptionApi Subscriptions { get; }
     }
 }

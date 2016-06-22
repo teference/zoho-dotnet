@@ -3,14 +3,13 @@
     #region Namespace
 
     using Newtonsoft.Json;
+    using System;
     using System.Collections.Generic;
 
     #endregion
 
-    public sealed class ZsPlan
+    public sealed class ZsPlan : ZsPlanCommon
     {
-        [JsonProperty("plan_code")]
-        public string PlanCode { get; set; }
         [JsonProperty("product_id")]
         public string ProductId { get; set; }
 
@@ -46,12 +45,8 @@
             }
         }
 
-        [JsonProperty("billing_cycles")]
-        public int BillingCycles { get; set; }
         [JsonProperty("trial_period")]
         public int TrailPeriod { get; set; }
-        [JsonProperty("setup_fee")]
-        public double SetupFee { get; set; }
         [JsonProperty("addons")]
         public List<ZsPlanAddon> Addons { get; set; }
 

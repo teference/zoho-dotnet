@@ -41,27 +41,27 @@
             authToken.CheckConfigAuthToken();
             organizationId.CheckConfigOrganizationId();
 
-            if (string.IsNullOrWhiteSpace(code))
+            if (string.IsNullOrWhiteSpace(customerId))
             {
-                throw new ArgumentNullException("Addon code is required");
+                throw new ArgumentNullException("Customer id is required");
             }
 
-            if (string.IsNullOrWhiteSpace(code))
+            if (string.IsNullOrWhiteSpace(contactPersonId))
             {
-                throw new ArgumentNullException("Addon code is required");
+                throw new ArgumentNullException("Contact person id is required");
             }
 
             using (var httpClient = new HttpClient())
             {
                 httpClient.Configure(organizationId, authToken);
-                var response = await httpClient.GetAsync(string.Format(CultureInfo.InvariantCulture, ApiResources.ZsGetAddon, code));
-                var processResult = await response.ProcessResponse<ZsAddonJson>();
+                var response = await httpClient.GetAsync(string.Format(CultureInfo.InvariantCulture, ApiResources.ZsGetContactPerson, customerId, contactPersonId));
+                var processResult = await response.ProcessResponse< ZsContactPersonJson>();
                 if (null != processResult.Error)
                 {
                     throw processResult.Error;
                 }
 
-                return processResult.Data.Addon;
+                return processResult.Data.ContactPerson;
             }
         }
 
@@ -78,8 +78,8 @@
             using (var httpClient = new HttpClient())
             {
                 httpClient.Configure(organizationId, authToken);
-                var response = await httpClient.GetAsync(ApiResources.ZsGetAddonsAll);
-                var processResult = await response.ProcessResponse<ZsAddons>();
+                var response = await httpClient.GetAsync(string.Format(CultureInfo.InvariantCulture, ApiResources.ZsGetContactPersonsAll, customerId));
+                var processResult = await response.ProcessResponse<ZsContactPersons>();
                 if (null != processResult.Error)
                 {
                     throw processResult.Error;
@@ -89,12 +89,12 @@
             }
         }
 
-        public async Task<ZsContactPerson> CreateAsync(string customerId, ZsAddonCreate createInput)
+        public async Task<ZsContactPerson> CreateAsync(string customerId, ZsContactPersonInput createInput)
         {
             this.client.Configuration.CheckConfig();
             return await this.CreateAsync(this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, customerId, createInput);
         }
-        public async Task<ZsContactPerson> CreateAsync(string authToken, string organizationId, string customerId, ZsAddonCreate createInput)
+        public async Task<ZsContactPerson> CreateAsync(string authToken, string organizationId, string customerId, ZsContactPersonInput createInput)
         {
             authToken.CheckConfigAuthToken();
             organizationId.CheckConfigOrganizationId();
@@ -120,23 +120,23 @@
                         new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore }),
                     Encoding.UTF8,
                     "application/json");
-                var response = await httpClient.PostAsync(ApiResources.ZsPostAddon, content);
-                var processResult = await response.ProcessResponse<ZsAddonJson>();
+                var response = await httpClient.PostAsync(string.Format(CultureInfo.InvariantCulture, ApiResources.ZsPostContactPerson, customerId), content);
+                var processResult = await response.ProcessResponse<ZsContactPersonJson>();
                 if (null != processResult.Error)
                 {
                     throw processResult.Error;
                 }
 
-                return processResult.Data.Addon;
+                return processResult.Data.ContactPerson;
             }
         }
 
-        public async Task<ZsContactPerson> UpdateAsync(string customerId, string contactPersonId, ZsAddonUpdate updateInput)
+        public async Task<ZsContactPerson> UpdateAsync(string customerId, string contactPersonId, ZsContactPersonInput updateInput)
         {
             this.client.Configuration.CheckConfig();
             return await this.UpdateAsync(this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, customerId, contactPersonId, updateInput);
         }
-        public async Task<ZsContactPerson> UpdateAsync(string authToken, string organizationId, string customerId, string contactPersonId, ZsAddonUpdate updateInput)
+        public async Task<ZsContactPerson> UpdateAsync(string authToken, string organizationId, string customerId, string contactPersonId, ZsContactPersonInput updateInput)
         {
             authToken.CheckConfigAuthToken();
             organizationId.CheckConfigOrganizationId();
@@ -146,9 +146,14 @@
                 throw new ArgumentNullException("updateInput");
             }
 
-            if (string.IsNullOrWhiteSpace(code))
+            if (string.IsNullOrWhiteSpace(customerId))
             {
-                throw new ArgumentNullException("Addon code is required");
+                throw new ArgumentNullException("Customer id is required");
+            }
+
+            if (string.IsNullOrWhiteSpace(contactPersonId))
+            {
+                throw new ArgumentNullException("Contact person id is required");
             }
 
             var validationResult = updateInput.Validate();
@@ -168,14 +173,14 @@
                     updateJson,
                     Encoding.UTF8,
                     "application/json");
-                var response = await httpClient.PutAsync(string.Format(CultureInfo.InvariantCulture, ApiResources.ZsPutAddon, code), content);
-                var processResult = await response.ProcessResponse<ZsAddonJson>();
+                var response = await httpClient.PutAsync(string.Format(CultureInfo.InvariantCulture, ApiResources.ZsPutContactPerson, customerId, contactPersonId), content);
+                var processResult = await response.ProcessResponse<ZsContactPersonJson>();
                 if (null != processResult.Error)
                 {
                     throw processResult.Error;
                 }
 
-                return processResult.Data.Addon;
+                return processResult.Data.ContactPerson;
             }
         }
 
@@ -189,15 +194,20 @@
             authToken.CheckConfigAuthToken();
             organizationId.CheckConfigOrganizationId();
 
-            if (string.IsNullOrWhiteSpace(code))
+            if (string.IsNullOrWhiteSpace(customerId))
             {
-                throw new ArgumentNullException("Addon code is required");
+                throw new ArgumentNullException("Customer id is required");
+            }
+
+            if (string.IsNullOrWhiteSpace(contactPersonId))
+            {
+                throw new ArgumentNullException("Contact person id is required");
             }
 
             using (var httpClient = new HttpClient())
             {
                 httpClient.Configure(organizationId, authToken);
-                var response = await httpClient.DeleteAsync(string.Format(CultureInfo.InvariantCulture, ApiResources.ZsDeleteAddon, code));
+                var response = await httpClient.DeleteAsync(string.Format(CultureInfo.InvariantCulture, ApiResources.ZsDeleteContactPerson, customerId, contactPersonId));
                 var processResult = await response.ProcessResponse<bool>();
                 if (null != processResult.Error)
                 {
