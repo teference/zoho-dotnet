@@ -26,6 +26,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\Zoho.Api.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -34,6 +35,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\Zoho.Api.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
@@ -157,8 +159,8 @@
       <HintPath>..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\portable-net40+sl4+win8+wp71+wpa81\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Newtonsoft.Json.8.0.3\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.7.0.1\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.IO, Version=1.5.11.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -189,6 +191,7 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+    <None Include="Zoho.Api.nuspec" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
