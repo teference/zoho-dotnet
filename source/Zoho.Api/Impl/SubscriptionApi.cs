@@ -21,6 +21,8 @@
             this.Cards = new ZsCardApi(this.zohoClient);
             this.ContactPersons = new ZsContactPersonApi(this.zohoClient);
             this.Subscriptions = new ZsSubscriptionApi(this.zohoClient);
+            this.HostedPage = new ZsHostedPageApi(this.zohoClient);
+            this.Invoices = new ZsInvoiceApi(this.zohoClient);
         }
 
         #endregion
@@ -35,6 +37,8 @@
         public IZsCardApi Cards { get; private set; }
         public IZsContactPersonApi ContactPersons { get; private set; }
         public IZsSubscriptionApi Subscriptions { get; private set; }
+        public IZsHostedPageApi HostedPage { get; private set; }
+        public IZsInvoiceApi Invoices { get; private set; }
 
         #endregion
     }

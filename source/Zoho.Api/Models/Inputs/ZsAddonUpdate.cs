@@ -85,7 +85,6 @@
         [JsonProperty("price_brackets")]
         public List<ZsPriceBracket> PriceBrackets { get; set; }
 
-
         internal string Validate()
         {
             if (string.IsNullOrWhiteSpace(this.Name))

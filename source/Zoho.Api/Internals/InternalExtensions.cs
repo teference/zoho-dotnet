@@ -14,7 +14,7 @@
 
     internal static class InternalExtensions
     {
-        internal static void Configure(this HttpClient httpClient, string organizationId, string authToken)
+        internal static void Configure(this HttpClient httpClient, string organizationId, string authToken, bool isPdf = false)
         {
             if (httpClient.DefaultRequestHeaders.CacheControl == null)
             {
@@ -29,7 +29,14 @@
 
             httpClient.DefaultRequestHeaders.Accept.Clear();
 
-            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            if (!isPdf)
+            {
+                httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            }
+            else
+            {
+                httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/pdf"));
+            }
 
             httpClient.BaseAddress = new Uri(ApiResources.ZsRootEndpoint);
 
@@ -73,7 +80,7 @@
 
         internal static async Task<ProcessEntity<T>> ProcessResponse<T>(this HttpResponseMessage response)
         {
-            if(null == response)
+            if (null == response)
             {
                 throw new ArgumentNullException("response");
             }
@@ -91,7 +98,7 @@
                     return new ProcessEntity<T> { Error = new InvalidOperationException("API call did not completed successfully or response parse error occurred", exception) };
                 }
 
-                if(null == errorResponse || string.IsNullOrWhiteSpace(errorResponse.Message))
+                if (null == errorResponse || string.IsNullOrWhiteSpace(errorResponse.Message))
                 {
                     return new ProcessEntity<T> { Error = new InvalidOperationException("API call did not completed successfully or response parse error occurred") };
                 }
@@ -100,7 +107,7 @@
             }
             else
             {
-                if(typeof(T) == (typeof(bool)))
+                if (typeof(T) == (typeof(bool)))
                 {
                     return new ProcessEntity<T> { Data = (T)(object)response.IsSuccessStatusCode };
                 }

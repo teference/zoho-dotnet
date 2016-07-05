@@ -165,6 +165,27 @@
   <data name="ZsGetCustomersAll" xml:space="preserve">
     <value>customers</value>
   </data>
+  <data name="ZsGetHostedPageAll" xml:space="preserve">
+    <value>hostedpages</value>
+  </data>
+  <data name="ZsGetHostedPlan" xml:space="preserve">
+    <value>hostedpages/{0}</value>
+  </data>
+  <data name="ZsGetInvoice" xml:space="preserve">
+    <value>invoices/{0}</value>
+  </data>
+  <data name="ZsGetInvoiceAsPdf" xml:space="preserve">
+    <value>invoices/{0}?accept=pdf</value>
+  </data>
+  <data name="ZsGetInvoicesAll" xml:space="preserve">
+    <value>invoices</value>
+  </data>
+  <data name="ZsGetInvoicesAllByCustomerId" xml:space="preserve">
+    <value>invoices?customer_id={0}</value>
+  </data>
+  <data name="ZsGetInvoicesAllBySubscriptionId" xml:space="preserve">
+    <value>invoices?subscription_id={0}</value>
+  </data>
   <data name="ZsGetPlan" xml:space="preserve">
     <value>plans/{0}</value>
   </data>
@@ -209,6 +230,27 @@
   </data>
   <data name="ZsPostCustomer" xml:space="preserve">
     <value>customers</value>
+  </data>
+  <data name="ZsPostHostedPageUpdateCard" xml:space="preserve">
+    <value>hostedpages/updatecard</value>
+  </data>
+  <data name="ZsPostInvoiceCancelWriteOff" xml:space="preserve">
+    <value>invoices/{0}/cancelwriteoff</value>
+  </data>
+  <data name="ZsPostInvoiceCollectCharges" xml:space="preserve">
+    <value>invoices/{0}/collect</value>
+  </data>
+  <data name="ZsPostInvoiceConvertToOpen" xml:space="preserve">
+    <value>invoices/{0}/convertoopen</value>
+  </data>
+  <data name="ZsPostInvoiceConvertToVoid" xml:space="preserve">
+    <value>invoices/{invoice_id}/void</value>
+  </data>
+  <data name="ZsPostInvoiceEmail" xml:space="preserve">
+    <value>invoices/{0}/email</value>
+  </data>
+  <data name="ZsPostInvoiceWriteOff" xml:space="preserve">
+    <value>invoices/{0}/writeoff</value>
   </data>
   <data name="ZsPostPlan" xml:space="preserve">
     <value>plans</value>

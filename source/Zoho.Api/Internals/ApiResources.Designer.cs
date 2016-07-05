@@ -205,6 +205,69 @@ namespace Teference.Zoho.Api.Internals {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to hostedpages.
+        /// </summary>
+        internal static string ZsGetHostedPageAll {
+            get {
+                return ResourceManager.GetString("ZsGetHostedPageAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to hostedpages/{0}.
+        /// </summary>
+        internal static string ZsGetHostedPlan {
+            get {
+                return ResourceManager.GetString("ZsGetHostedPlan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to invoices/{0}.
+        /// </summary>
+        internal static string ZsGetInvoice {
+            get {
+                return ResourceManager.GetString("ZsGetInvoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to invoices/{0}?accept=pdf.
+        /// </summary>
+        internal static string ZsGetInvoiceAsPdf {
+            get {
+                return ResourceManager.GetString("ZsGetInvoiceAsPdf", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to invoices.
+        /// </summary>
+        internal static string ZsGetInvoicesAll {
+            get {
+                return ResourceManager.GetString("ZsGetInvoicesAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to invoices?customer_id={0}.
+        /// </summary>
+        internal static string ZsGetInvoicesAllByCustomerId {
+            get {
+                return ResourceManager.GetString("ZsGetInvoicesAllByCustomerId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to invoices?subscription_id={0}.
+        /// </summary>
+        internal static string ZsGetInvoicesAllBySubscriptionId {
+            get {
+                return ResourceManager.GetString("ZsGetInvoicesAllBySubscriptionId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to plans/{0}.
         /// </summary>
         internal static string ZsGetPlan {
@@ -336,6 +399,69 @@ namespace Teference.Zoho.Api.Internals {
         internal static string ZsPostCustomer {
             get {
                 return ResourceManager.GetString("ZsPostCustomer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to hostedpages/updatecard.
+        /// </summary>
+        internal static string ZsPostHostedPageUpdateCard {
+            get {
+                return ResourceManager.GetString("ZsPostHostedPageUpdateCard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to invoices/{0}/cancelwriteoff.
+        /// </summary>
+        internal static string ZsPostInvoiceCancelWriteOff {
+            get {
+                return ResourceManager.GetString("ZsPostInvoiceCancelWriteOff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to invoices/{0}/collect.
+        /// </summary>
+        internal static string ZsPostInvoiceCollectCharges {
+            get {
+                return ResourceManager.GetString("ZsPostInvoiceCollectCharges", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to invoices/{0}/convertoopen.
+        /// </summary>
+        internal static string ZsPostInvoiceConvertToOpen {
+            get {
+                return ResourceManager.GetString("ZsPostInvoiceConvertToOpen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to invoices/{invoice_id}/void.
+        /// </summary>
+        internal static string ZsPostInvoiceConvertToVoid {
+            get {
+                return ResourceManager.GetString("ZsPostInvoiceConvertToVoid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to invoices/{0}/email.
+        /// </summary>
+        internal static string ZsPostInvoiceEmail {
+            get {
+                return ResourceManager.GetString("ZsPostInvoiceEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to invoices/{0}/writeoff.
+        /// </summary>
+        internal static string ZsPostInvoiceWriteOff {
+            get {
+                return ResourceManager.GetString("ZsPostInvoiceWriteOff", resourceCulture);
             }
         }
         

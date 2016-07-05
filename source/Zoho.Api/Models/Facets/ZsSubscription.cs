@@ -1,144 +1,274 @@
 ﻿namespace Teference.Zoho.Api
 {
+    #region Namespace
+
     using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
 
+    #endregion
+
     public class ZsSubscription
     {
-        [JsonProperty("subscription_id")]
+        [JsonProperty("subscription_id")] //
         public string SubscriptionId { get; set; }
-        [JsonProperty("name")]
+        [JsonProperty("name")] //
         public string Name { get; set; }
+        [JsonProperty("sub_total")]//
+        public double SubTotal { get; set; }
+        [JsonProperty("amount")]//
+        public double Amount { get; set; }
+        [JsonProperty("product_id")]//
+        public string ProductId { get; set; }
+        [JsonProperty("product_name")]//
+        public string ProductName { get; set; }
+        [JsonProperty("reference_id")]//
+        public string ReferenceId { get; set; }
+        [JsonProperty("pricebook_id")]//
+        public string PricebookId { get; set; }
+        [JsonProperty("currency_code")]//
+        public string CurrencyCode { get; set; }
+        [JsonProperty("currency_symbol")]//
+        public string CurrencySymbol { get; set; }
+        //[JsonProperty("exchange_rate")]
+        //public int ExchangeRate { get; set; }
+        [JsonProperty("status")]//
+        public string Status { get; set; }
+        [JsonProperty("auto_collect")]//
+        public bool AutoCollect { get; set; }
+        [JsonProperty("end_of_term")]//
+        public bool IsEndOfTerm { get; set; }
+        [JsonProperty("payment_terms")]//
+        public int PaymentTerms { get; set; }
+        [JsonProperty("payment_terms_label")]//
+        public string PaymentTermsLabel { get; set; }
+        [JsonProperty("can_add_bank_account")]//
+        public bool CanAddBankAccount { get; set; }
+        [JsonProperty("salesperson_id")]//
+        public string SalesPersonId { get; set; }
+        [JsonProperty("salesperson_name")]//
+        public string SalesPersonName { get; set; }
+        //[JsonProperty("child_invoice_id")]
+        //public string ChildInvoiceId { get; set; }
+        [JsonProperty("interval")]//
+        public int Interval { get; set; }
+        // TODO: This should be an enum.
+        [JsonProperty("interval_unit")]//
+        public string IntervalUnit { get; set; }
+        [JsonProperty("trial_remaining_days")]//
+        public int TrialRemainingDays { get; set; }
+
+        [JsonProperty("plan")]//
+        public ZsSubscriptionPlan Plan { get; set; }
+        //[JsonProperty("taxes")] // This one is a array of some kind.
+        //public string Taxes { get; set; }
         [JsonProperty("customer")]
         public ZsSubscriptionCustomer Customer { get; set; }
         [JsonProperty("contactpersons")]
         public List<ZsSubscriptionContactperson> ContactPersons { get; set; }
-        [JsonProperty("")]
-        public double amount { get; set; }
-        [JsonProperty("")]
-        public string product_id { get; set; }
-        [JsonProperty("")]
-        public ZsSubscriptionPlan plan { get; set; }
-        [JsonProperty("")]
-        public List<ZsSubscriptionAddon> addons { get; set; }
-        [JsonProperty("")]
-        public ZsSubscriptionCoupon coupon { get; set; }
-        [JsonProperty("")]
-        public List<ZsCustomFieldEx> custom_fields { get; set; }
-        [JsonProperty("")]
-        public string activated_at { get; set; }
-        [JsonProperty("")]
-        public string reference_id { get; set; }
-        [JsonProperty("")]
-        public string currency_code { get; set; }
-        [JsonProperty("")]
-        public string currency_symbol { get; set; }
-        [JsonProperty("")]
-        public int exchange_rate { get; set; }
-        [JsonProperty("")]
-        public string starts_at { get; set; }
-        [JsonProperty("")]
-        public string status { get; set; }
-        [JsonProperty("")]
-        public bool auto_collect { get; set; }
-        [JsonProperty("")]
-        public string salesperson_id { get; set; }
-        [JsonProperty("")]
-        public string salesperson_name { get; set; }
-        [JsonProperty("")]
-        public ZsSubscriptionCard card { get; set; }
-        [JsonProperty("")]
-        public string child_invoice_id { get; set; }
-        [JsonProperty("")]
-        public string interval { get; set; }
-        [JsonProperty("")]
-        public string interval_unit { get; set; }
-        [JsonProperty("")]
-        public string current_term_starts_at { get; set; }
-        [JsonProperty("")]
-        public string current_term_ends_at { get; set; }
-        [JsonProperty("")]
-        public string expires_at { get; set; }
-        [JsonProperty("")]
-        public string last_billing_at { get; set; }
-        [JsonProperty("")]
-        public string next_billing_at { get; set; }
-        [JsonProperty("")]
-        public List<ZsSubscriptionNote> notes { get; set; }
-        [JsonProperty("")]
-        public string created_time { get; set; }
-        [JsonProperty("updated_time")]
-        public DateTime? updated_time { get; set; }
+        [JsonProperty("addons")]//
+        public List<ZsSubscriptionAddon> Addons { get; set; }
+        [JsonProperty("coupon")]
+        public ZsSubscriptionCoupon Coupon { get; set; }
+        [JsonProperty("custom_fields")]//
+        public List<ZsCustomFieldEx> CustomFields { get; set; }
+        [JsonProperty("card")]
+        public ZsSubscriptionCard Card { get; set; }
+        [JsonProperty("notes")]//
+        public List<ZsSubscriptionNote> Notes { get; set; }
+        //[JsonProperty("payment_gateways")] // This one is a array of some kind.
+        //public string PaymentGateways { get; set; }
+
+        [JsonProperty("previous_attribute")]
+        public ZsSubscriptionPreviousData PreviousData { get; set; }
+
+        [JsonProperty("trial_starts_at")]//
+        public DateTime? TrialStartsAt { get; set; }
+        [JsonProperty("trial_ends_at")]//
+        public DateTime? TrialEndsAt { get; set; }
+        [JsonProperty("activated_at")]//
+        public DateTime ActivatedAt { get; set; }
+        //[JsonProperty("starts_at")]
+        //public DateTime StartsAt { get; set; }
+        [JsonProperty("current_term_starts_at")]//
+        public DateTime CurrentTermStartsAt { get; set; }
+        [JsonProperty("current_term_ends_at")]//
+        public DateTime CurrentTermEndsAt { get; set; }
+        [JsonProperty("expires_at")]//
+        public DateTime? ExpiresAt { get; set; }
+        //[JsonProperty("last_billing_at")]
+        //public DateTime LastBillingAt { get; set; }
+        [JsonProperty("next_billing_at")]//
+        public DateTime NextBillingAt { get; set; }
+        [JsonProperty("created_at")]//
+        public DateTime CreatedAtDate { get; set; }
+        [JsonProperty("created_time")]//
+        public DateTime CreatedAtDateTime { get; set; }
+        [JsonProperty("updated_time")]//
+        public DateTime? UpdatedAtDateTime { get; set; }
     }
 
     public class ZsSubscriptionNote
     {
-        public string note_id { get; set; }
-        public string description { get; set; }
-        public string commented_by { get; set; }
-        public string commented_time { get; set; }
+        [JsonProperty("note_id")]
+        public string NoteId { get; set; }
+        [JsonProperty("description")]
+        public string Description { get; set; }
+        [JsonProperty("commented_by")]
+        public string CommentedBy { get; set; }
+
+        [JsonProperty("commented_time")]
+        public DateTime CommentedTime { get; set; }
     }
 
     public class ZsSubscriptionCard
     {
-        public string payment_gateway { get; set; }
-        public string card_id { get; set; }
-        public string last_four_digits { get; set; }
-        public int expiry_month { get; set; }
-        public int expiry_year { get; set; }
+        [JsonProperty("payment_gateway")]
+        public string PaymentGateway { get; set; }
+        [JsonProperty("card_id")]
+        public string CardId { get; set; }
+        [JsonProperty("last_four_digits")]
+        public string LastFourDigits { get; set; }
+        [JsonProperty("expiry_month")]
+        public int ExpiryMonth { get; set; }
+        [JsonProperty("expiry_year")]
+        public int ExpiryYear { get; set; }
     }
 
     public class ZsSubscriptionCoupon
     {
-        public string coupon_code { get; set; }
-        public string discount_amount { get; set; }
+        [JsonProperty("coupon_code")]
+        public string CouponCode { get; set; }
+        [JsonProperty("discount_amount")]
+        public string DiscountAmount { get; set; }
     }
 
     public class ZsSubscriptionAddon
     {
-        public string addon_code { get; set; }
-        public string name { get; set; }
-        public int price { get; set; }
-        public int quantity { get; set; }
-        public string tax_id { get; set; }
-        public string description { get; set; }
+        [JsonProperty("addon_code")]
+        public string AddonCode { get; set; }
+        [JsonProperty("name")]
+        public string Name { get; set; }
+        [JsonProperty("price")]
+        public int Price { get; set; }
+        [JsonProperty("quantity")]
+        public int Quantity { get; set; }
+        [JsonProperty("tax_id")]
+        public string TaxId { get; set; }
+        [JsonProperty("description")]
+        public string Description { get; set; }
     }
 
     public class ZsSubscriptionPlan
     {
-        public string plan_code { get; set; }
-        public string name { get; set; }
-        public double price { get; set; }
-        public int quantity { get; set; }
-        public int billing_cycles { get; set; }
-        public int trial_days { get; set; }
-        public string tax_id { get; set; }
-        public string setup_fee_tax_id { get; set; }
-        public string description { get; set; }
+        [JsonProperty("plan_code")]
+        public string PlanCode { get; set; }
+        [JsonProperty("name")]
+        public string Name { get; set; }
+        [JsonProperty("description")]
+        public string Description { get; set; }
+        [JsonProperty("price")]
+        public double Price { get; set; }
+        [JsonProperty("quantity")]
+        public int Quantity { get; set; }
+        [JsonProperty("discount")]
+        public double Discount { get; set; }
+        [JsonProperty("total")]
+        public double Total { get; set; }
+        [JsonProperty("setup_fee")]
+        public double SetupFee { get; set; }
+        //[JsonProperty("billing_cycles")]
+        //public int BillingCycles { get; set; }
+        //[JsonProperty("trial_days")]
+        //public int TrialDays { get; set; }
+        [JsonProperty("tax_id")]
+        public string TaxId { get; set; }
+        [JsonProperty("setup_fee_tax_id")]
+        public string SetupFeeTaxId { get; set; }
+        [JsonProperty("tax_name")]
+        public string TaxName { get; set; }
+        [JsonProperty("tax_percentage")]
+        public string TaxPercentage { get; set; }
+        [JsonProperty("tax_type")]
+        public string TaxType { get; set; }
+        [JsonProperty("setup_fee_tax_name")]
+        public string SetupFeeTaxName { get; set; }
+        [JsonProperty("setup_fee_tax_percentage")]
+        public string SetupFeeTaxPercentage { get; set; }
+        [JsonProperty("setup_fee_tax_type")]
+        public string SetupFeeTaxType { get; set; }
     }
 
     public class ZsSubscriptionContactperson
     {
-        public string contactperson_id { get; set; }
-        public string email { get; set; }
+        [JsonProperty("contactperson_id")]
+        public string ContactPersonId { get; set; }
+        [JsonProperty("email")]
+        public string Email { get; set; }
+
+        [JsonProperty("phone")]
+        public string Phone { get; set; }
+        [JsonProperty("mobile")]
+        public string Mobile { get; set; }
+        [JsonProperty("zcrm_contact_id")]
+        public string ZCrmContactId { get; set; }
     }
 
     public class ZsSubscriptionCustomer
     {
-        public string customer_id { get; set; }
-        public string display_name { get; set; }
-        public string company_name { get; set; }
-        public string first_name { get; set; }
-        public string last_name { get; set; }
-        public string email { get; set; }
-        public string currency_code { get; set; }
-        public string currency_symbol { get; set; }
-        public bool ach_supported { get; set; }
-        public ZsCustomerAddress billing_address { get; set; }
-        public ZsCustomerAddress shipping_address { get; set; }
-        public List<ZsCustomField> custom_fields { get; set; }
-        public string zcrm_account_id { get; set; }
-        public string zcrm_contact_id { get; set; }
+        [JsonProperty("customer_id")]//
+        public string CustomerId { get; set; }
+        [JsonProperty("display_name")]//
+        public string DisplayName { get; set; }
+        [JsonProperty("company_name")]//
+        public string CompanyName { get; set; }
+        [JsonProperty("first_name")]//
+        public string FirstName { get; set; }
+        [JsonProperty("last_name")]//
+        public string LastName { get; set; }
+        [JsonProperty("email")]//
+        public string Email { get; set; }
+        [JsonProperty("website")]//
+        public string Website { get; set; }
+        [JsonProperty("currency_code")] //?
+        public string CurrencyCode { get; set; }
+        [JsonProperty("currency_symbol")] //?
+        public string CurrencySymbol { get; set; }
+        [JsonProperty("ach_supported")] //?
+        public bool IsAchSupported { get; set; }
+        [JsonProperty("zcrm_account_id")]//
+        public string ZCrmAccountId { get; set; }
+        [JsonProperty("zcrm_contact_id")]//
+        public string ZCrmContactId { get; set; }
+
+        [JsonProperty("payment_terms")]
+        public int PaymentTerms { get; set; }
+        [JsonProperty("payment_terms_label")]
+        public string PaymentTermsLabel { get; set; }
+
+        [JsonProperty("billing_address")]
+        public ZsCustomerAddress BillingAddress { get; set; }
+        [JsonProperty("shipping_address")]
+        public ZsCustomerAddress ShippingAddress { get; set; }
+        [JsonProperty("custom_fields")] //?
+        public List<ZsCustomField> CustomField { get; set; }
+    }
+
+    public class ZsSubscriptionPreviousData
+    {
+        [JsonProperty("status")]
+        public string Status { get; set; }
+
+        [JsonProperty("quantity")]
+        public int Quantity { get; set; }
+
+        [JsonProperty("plan_code")]
+        public string PlanCode { get; set; }
+
+        [JsonProperty("plan_id")]
+        public string PlanId { get; set; }
+
+        [JsonProperty("plan_name")]
+        public string PlanName { get; set; }
     }
 }

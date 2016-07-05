@@ -159,7 +159,11 @@
             using (var httpClient = new HttpClient())
             {
                 httpClient.Configure(organizationId, authToken);
-                var content = new StringContent(JsonConvert.SerializeObject(updateInput), Encoding.UTF8, "application/json");
+                var jsonContent = JsonConvert.SerializeObject(
+                        updateInput,
+                        Formatting.None,
+                        new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
+                var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
                 var response = await httpClient.PutAsync(string.Format(CultureInfo.InvariantCulture, ApiResources.ZsPutSubscription, id), content);
                 var processResult = await response.ProcessResponse<ZsSubscriptionJson>();
                 if (null != processResult.Error)
