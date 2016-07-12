@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Zoho.Api</id>
-    <version>0.6.1</version>
+    <version>0.6.2</version>
     <title>Zoho API</title>
     <authors>Jaspalsinh Chauhan</authors>
     <owners>Jaspalsinh Chauhan</owners>
@@ -11,7 +11,7 @@
     <iconUrl>https://raw.githubusercontent.com/teference/zoho-dotnet/master/zoho-logo.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Use Zoho API C#.NET SDK to access Zoho API</description>
-    <releaseNotes>First draft - contains implementation for Zoho Subscription API fragments - products, plans, addons, coupons, customers, cards, contact persons, subscriptions, invoices, hosted pages and subscription webhook payload.</releaseNotes>
+    <releaseNotes>Subscription fragment - add contact person introduced | Get PDF for invoice URL fragment fixed and tested</releaseNotes>
     <copyright>Copyright (c) 2016 Teference</copyright>
     <tags>zoho, zoho subscription, zoho api, api, zoho subscription api, zoho subscription webhook</tags>
     <dependencies>
