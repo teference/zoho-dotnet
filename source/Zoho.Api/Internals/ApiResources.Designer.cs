@@ -232,7 +232,7 @@ namespace Teference.Zoho.Api.Internals {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to invoices/{0}?accept=pdf.
+        ///   Looks up a localized string similar to invoices/{0}.
         /// </summary>
         internal static string ZsGetInvoiceAsPdf {
             get {
@@ -525,6 +525,15 @@ namespace Teference.Zoho.Api.Internals {
         internal static string ZsPostSubscription {
             get {
                 return ResourceManager.GetString("ZsPostSubscription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to subscriptions/{0}/contactpersons.
+        /// </summary>
+        internal static string ZsPostSubscriptionAddContactPerson {
+            get {
+                return ResourceManager.GetString("ZsPostSubscriptionAddContactPerson", resourceCulture);
             }
         }
         

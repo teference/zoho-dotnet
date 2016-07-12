@@ -2,6 +2,7 @@
 {
     #region Namespace
 
+    using System.Collections.Generic;
     using System.Threading.Tasks;
 
     #endregion
@@ -19,6 +20,9 @@
 
         Task<ZsSubscription> UpdateAsync(string id, ZsSubscriptionUpdate updateInput);
         Task<ZsSubscription> UpdateAsync(string authToken, string organizationId, string id, ZsSubscriptionUpdate updateInput);
+
+        Task<ZsSubscription> AddContactPerson(string id, List<string> contactPersons);
+        Task<ZsSubscription> AddContactPerson(string authToken, string organizationId, string id, List<string> contactPersons);
 
         //Task<bool> DeleteAsync(string id);
         //Task<bool> DeleteAsync(string authToken, string organizationId, string id);

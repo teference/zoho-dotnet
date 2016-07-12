@@ -5,6 +5,7 @@
     using Internals;
     using Newtonsoft.Json;
     using System;
+    using System.Collections.Generic;
     using System.Globalization;
     using System.Net.Http;
     using System.Text;
@@ -165,6 +166,59 @@
                         new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
                 var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
                 var response = await httpClient.PutAsync(string.Format(CultureInfo.InvariantCulture, ApiResources.ZsPutSubscription, id), content);
+                var processResult = await response.ProcessResponse<ZsSubscriptionJson>();
+                if (null != processResult.Error)
+                {
+                    throw processResult.Error;
+                }
+
+                return processResult.Data.Subscription;
+            }
+        }
+
+        public async Task<ZsSubscription> AddContactPerson(string id, List<string> contactPersons)
+        {
+            this.client.Configuration.CheckConfig();
+            return await this.AddContactPerson(this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, id, contactPersons);
+        }
+
+        public async Task<ZsSubscription> AddContactPerson(string authToken, string organizationId, string id, List<string> contactPersons)
+        {
+            authToken.CheckConfigAuthToken();
+            organizationId.CheckConfigOrganizationId();
+
+            if (string.IsNullOrEmpty(id) || id == string.Empty)
+            {
+                throw new ArgumentNullException("id");
+            }
+
+            if (null == contactPersons || contactPersons.Count == 0)
+            {
+                throw new ArgumentNullException("contactPersons");
+            }
+
+            var contactPersonsList = new ZsSubscriptionAddContactsJson();
+            contactPersonsList.ContactPersons = new List<ZsSubscriptionAddContactJson>();
+            foreach (var item in contactPersons)
+            {
+                contactPersonsList.ContactPersons.Add(new ZsSubscriptionAddContactJson { ContactPersonId = item });
+            }
+
+            //var validationResult = updateInput.Validate();
+            //if (!string.IsNullOrWhiteSpace(validationResult))
+            //{
+            //    throw new ArgumentException(validationResult);
+            //}
+
+            using (var httpClient = new HttpClient())
+            {
+                httpClient.Configure(organizationId, authToken);
+                var jsonContent = JsonConvert.SerializeObject(
+                        contactPersonsList,
+                        Formatting.None,
+                        new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
+                var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
+                var response = await httpClient.PostAsync(string.Format(CultureInfo.InvariantCulture, ApiResources.ZsPostSubscriptionAddContactPerson, id), content);
                 var processResult = await response.ProcessResponse<ZsSubscriptionJson>();
                 if (null != processResult.Error)
                 {

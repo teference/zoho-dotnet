@@ -175,7 +175,7 @@
     <value>invoices/{0}</value>
   </data>
   <data name="ZsGetInvoiceAsPdf" xml:space="preserve">
-    <value>invoices/{0}?accept=pdf</value>
+    <value>invoices/{0}</value>
   </data>
   <data name="ZsGetInvoicesAll" xml:space="preserve">
     <value>invoices</value>
@@ -272,6 +272,9 @@
   </data>
   <data name="ZsPostSubscription" xml:space="preserve">
     <value>subscriptions</value>
+  </data>
+  <data name="ZsPostSubscriptionAddContactPerson" xml:space="preserve">
+    <value>subscriptions/{0}/contactpersons</value>
   </data>
   <data name="ZsPutAddon" xml:space="preserve">
     <value>addons/{0}</value>
