@@ -14,7 +14,10 @@
         Task<ZsHostedPages> GetAllAsync();
         Task<ZsHostedPages> GetAllAsync(string authToken, string organizationId);
 
-        Task<ZsHostedPage> UpdateCardAsync(ZsHostedPageUpdateCard hostedPageUpdateCard);
-        Task<ZsHostedPage> UpdateCardAsync(string authToken, string organizationId, ZsHostedPageUpdateCard hostedPageUpdateCard);
+        Task<ZsHostedPage> UpdateSubscriptionAsync(ZsHostedPageUpdateSubscriptionInput hostedPageUpdateSubscription);
+        Task<ZsHostedPage> UpdateSubscriptionAsync(string authToken, string organizationId, ZsHostedPageUpdateSubscriptionInput hostedPageUpdateSubscription);
+
+        Task<ZsHostedPage> UpdateCardAsync(ZsHostedPageUpdateCardInput hostedPageUpdateCard);
+        Task<ZsHostedPage> UpdateCardAsync(string authToken, string organizationId, ZsHostedPageUpdateCardInput hostedPageUpdateCard);
     }
 }

@@ -131,7 +131,8 @@
     <Compile Include="Models\Inputs\ZsCouponCreate.cs" />
     <Compile Include="Models\Inputs\ZsCouponUpdate.cs" />
     <Compile Include="Models\Inputs\ZsCustomerInput.cs" />
-    <Compile Include="Models\Inputs\ZsHostedPageUpdateCard.cs" />
+    <Compile Include="Models\Inputs\ZsHostedPageUpdateCardInput.cs" />
+    <Compile Include="Models\Inputs\ZsHostedPageUpdateSubscriptionInput.cs" />
     <Compile Include="Models\Inputs\ZsInvoiceEmailInput.cs" />
     <Compile Include="Models\Inputs\ZsPlanCommon.cs" />
     <Compile Include="Models\Inputs\ZsPlanCreate.cs" />

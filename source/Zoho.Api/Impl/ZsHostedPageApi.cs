@@ -85,12 +85,50 @@
             }
         }
 
-        public async Task<ZsHostedPage> UpdateCardAsync(ZsHostedPageUpdateCard hostedPageUpdateCard)
+        public async Task<ZsHostedPage> UpdateSubscriptionAsync(ZsHostedPageUpdateSubscriptionInput hostedPageUpdateSubscription)
+        {
+            this.client.Configuration.CheckConfig();
+            return await this.UpdateSubscriptionAsync(this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, hostedPageUpdateSubscription);
+        }
+
+        public async Task<ZsHostedPage> UpdateSubscriptionAsync(string authToken, string organizationId, ZsHostedPageUpdateSubscriptionInput hostedPageUpdateSubscription)
+        {
+            authToken.CheckConfigAuthToken();
+            organizationId.CheckConfigOrganizationId();
+
+            var validationResult = hostedPageUpdateSubscription.Validate();
+            if (!string.IsNullOrWhiteSpace(validationResult))
+            {
+                throw new ArgumentException(validationResult);
+            }
+
+            using (var httpClient = new HttpClient())
+            {
+                httpClient.Configure(organizationId, authToken);
+                var content = new StringContent(
+                    JsonConvert.SerializeObject(
+                        hostedPageUpdateSubscription,
+                        Formatting.None,
+                        new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore }),
+                    Encoding.UTF8,
+                    "application/json");
+                var response = await httpClient.PostAsync(ApiResources.ZsPostHostedPageUpdateSubscription, content);
+                var processResult = await response.ProcessResponse<ZsHostedPageJson>();
+                if (null != processResult.Error)
+                {
+                    throw processResult.Error;
+                }
+
+                return processResult.Data.HostedPage;
+            }
+        }
+
+        public async Task<ZsHostedPage> UpdateCardAsync(ZsHostedPageUpdateCardInput hostedPageUpdateCard)
         {
             this.client.Configuration.CheckConfig();
             return await this.UpdateCardAsync(this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, hostedPageUpdateCard);
         }
-        public async Task<ZsHostedPage> UpdateCardAsync(string authToken, string organizationId, ZsHostedPageUpdateCard hostedPageUpdateCard)
+        public async Task<ZsHostedPage> UpdateCardAsync(string authToken, string organizationId, ZsHostedPageUpdateCardInput hostedPageUpdateCard)
         {
             authToken.CheckConfigAuthToken();
             organizationId.CheckConfigOrganizationId();

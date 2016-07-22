@@ -234,6 +234,9 @@
   <data name="ZsPostHostedPageUpdateCard" xml:space="preserve">
     <value>hostedpages/updatecard</value>
   </data>
+  <data name="ZsPostHostedPageUpdateSubscription" xml:space="preserve">
+    <value>hostedpages/updatesubscription</value>
+  </data>
   <data name="ZsPostInvoiceCancelWriteOff" xml:space="preserve">
     <value>invoices/{0}/cancelwriteoff</value>
   </data>

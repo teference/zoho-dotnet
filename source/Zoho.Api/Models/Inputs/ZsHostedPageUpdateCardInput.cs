@@ -6,7 +6,7 @@
 
     #endregion
 
-    public class ZsHostedPageUpdateCard
+    public class ZsHostedPageUpdateCardInput
     {
         [JsonProperty("subscription_id")]
         public string SubscriptionId { get; set; }
@@ -20,16 +20,6 @@
             if (string.IsNullOrWhiteSpace(this.SubscriptionId))
             {
                 return "Subscription id is required.";
-            }
-
-            if (string.IsNullOrWhiteSpace(this.AdditionalParameter))
-            {
-                return "Additional parameters are required.";
-            }
-
-            if (string.IsNullOrWhiteSpace(this.RedirectUrl))
-            {
-                return "Redirect URL is required.";
             }
 
             return string.Empty;

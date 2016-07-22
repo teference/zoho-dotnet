@@ -412,6 +412,15 @@ namespace Teference.Zoho.Api.Internals {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to hostedpages/updatesubscription.
+        /// </summary>
+        internal static string ZsPostHostedPageUpdateSubscription {
+            get {
+                return ResourceManager.GetString("ZsPostHostedPageUpdateSubscription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to invoices/{0}/cancelwriteoff.
         /// </summary>
         internal static string ZsPostInvoiceCancelWriteOff {
