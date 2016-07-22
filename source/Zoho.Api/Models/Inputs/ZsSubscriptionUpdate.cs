@@ -14,6 +14,7 @@
         {
             this.IsEndOfTerm = false;
             this.IsProrated = true;
+            this.AutoCollect = true;
         }
 
         [JsonProperty(PropertyName = "card_id", DefaultValueHandling = DefaultValueHandling.Ignore)]
@@ -30,6 +31,9 @@
 
         [JsonProperty("prorate")]
         public bool IsProrated { get; set; }
+
+        [JsonProperty("auto_collect")]
+        public bool AutoCollect { get; set; }
 
         [JsonProperty("plan")]
         public ZsSubscriptionUpdatePlan Plan { get; set; }

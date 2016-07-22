@@ -101,7 +101,7 @@
         [JsonProperty("plan_code")]
         public string PlanCode { get; set; }
         [JsonProperty("price")]
-        public int Price { get; set; }
+        public double Price { get; set; }
         [JsonProperty("exclude_setup_fee")]
         public bool ExcludeSetupFee { get; set; }
         [JsonProperty("exclude_trial")]
