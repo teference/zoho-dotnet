@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Zoho.Api</id>
-    <version>0.6.2</version>
+    <version>0.6.3</version>
     <title>Zoho API</title>
     <authors>Jaspalsinh Chauhan</authors>
     <owners>Jaspalsinh Chauhan</owners>
@@ -11,7 +11,7 @@
     <iconUrl>https://raw.githubusercontent.com/teference/zoho-dotnet/master/zoho-logo.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Use Zoho API C#.NET SDK to access Zoho API</description>
-    <releaseNotes>Subscription fragment - add contact person introduced | Get PDF for invoice URL fragment fixed and tested</releaseNotes>
+    <releaseNotes>HostedPage - UpdateCard method input 'ZsHostedPageUpdateCard' changed to 'ZsHostedPageUpdateCardInput' and validation for the method updated | Post Hosted Page - Update Subscription fragment method introduced</releaseNotes>
     <copyright>Copyright (c) 2016 Teference</copyright>
     <tags>zoho, zoho subscription, zoho api, api, zoho subscription api, zoho subscription webhook</tags>
     <dependencies>
