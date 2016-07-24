@@ -176,59 +176,6 @@
             }
         }
 
-        public async Task<ZsSubscription> AddContactPerson(string id, List<string> contactPersons)
-        {
-            this.client.Configuration.CheckConfig();
-            return await this.AddContactPerson(this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, id, contactPersons);
-        }
-
-        public async Task<ZsSubscription> AddContactPerson(string authToken, string organizationId, string id, List<string> contactPersons)
-        {
-            authToken.CheckConfigAuthToken();
-            organizationId.CheckConfigOrganizationId();
-
-            if (string.IsNullOrEmpty(id) || id == string.Empty)
-            {
-                throw new ArgumentNullException("id");
-            }
-
-            if (null == contactPersons || contactPersons.Count == 0)
-            {
-                throw new ArgumentNullException("contactPersons");
-            }
-
-            var contactPersonsList = new ZsSubscriptionAddContactsJson();
-            contactPersonsList.ContactPersons = new List<ZsSubscriptionAddContactJson>();
-            foreach (var item in contactPersons)
-            {
-                contactPersonsList.ContactPersons.Add(new ZsSubscriptionAddContactJson { ContactPersonId = item });
-            }
-
-            //var validationResult = updateInput.Validate();
-            //if (!string.IsNullOrWhiteSpace(validationResult))
-            //{
-            //    throw new ArgumentException(validationResult);
-            //}
-
-            using (var httpClient = new HttpClient())
-            {
-                httpClient.Configure(organizationId, authToken);
-                var jsonContent = JsonConvert.SerializeObject(
-                        contactPersonsList,
-                        Formatting.None,
-                        new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
-                var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
-                var response = await httpClient.PostAsync(string.Format(CultureInfo.InvariantCulture, ApiResources.ZsPostSubscriptionAddContactPerson, id), content);
-                var processResult = await response.ProcessResponse<ZsSubscriptionJson>();
-                if (null != processResult.Error)
-                {
-                    throw processResult.Error;
-                }
-
-                return processResult.Data.Subscription;
-            }
-        }
-
         public async Task<ZsSubscription> AutoCollectAsync(string id, bool isAutoCollect)
         {
             this.client.Configuration.CheckConfig();
@@ -325,6 +272,143 @@
             }
         }
 
+        public async Task<ZsInvoice> AddChargeAsync(string id, double amount, string description)
+        {
+            this.client.Configuration.CheckConfig();
+            return await this.AddChargeAsync(this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, id, amount, description);
+        }
+        public async Task<ZsInvoice> AddChargeAsync(string authToken, string organizationId, string id, double amount, string description)
+        {
+            authToken.CheckConfigAuthToken();
+            organizationId.CheckConfigOrganizationId();
+
+            if (string.IsNullOrEmpty(id) || id == string.Empty)
+            {
+                throw new ArgumentNullException("id");
+            }
+
+            if (amount <= 0)
+            {
+                throw new ArgumentNullException("amount");
+            }
+
+            if (string.IsNullOrEmpty(description) || description == string.Empty)
+            {
+                throw new ArgumentNullException("description");
+            }
+
+            var subscriptionAddChargeJson = new ZsSubscriptionAddChargeJson { Amount = amount, Description = description };
+            using (var httpClient = new HttpClient())
+            {
+                httpClient.Configure(organizationId, authToken);
+                var jsonContent = JsonConvert.SerializeObject(
+                        subscriptionAddChargeJson,
+                        Formatting.None,
+                        new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
+                var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
+                var response = await httpClient.PostAsync(string.Format(CultureInfo.InvariantCulture, ApiResources.ZsPostSubscriptionAddCharge, id), content);
+                var processResult = await response.ProcessResponse<ZsInvoiceJson>();
+                if (null != processResult.Error)
+                {
+                    throw processResult.Error;
+                }
+
+                return processResult.Data.Invoice;
+            }
+        }
+
+        public async Task<ZsSubscription> AddContactPerson(string id, List<string> contactPersons)
+        {
+            this.client.Configuration.CheckConfig();
+            return await this.AddContactPerson(this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, id, contactPersons);
+        }
+        public async Task<ZsSubscription> AddContactPerson(string authToken, string organizationId, string id, List<string> contactPersons)
+        {
+            authToken.CheckConfigAuthToken();
+            organizationId.CheckConfigOrganizationId();
+
+            if (string.IsNullOrEmpty(id) || id == string.Empty)
+            {
+                throw new ArgumentNullException("id");
+            }
+
+            if (null == contactPersons || contactPersons.Count == 0)
+            {
+                throw new ArgumentNullException("contactPersons");
+            }
+
+            var contactPersonsList = new ZsSubscriptionAddContactsJson();
+            contactPersonsList.ContactPersons = new List<ZsSubscriptionAddContactJson>();
+            foreach (var item in contactPersons)
+            {
+                contactPersonsList.ContactPersons.Add(new ZsSubscriptionAddContactJson { ContactPersonId = item });
+            }
+
+            //var validationResult = updateInput.Validate();
+            //if (!string.IsNullOrWhiteSpace(validationResult))
+            //{
+            //    throw new ArgumentException(validationResult);
+            //}
+
+            using (var httpClient = new HttpClient())
+            {
+                httpClient.Configure(organizationId, authToken);
+                var jsonContent = JsonConvert.SerializeObject(
+                        contactPersonsList,
+                        Formatting.None,
+                        new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
+                var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
+                var response = await httpClient.PostAsync(string.Format(CultureInfo.InvariantCulture, ApiResources.ZsPostSubscriptionAddContactPerson, id), content);
+                var processResult = await response.ProcessResponse<ZsSubscriptionJson>();
+                if (null != processResult.Error)
+                {
+                    throw processResult.Error;
+                }
+
+                return processResult.Data.Subscription;
+            }
+        }
+
+        public async Task<ZsSubscriptionNote> PostponeRenewalAsync(string id, DateTime renewalAt)
+        {
+            this.client.Configuration.CheckConfig();
+            return await this.PostponeRenewalAsync(this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, id, renewalAt);
+        }
+        public async Task<ZsSubscriptionNote> PostponeRenewalAsync(string authToken, string organizationId, string id, DateTime renewalAt)
+        {
+            authToken.CheckConfigAuthToken();
+            organizationId.CheckConfigOrganizationId();
+
+            if (string.IsNullOrEmpty(id) || id == string.Empty)
+            {
+                throw new ArgumentNullException("id");
+            }
+
+            if (default(DateTime) == renewalAt)
+            {
+                throw new ArgumentNullException("renewalAt");
+            }
+
+            var subscriptionPostponeRenewalJson = new ZsSubscriptionPostponeRenewalJson { RenewalAt = renewalAt.Date.ToString("yyyy-MM-dd") };
+            using (var httpClient = new HttpClient())
+            {
+                httpClient.Configure(organizationId, authToken);
+                var jsonContent = JsonConvert.SerializeObject(
+                        subscriptionPostponeRenewalJson,
+                        Formatting.None,
+                        new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
+                var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
+                var response = await httpClient.PostAsync(string.Format(CultureInfo.InvariantCulture, ApiResources.ZsPostSubscriptionPostponeRenewal, id), content);
+                var processResult = await response.ProcessResponse<ZsSubscriptionNoteJson>();
+                if (null != processResult.Error)
+                {
+                    throw processResult.Error;
+                }
+
+                return processResult.Data.Note;
+            }
+        }
+
         public async Task<ZsSubscriptionNote> AddNoteAsync(string id, string noteDescription)
         {
             this.client.Configuration.CheckConfig();
@@ -398,6 +482,64 @@
                 }
 
                 return processResult.Data;
+            }
+        }
+
+        public async Task<ZsSubscription> CancelAsync(string id, bool cancelAtEndOfCurrentTerm)
+        {
+            this.client.Configuration.CheckConfig();
+            return await this.CancelAsync(this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, id, cancelAtEndOfCurrentTerm);
+        }
+        public async Task<ZsSubscription> CancelAsync(string authToken, string organizationId, string id, bool cancelAtEndOfCurrentTerm)
+        {
+            authToken.CheckConfigAuthToken();
+            organizationId.CheckConfigOrganizationId();
+
+            if (string.IsNullOrEmpty(id) || id == string.Empty)
+            {
+                throw new ArgumentNullException("id");
+            }
+
+            using (var httpClient = new HttpClient())
+            {
+                httpClient.Configure(organizationId, authToken);
+                var response = await httpClient.PostAsync(string.Format(CultureInfo.InvariantCulture, ApiResources.ZsPostSubscriptionCancel, id, cancelAtEndOfCurrentTerm.ToString().ToLowerInvariant()), null);
+                var processResult = await response.ProcessResponse<ZsSubscriptionJson>();
+                if (null != processResult.Error)
+                {
+                    throw processResult.Error;
+                }
+
+                return processResult.Data.Subscription;
+            }
+        }
+
+        public async Task<ZsSubscription> ReactivateAsync(string id)
+        {
+            this.client.Configuration.CheckConfig();
+            return await this.ReactivateAsync(this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, id);
+        }
+        public async Task<ZsSubscription> ReactivateAsync(string authToken, string organizationId, string id)
+        {
+            authToken.CheckConfigAuthToken();
+            organizationId.CheckConfigOrganizationId();
+
+            if (string.IsNullOrEmpty(id) || id == string.Empty)
+            {
+                throw new ArgumentNullException("id");
+            }
+
+            using (var httpClient = new HttpClient())
+            {
+                httpClient.Configure(organizationId, authToken);
+                var response = await httpClient.PostAsync(string.Format(CultureInfo.InvariantCulture, ApiResources.ZsPostSubscriptionReactivate, id), null);
+                var processResult = await response.ProcessResponse<ZsSubscriptionJson>();
+                if (null != processResult.Error)
+                {
+                    throw processResult.Error;
+                }
+
+                return processResult.Data.Subscription;
             }
         }
 

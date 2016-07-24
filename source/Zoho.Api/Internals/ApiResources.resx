@@ -282,6 +282,9 @@
   <data name="ZsPostSubscription" xml:space="preserve">
     <value>subscriptions</value>
   </data>
+  <data name="ZsPostSubscriptionAddCharge" xml:space="preserve">
+    <value>subscriptions/{0}/charge</value>
+  </data>
   <data name="ZsPostSubscriptionAddContactPerson" xml:space="preserve">
     <value>subscriptions/{0}/contactpersons</value>
   </data>
@@ -293,6 +296,15 @@
   </data>
   <data name="ZsPostSubscriptionAutoCollect" xml:space="preserve">
     <value>subscriptions/{0}/autocollect</value>
+  </data>
+  <data name="ZsPostSubscriptionCancel" xml:space="preserve">
+    <value>subscriptions/{0}/cancel?cancel_at_end={1}</value>
+  </data>
+  <data name="ZsPostSubscriptionPostponeRenewal" xml:space="preserve">
+    <value>subscriptions/{0}/postpone</value>
+  </data>
+  <data name="ZsPostSubscriptionReactivate" xml:space="preserve">
+    <value>subscriptions/{0}/reactivate</value>
   </data>
   <data name="ZsPutAddon" xml:space="preserve">
     <value>addons/{0}</value>

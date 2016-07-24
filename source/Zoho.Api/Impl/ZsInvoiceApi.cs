@@ -125,12 +125,12 @@
             }
         }
 
-        public async Task<ZsInvoice> CollectCharge(string id)
+        public async Task<ZsInvoice> CollectCharge(string id, string cardId)
         {
             this.client.Configuration.CheckConfig();
-            return await this.CollectCharge(this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, id);
+            return await this.CollectCharge(this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, id, cardId);
         }
-        public async Task<ZsInvoice> CollectCharge(string authToken, string organizationId, string id)
+        public async Task<ZsInvoice> CollectCharge(string authToken, string organizationId, string id, string cardId)
         {
             authToken.CheckConfigAuthToken();
             organizationId.CheckConfigOrganizationId();
@@ -140,10 +140,21 @@
                 throw new ArgumentNullException("Invoice id is required");
             }
 
+            if (string.IsNullOrWhiteSpace(cardId))
+            {
+                throw new ArgumentNullException("Card id is required");
+            }
+
+            var invoiceCollectChargeJson = new ZsInvoiceCollectChargeJson { CardId = cardId };
             using (var httpClient = new HttpClient())
             {
                 httpClient.Configure(organizationId, authToken);
-                var response = await httpClient.PostAsync(string.Format(CultureInfo.InvariantCulture, ApiResources.ZsPostInvoiceCollectCharges, id), null);
+                var jsonContent = JsonConvert.SerializeObject(
+                        invoiceCollectChargeJson,
+                        Formatting.None,
+                        new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
+                var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
+                var response = await httpClient.PostAsync(string.Format(CultureInfo.InvariantCulture, ApiResources.ZsPostInvoiceCollectCharges, id), content);
                 var processResult = await response.ProcessResponse<ZsInvoiceJson>();
                 if (null != processResult.Error)
                 {

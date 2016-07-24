@@ -18,8 +18,8 @@
         Task<ZsInvoices> GetAllAsync(ZsInvoiceFilter filterType, string filterId);
         Task<ZsInvoices> GetAllAsync(string authToken, string organizationId, ZsInvoiceFilter filterType, string filterId);
 
-        Task<ZsInvoice> CollectCharge(string id);
-        Task<ZsInvoice> CollectCharge(string authToken, string organizationId, string id);
+        Task<ZsInvoice> CollectCharge(string id, string cardId);
+        Task<ZsInvoice> CollectCharge(string authToken, string organizationId, string id, string cardId);
 
         Task<bool> ConvertToVoid(string id);
         Task<bool> ConvertToVoid(string authToken, string organizationId, string id);

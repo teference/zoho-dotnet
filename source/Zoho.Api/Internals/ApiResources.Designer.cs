@@ -556,6 +556,15 @@ namespace Teference.Zoho.Api.Internals {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to subscriptions/{0}/charge.
+        /// </summary>
+        internal static string ZsPostSubscriptionAddCharge {
+            get {
+                return ResourceManager.GetString("ZsPostSubscriptionAddCharge", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to subscriptions/{0}/contactpersons.
         /// </summary>
         internal static string ZsPostSubscriptionAddContactPerson {
@@ -588,6 +597,33 @@ namespace Teference.Zoho.Api.Internals {
         internal static string ZsPostSubscriptionAutoCollect {
             get {
                 return ResourceManager.GetString("ZsPostSubscriptionAutoCollect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to subscriptions/{0}/cancel?cancel_at_end={1}.
+        /// </summary>
+        internal static string ZsPostSubscriptionCancel {
+            get {
+                return ResourceManager.GetString("ZsPostSubscriptionCancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to subscriptions/{0}/postpone.
+        /// </summary>
+        internal static string ZsPostSubscriptionPostponeRenewal {
+            get {
+                return ResourceManager.GetString("ZsPostSubscriptionPostponeRenewal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to subscriptions/{0}/reactivate.
+        /// </summary>
+        internal static string ZsPostSubscriptionReactivate {
+            get {
+                return ResourceManager.GetString("ZsPostSubscriptionReactivate", resourceCulture);
             }
         }
         
