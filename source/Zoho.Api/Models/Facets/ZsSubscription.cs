@@ -108,19 +108,6 @@
         public DateTime? UpdatedAtDateTime { get; set; }
     }
 
-    public class ZsSubscriptionNote
-    {
-        [JsonProperty("note_id")]
-        public string NoteId { get; set; }
-        [JsonProperty("description")]
-        public string Description { get; set; }
-        [JsonProperty("commented_by")]
-        public string CommentedBy { get; set; }
-
-        [JsonProperty("commented_time")]
-        public DateTime CommentedTime { get; set; }
-    }
-
     public class ZsSubscriptionCard
     {
         [JsonProperty("payment_gateway")]

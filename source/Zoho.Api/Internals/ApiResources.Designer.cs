@@ -124,6 +124,24 @@ namespace Teference.Zoho.Api.Internals {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to subscriptions/{0}/notes/{1}.
+        /// </summary>
+        internal static string ZsDeleteSubscriptionDeleteNote {
+            get {
+                return ResourceManager.GetString("ZsDeleteSubscriptionDeleteNote", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to subscriptions/{0}/coupons.
+        /// </summary>
+        internal static string ZsDeleteSubscriptionRemoveCoupon {
+            get {
+                return ResourceManager.GetString("ZsDeleteSubscriptionRemoveCoupon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to addons/{0}.
         /// </summary>
         internal static string ZsGetAddon {
@@ -543,6 +561,33 @@ namespace Teference.Zoho.Api.Internals {
         internal static string ZsPostSubscriptionAddContactPerson {
             get {
                 return ResourceManager.GetString("ZsPostSubscriptionAddContactPerson", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to subscriptions/{0}/notes.
+        /// </summary>
+        internal static string ZsPostSubscriptionAddNote {
+            get {
+                return ResourceManager.GetString("ZsPostSubscriptionAddNote", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to subscriptions/{0}/coupons/{1}.
+        /// </summary>
+        internal static string ZsPostSubscriptionAssociateCoupon {
+            get {
+                return ResourceManager.GetString("ZsPostSubscriptionAssociateCoupon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to subscriptions/{0}/autocollect.
+        /// </summary>
+        internal static string ZsPostSubscriptionAutoCollect {
+            get {
+                return ResourceManager.GetString("ZsPostSubscriptionAutoCollect", resourceCulture);
             }
         }
         

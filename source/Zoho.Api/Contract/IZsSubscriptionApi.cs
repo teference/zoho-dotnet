@@ -24,6 +24,21 @@
         Task<ZsSubscription> AddContactPerson(string id, List<string> contactPersons);
         Task<ZsSubscription> AddContactPerson(string authToken, string organizationId, string id, List<string> contactPersons);
 
+        Task<ZsSubscription> AutoCollectAsync(string id, bool isAutoCollect);
+        Task<ZsSubscription> AutoCollectAsync(string authToken, string organizationId, string id, bool isAutoCollect);
+
+        Task<bool> AssociateCouponAsync(string id, string couponCode);
+        Task<bool> AssociateCouponAsync(string authToken, string organizationId, string id, string couponCode);
+
+        Task<bool> RemoveCouponAsync(string id);
+        Task<bool> RemoveCouponAsync(string authToken, string organizationId, string id);
+
+        Task<ZsSubscriptionNote> AddNoteAsync(string id, string noteDescription);
+        Task<ZsSubscriptionNote> AddNoteAsync(string authToken, string organizationId, string id, string noteDescription);
+
+        Task<bool> DeleteNoteAsync(string id, string noteId);
+        Task<bool> DeleteNoteAsync(string authToken, string organizationId, string id, string noteId);
+
         //Task<bool> DeleteAsync(string id);
         //Task<bool> DeleteAsync(string authToken, string organizationId, string id);
 

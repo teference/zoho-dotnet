@@ -138,6 +138,12 @@
   <data name="ZsDeleteProduct" xml:space="preserve">
     <value>products/{0}</value>
   </data>
+  <data name="ZsDeleteSubscriptionDeleteNote" xml:space="preserve">
+    <value>subscriptions/{0}/notes/{1}</value>
+  </data>
+  <data name="ZsDeleteSubscriptionRemoveCoupon" xml:space="preserve">
+    <value>subscriptions/{0}/coupons</value>
+  </data>
   <data name="ZsGetAddon" xml:space="preserve">
     <value>addons/{0}</value>
   </data>
@@ -278,6 +284,15 @@
   </data>
   <data name="ZsPostSubscriptionAddContactPerson" xml:space="preserve">
     <value>subscriptions/{0}/contactpersons</value>
+  </data>
+  <data name="ZsPostSubscriptionAddNote" xml:space="preserve">
+    <value>subscriptions/{0}/notes</value>
+  </data>
+  <data name="ZsPostSubscriptionAssociateCoupon" xml:space="preserve">
+    <value>subscriptions/{0}/coupons/{1}</value>
+  </data>
+  <data name="ZsPostSubscriptionAutoCollect" xml:space="preserve">
+    <value>subscriptions/{0}/autocollect</value>
   </data>
   <data name="ZsPutAddon" xml:space="preserve">
     <value>addons/{0}</value>

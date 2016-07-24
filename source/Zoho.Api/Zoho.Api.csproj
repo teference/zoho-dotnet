@@ -83,7 +83,10 @@
     <Compile Include="Internals\ZsPlanJson.cs" />
     <Compile Include="Internals\ZsProductJson.cs" />
     <Compile Include="Internals\ZsSubscriptionAddContactJson.cs" />
+    <Compile Include="Internals\ZsSubscriptionAddNoteJson.cs" />
+    <Compile Include="Internals\ZsSubscriptionAutoCollectJson.cs" />
     <Compile Include="Internals\ZsSubscriptionJson.cs" />
+    <Compile Include="Internals\ZsSubscriptionNoteJson.cs" />
     <Compile Include="Models\Enums\ZsCouponApplyTo.cs" />
     <Compile Include="Models\Enums\ZsCouponDiscountBy.cs" />
     <Compile Include="Models\Enums\ZsCouponStatus.cs" />
@@ -120,6 +123,7 @@
     <Compile Include="Models\Facets\ZsPageContext.cs" />
     <Compile Include="Models\Facets\ZsProduct.cs" />
     <Compile Include="Models\Facets\ZsSubscription.cs" />
+    <Compile Include="Models\Facets\ZsSubscriptionNote.cs" />
     <Compile Include="Models\Facets\ZsSubscriptionPayload.cs" />
     <Compile Include="Models\Facets\ZsSubscriptions.cs" />
     <Compile Include="Models\Inputs\ZsAddonCreate.cs" />
