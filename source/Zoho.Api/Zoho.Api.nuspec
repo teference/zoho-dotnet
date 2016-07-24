@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Zoho.Api</id>
-    <version>0.6.5</version>
+    <version>0.6.6</version>
     <title>Zoho API</title>
     <authors>Jaspalsinh Chauhan</authors>
     <owners>Jaspalsinh Chauhan</owners>
@@ -11,7 +11,7 @@
     <iconUrl>https://raw.githubusercontent.com/teference/zoho-dotnet/master/zoho-logo.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Use Zoho API C#.NET SDK to access Zoho API</description>
-    <releaseNotes>'ZsHostedPageUpdateSubscriptionInput' - 'Plan' - 'Price' type changed from int to double | Added 'AutoCollect' missing property to 'ZsSubscriptionUpdate' - Subscription update method</releaseNotes>
+    <releaseNotes>Added - Zoho Subscription API - Subscription fragment - methods: Enable / Disable AutoCollect, Associate Coupon, Remove Coupon, Add Note, Delete Note</releaseNotes>
     <copyright>Copyright (c) 2016 Teference</copyright>
     <tags>zoho, zoho subscription, zoho api, api, zoho subscription api, zoho subscription webhook</tags>
     <dependencies>
