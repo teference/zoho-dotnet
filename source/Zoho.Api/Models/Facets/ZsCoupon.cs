@@ -91,7 +91,7 @@
         public double DiscountValue { get; set; }
 
         [JsonProperty("max_redemption")]
-        public int MaxRedemption { get; set; }
+        public int? MaxRedemption { get; set; }
         [JsonProperty("redemption_count")]
         public string RedemptionCount { get; set; }
 
@@ -180,7 +180,7 @@
         public string ProductId { get; set; }
 
         [JsonProperty("expiry_at")]
-        public DateTime ExpiryAt { get; set; }
+        public DateTime? ExpiryAt { get; set; }
         [JsonProperty("created_time")]
         public DateTime CreatedAt { get; set; }
         [JsonProperty("updated_time")]
