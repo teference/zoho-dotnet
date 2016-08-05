@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Zoho.Api</id>
-    <version>0.6.7</version>
+    <version>0.6.8</version>
     <title>Zoho API</title>
     <authors>Jaspalsinh Chauhan</authors>
     <owners>Jaspalsinh Chauhan</owners>
@@ -11,7 +11,7 @@
     <iconUrl>https://raw.githubusercontent.com/teference/zoho-dotnet/master/zoho-logo.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Use Zoho API C#.NET SDK to access Zoho API</description>
-    <releaseNotes>Subscription - Invoice: CollectCharge input / method fixed and tested | Added - Zoho Subscription API - Subscription fragment - methods: Add Charge, Postpone renewal, cancel subscription, reactive subscription</releaseNotes>
+    <releaseNotes>Get Coupon details - Parse JSON exception fixed</releaseNotes>
     <copyright>Copyright (c) 2016 Teference</copyright>
     <tags>zoho, zoho subscription, zoho api, api, zoho subscription api, zoho subscription webhook</tags>
     <dependencies>

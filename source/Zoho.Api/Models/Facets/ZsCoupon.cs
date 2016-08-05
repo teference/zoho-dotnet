@@ -8,12 +8,28 @@
 
     #endregion
 
+    public sealed class ZsCouponPlan
+    {
+        [JsonProperty("plan_code")]
+        public string Code { get; set; }
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public sealed class ZsCouponAddon
+    {
+        [JsonProperty("addon_code")]
+        public string Code { get; set; }
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
     public sealed class ZsCoupon
     {
         public ZsCoupon()
         {
-            this.Plans = new List<string>();
-            this.Addons = new List<string>();
+            this.Plans = new List<ZsCouponPlan>();
+            this.Addons = new List<ZsCouponAddon>();
         }
 
         [JsonProperty("coupon_code")]
@@ -104,7 +120,7 @@
             }
         }
         [JsonProperty("plans")]
-        public List<string> Plans { get; set; }
+        public List<ZsCouponPlan> Plans { get; set; }
 
         [JsonProperty("apply_to_addons")]
         internal string ApplyToAddonsRaw { get; set; }
@@ -131,7 +147,7 @@
             }
         }
         [JsonProperty("addons")]
-        public List<string> Addons { get; set; }
+        public List<ZsCouponAddon> Addons { get; set; }
 
         [JsonProperty("status")]
         internal string StatusRaw { get; set; }
