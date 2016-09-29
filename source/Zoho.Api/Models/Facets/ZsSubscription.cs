@@ -31,7 +31,7 @@
         [JsonProperty("currency_symbol")]//
         public string CurrencySymbol { get; set; }
         //[JsonProperty("exchange_rate")]
-        //public int ExchangeRate { get; set; }
+        //public double ExchangeRate { get; set; }
         [JsonProperty("status")]//
         public string Status { get; set; }
         [JsonProperty("auto_collect")]//
@@ -137,7 +137,7 @@
         [JsonProperty("name")]
         public string Name { get; set; }
         [JsonProperty("price")]
-        public int Price { get; set; }
+        public double Price { get; set; }
         [JsonProperty("quantity")]
         public int Quantity { get; set; }
         [JsonProperty("tax_id")]

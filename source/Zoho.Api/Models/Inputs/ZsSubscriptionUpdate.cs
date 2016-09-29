@@ -21,7 +21,7 @@
         public string CardId { get; set; }
 
         [JsonProperty(PropertyName = "exchange_rate", DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public int ExchangeRate { get; set; }
+        public double ExchangeRate { get; set; }
 
         [JsonProperty(PropertyName = "reference_id", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string ReferenceId { get; set; }
@@ -61,7 +61,7 @@
         public string Name { get; set; }
 
         [JsonProperty(PropertyName = "price", DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public int Price { get; set; }
+        public double Price { get; set; }
 
         [DefaultValue(1)]
         [JsonProperty(PropertyName = "quantity", DefaultValueHandling = DefaultValueHandling.Ignore)]
@@ -87,7 +87,7 @@
         public string AddonCode { get; set; }
 
         [JsonProperty(PropertyName = "price", DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public int Price { get; set; }
+        public double Price { get; set; }
 
         [DefaultValue(1)]
         [JsonProperty(PropertyName = "quantity", DefaultValueHandling = DefaultValueHandling.Ignore)]
