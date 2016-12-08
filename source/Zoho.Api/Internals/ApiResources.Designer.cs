@@ -124,6 +124,15 @@ namespace Teference.Zoho.Api.Internals {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to subscriptions/{0}.
+        /// </summary>
+        internal static string ZsDeleteSubscription {
+            get {
+                return ResourceManager.GetString("ZsDeleteSubscription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to subscriptions/{0}/notes/{1}.
         /// </summary>
         internal static string ZsDeleteSubscriptionDeleteNote {

@@ -485,6 +485,35 @@
             }
         }
 
+        public async Task<bool> DeleteAsync(string id)
+        {
+            this.client.Configuration.CheckConfig();
+            return await this.DeleteAsync(this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, id);
+        }
+        public async Task<bool> DeleteAsync(string authToken, string organizationId, string id)
+        {
+            authToken.CheckConfigAuthToken();
+            organizationId.CheckConfigOrganizationId();
+
+            if (string.IsNullOrWhiteSpace(id))
+            {
+                throw new ArgumentNullException("Subscription Id is required");
+            }
+
+            using (var httpClient = new HttpClient())
+            {
+                httpClient.Configure(organizationId, authToken);
+                var response = await httpClient.DeleteAsync(string.Format(CultureInfo.InvariantCulture, ApiResources.ZsDeleteSubscription, id));
+                var processResult = await response.ProcessResponse<bool>();
+                if (null != processResult.Error)
+                {
+                    throw processResult.Error;
+                }
+
+                return processResult.Data;
+            }
+        }
+
         public async Task<ZsSubscription> CancelAsync(string id, bool cancelAtEndOfCurrentTerm)
         {
             this.client.Configuration.CheckConfig();

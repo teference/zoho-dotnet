@@ -138,6 +138,9 @@
   <data name="ZsDeleteProduct" xml:space="preserve">
     <value>products/{0}</value>
   </data>
+  <data name="ZsDeleteSubscription" xml:space="preserve">
+    <value>subscriptions/{0}</value>
+  </data>
   <data name="ZsDeleteSubscriptionDeleteNote" xml:space="preserve">
     <value>subscriptions/{0}/notes/{1}</value>
   </data>

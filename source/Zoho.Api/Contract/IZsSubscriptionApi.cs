@@ -46,6 +46,9 @@
         Task<bool> DeleteNoteAsync(string id, string noteId);
         Task<bool> DeleteNoteAsync(string authToken, string organizationId, string id, string noteId);
 
+        Task<bool> DeleteAsync(string id);
+        Task<bool> DeleteAsync(string authToken, string organizationId, string id);
+
         Task<ZsSubscription> CancelAsync(string id, bool cancelAtEndOfCurrentTerm);
         Task<ZsSubscription> CancelAsync(string authToken, string organizationId, string id, bool cancelAtEndOfCurrentTerm);
 

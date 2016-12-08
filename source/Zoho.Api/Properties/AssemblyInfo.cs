@@ -23,5 +23,5 @@ using System.Resources;
 [assembly: AssemblyProduct("Zoho API C#.NET SDK")]
 [assembly: AssemblyCopyright("Copyright © Teference 2016")]
 [assembly: NeutralResourcesLanguage("en")]
-[assembly: AssemblyVersion("0.6.10")]
-[assembly: AssemblyFileVersion("0.6.10")]
+[assembly: AssemblyVersion("0.6.11")]
+[assembly: AssemblyFileVersion("0.6.11")]
