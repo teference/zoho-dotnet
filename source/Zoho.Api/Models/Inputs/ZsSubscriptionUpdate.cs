@@ -63,7 +63,6 @@
         [JsonProperty(PropertyName = "price", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public double Price { get; set; }
 
-        [DefaultValue(1)]
         [JsonProperty(PropertyName = "quantity", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public int Quantity { get; set; }
 
@@ -89,7 +88,6 @@
         [JsonProperty(PropertyName = "price", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public double Price { get; set; }
 
-        [DefaultValue(1)]
         [JsonProperty(PropertyName = "quantity", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public int Quantity { get; set; }
 
