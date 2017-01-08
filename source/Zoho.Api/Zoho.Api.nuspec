@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Zoho.Api</id>
-    <version>0.6.12</version>
+    <version>0.6.13</version>
     <title>Zoho API</title>
     <authors>Jaspalsinh Chauhan</authors>
     <owners>Jaspalsinh Chauhan</owners>
@@ -11,8 +11,8 @@
     <iconUrl>https://raw.githubusercontent.com/teference/zoho-dotnet/master/zoho-logo.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Use Zoho API C#.NET SDK to access Zoho API</description>
-    <releaseNotes>Bug fixes - Update subscription removed default value so quantity can be set to 1 or more.</releaseNotes>
-    <copyright>Copyright (c) 2016 Teference</copyright>
+    <releaseNotes>Zoho Subscription > Hosted Pages > "Create a subscription" and "Buy one-time addon for a subscription" methods added. Issue #1</releaseNotes>
+    <copyright>Copyright (c) 2017 Teference</copyright>
     <tags>zoho, zoho subscription, zoho api, api, zoho subscription api, zoho subscription webhook</tags>
     <dependencies>
       <dependency id="Microsoft.Bcl.Async"

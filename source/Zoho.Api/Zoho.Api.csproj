@@ -138,6 +138,8 @@
     <Compile Include="Models\Inputs\ZsCouponCreate.cs" />
     <Compile Include="Models\Inputs\ZsCouponUpdate.cs" />
     <Compile Include="Models\Inputs\ZsCustomerInput.cs" />
+    <Compile Include="Models\Inputs\ZsHostedPageBuyAddonInput.cs" />
+    <Compile Include="Models\Inputs\ZsHostedPageCreateSubscriptionInput.cs" />
     <Compile Include="Models\Inputs\ZsHostedPageUpdateCardInput.cs" />
     <Compile Include="Models\Inputs\ZsHostedPageUpdateSubscriptionInput.cs" />
     <Compile Include="Models\Inputs\ZsInvoiceEmailInput.cs" />

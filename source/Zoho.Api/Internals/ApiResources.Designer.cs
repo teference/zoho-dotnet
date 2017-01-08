@@ -430,6 +430,24 @@ namespace Teference.Zoho.Api.Internals {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to hostedpages/buyonetimeaddon.
+        /// </summary>
+        internal static string ZsPostHostedPageBuyAddon {
+            get {
+                return ResourceManager.GetString("ZsPostHostedPageBuyAddon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to hostedpages/newsubscription.
+        /// </summary>
+        internal static string ZsPostHostedPageCreateSubscription {
+            get {
+                return ResourceManager.GetString("ZsPostHostedPageCreateSubscription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to hostedpages/updatecard.
         /// </summary>
         internal static string ZsPostHostedPageUpdateCard {

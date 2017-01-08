@@ -85,6 +85,43 @@
             }
         }
 
+        public async Task<ZsHostedPage> CreateSubscriptionAsync(ZsHostedPageCreateSubscriptionInput hostedPageCreateSubscription)
+        {
+            this.client.Configuration.CheckConfig();
+            return await this.CreateSubscriptionAsync(this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, hostedPageCreateSubscription);
+        }
+        public async Task<ZsHostedPage> CreateSubscriptionAsync(string authToken, string organizationId, ZsHostedPageCreateSubscriptionInput hostedPageCreateSubscription)
+        {
+            authToken.CheckConfigAuthToken();
+            organizationId.CheckConfigOrganizationId();
+
+            var validationResult = hostedPageCreateSubscription.Validate();
+            if (!string.IsNullOrWhiteSpace(validationResult))
+            {
+                throw new ArgumentException(validationResult);
+            }
+
+            using (var httpClient = new HttpClient())
+            {
+                httpClient.Configure(organizationId, authToken);
+                var content = new StringContent(
+                    JsonConvert.SerializeObject(
+                        hostedPageCreateSubscription,
+                        Formatting.None,
+                        new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore }),
+                    Encoding.UTF8,
+                    "application/json");
+                var response = await httpClient.PostAsync(ApiResources.ZsPostHostedPageCreateSubscription, content);
+                var processResult = await response.ProcessResponse<ZsHostedPageJson>();
+                if (null != processResult.Error)
+                {
+                    throw processResult.Error;
+                }
+
+                return processResult.Data.HostedPage;
+            }
+        }
+
         public async Task<ZsHostedPage> UpdateSubscriptionAsync(ZsHostedPageUpdateSubscriptionInput hostedPageUpdateSubscription)
         {
             this.client.Configuration.CheckConfig();
@@ -150,6 +187,43 @@
                     Encoding.UTF8,
                     "application/json");
                 var response = await httpClient.PostAsync(ApiResources.ZsPostHostedPageUpdateCard, content);
+                var processResult = await response.ProcessResponse<ZsHostedPageJson>();
+                if (null != processResult.Error)
+                {
+                    throw processResult.Error;
+                }
+
+                return processResult.Data.HostedPage;
+            }
+        }
+
+        public async Task<ZsHostedPage> BuyOneTimeAddonAsync(ZsHostedPageBuyAddonInput hostedPageBuyAddon)
+        {
+            this.client.Configuration.CheckConfig();
+            return await this.BuyOneTimeAddonAsync(this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, hostedPageBuyAddon);
+        }
+        public async Task<ZsHostedPage> BuyOneTimeAddonAsync(string authToken, string organizationId, ZsHostedPageBuyAddonInput hostedPageBuyAddon)
+        {
+            authToken.CheckConfigAuthToken();
+            organizationId.CheckConfigOrganizationId();
+
+            var validationResult = hostedPageBuyAddon.Validate();
+            if (!string.IsNullOrWhiteSpace(validationResult))
+            {
+                throw new ArgumentException(validationResult);
+            }
+
+            using (var httpClient = new HttpClient())
+            {
+                httpClient.Configure(organizationId, authToken);
+                var content = new StringContent(
+                    JsonConvert.SerializeObject(
+                        hostedPageBuyAddon,
+                        Formatting.None,
+                        new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore }),
+                    Encoding.UTF8,
+                    "application/json");
+                var response = await httpClient.PostAsync(ApiResources.ZsPostHostedPageBuyAddon, content);
                 var processResult = await response.ProcessResponse<ZsHostedPageJson>();
                 if (null != processResult.Error)
                 {

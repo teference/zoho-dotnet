@@ -240,6 +240,12 @@
   <data name="ZsPostCustomer" xml:space="preserve">
     <value>customers</value>
   </data>
+  <data name="ZsPostHostedPageBuyAddon" xml:space="preserve">
+    <value>hostedpages/buyonetimeaddon</value>
+  </data>
+  <data name="ZsPostHostedPageCreateSubscription" xml:space="preserve">
+    <value>hostedpages/newsubscription</value>
+  </data>
   <data name="ZsPostHostedPageUpdateCard" xml:space="preserve">
     <value>hostedpages/updatecard</value>
   </data>
