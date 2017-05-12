@@ -349,6 +349,15 @@ namespace Teference.Zoho.Api.Internals {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to subscriptions?customer_id={0}.
+        /// </summary>
+        internal static string ZsGetSubscriptionsAllByCustomerId {
+            get {
+                return ResourceManager.GetString("ZsGetSubscriptionsAllByCustomerId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to addons.
         /// </summary>
         internal static string ZsPostAddon {

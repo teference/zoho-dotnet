@@ -14,8 +14,9 @@
         Task<ZsSubscription> GetAsync(string authToken, string organizationId, string id);
 
         Task<ZsSubscriptions> GetAllAsync();
-        Task<ZsSubscriptions> GetAllAsync(ZsCustomer customer);
-        Task<ZsSubscriptions> GetAllAsync(string authToken, string organizationId, ZsCustomer customer = null);
+        Task<ZsSubscriptions> GetAllAsync(string authToken, string organizationId);
+        Task<ZsSubscriptions> GetAllAsync(ZsSubscriptionFilter filterType, string filterId);
+        Task<ZsSubscriptions> GetAllAsync(string authToken, string organizationId, ZsSubscriptionFilter filterType, string filterId);
 
         Task<ZsSubscription> CreateAsync(ZsSubscriptionCreate createInput);
         Task<ZsSubscription> CreateAsync(string authToken, string organizationId, ZsSubscriptionCreate createInput);

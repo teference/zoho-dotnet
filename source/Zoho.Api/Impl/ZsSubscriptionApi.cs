@@ -68,13 +68,7 @@
             return await this.GetAllAsync(this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId);
         }
 
-        public async Task<ZsSubscriptions> GetAllAsync(ZsCustomer customer)
-        {
-            this.client.Configuration.CheckConfig();
-            return await this.GetAllAsync(this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, customer);
-        }
-
-        public async Task<ZsSubscriptions> GetAllAsync(string authToken, string organizationId, ZsCustomer customer = null)
+        public async Task<ZsSubscriptions> GetAllAsync(string authToken, string organizationId)
         {
             authToken.CheckConfigAuthToken();
             organizationId.CheckConfigOrganizationId();
@@ -82,9 +76,42 @@
             using (var httpClient = new HttpClient())
             {
                 httpClient.Configure(organizationId, authToken);
-                var urlFragment = ApiResources.ZsGetSubscriptionsAll + (customer != null ? $"?customer_id={customer.CustomerId}" : string.Empty);
+                var urlFragment = ApiResources.ZsGetSubscriptionsAll;
 
                 var response = await httpClient.GetAsync(urlFragment);
+                var processResult = await response.ProcessResponse<ZsSubscriptions>();
+                if (null != processResult.Error)
+                {
+                    throw processResult.Error;
+                }
+
+                return processResult.Data;
+            }
+        }
+
+        public async Task<ZsSubscriptions> GetAllAsync(ZsSubscriptionFilter filterType, string filterId)
+        {
+            this.client.Configuration.CheckConfig();
+            return await this.GetAllAsync(this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, filterType, filterId);
+        }
+
+        public async Task<ZsSubscriptions> GetAllAsync(string authToken, string organizationId, ZsSubscriptionFilter filterType, string filterId)
+        {
+            authToken.CheckConfigAuthToken();
+            organizationId.CheckConfigOrganizationId();
+
+            using (var httpClient = new HttpClient())
+            {
+                httpClient.Configure(organizationId, authToken);
+                var requestUri = ApiResources.ZsGetSubscriptionsAll;
+                switch (filterType)
+                {
+                    case ZsSubscriptionFilter.CustomerId:
+                        requestUri = string.Format(CultureInfo.InvariantCulture, ApiResources.ZsGetSubscriptionsAllByCustomerId, filterId);
+                        break;
+                }
+
+                var response = await httpClient.GetAsync(requestUri);
                 var processResult = await response.ProcessResponse<ZsSubscriptions>();
                 if (null != processResult.Error)
                 {
