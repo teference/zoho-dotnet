@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Zoho.Api</id>
-    <version>0.6.13</version>
+    <version>0.6.14</version>
     <title>Zoho API</title>
     <authors>Jaspalsinh Chauhan</authors>
     <owners>Jaspalsinh Chauhan</owners>
@@ -11,7 +11,7 @@
     <iconUrl>https://raw.githubusercontent.com/teference/zoho-dotnet/master/zoho-logo.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Use Zoho API C#.NET SDK to access Zoho API</description>
-    <releaseNotes>Zoho Subscription > Hosted Pages > "Create a subscription" and "Buy one-time addon for a subscription" methods added. Issue #1</releaseNotes>
+    <releaseNotes>ZsSubscriptionFilter added - CustomerId for now to filter GetAll subscription API call.</releaseNotes>
     <copyright>Copyright (c) 2017 Teference</copyright>
     <tags>zoho, zoho subscription, zoho api, api, zoho subscription api, zoho subscription webhook</tags>
     <dependencies>
