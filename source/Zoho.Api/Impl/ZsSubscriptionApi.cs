@@ -68,7 +68,13 @@
             return await this.GetAllAsync(this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId);
         }
 
-        public async Task<ZsSubscriptions> GetAllAsync(string authToken, string organizationId)
+        public async Task<ZsSubscriptions> GetAllAsync(ZsCustomer customer)
+        {
+            this.client.Configuration.CheckConfig();
+            return await this.GetAllAsync(this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, customer);
+        }
+
+        public async Task<ZsSubscriptions> GetAllAsync(string authToken, string organizationId, ZsCustomer customer = null)
         {
             authToken.CheckConfigAuthToken();
             organizationId.CheckConfigOrganizationId();
@@ -76,7 +82,9 @@
             using (var httpClient = new HttpClient())
             {
                 httpClient.Configure(organizationId, authToken);
-                var response = await httpClient.GetAsync(ApiResources.ZsGetSubscriptionsAll);
+                var urlFragment = ApiResources.ZsGetSubscriptionsAll + (customer != null ? $"?customer_id={customer.CustomerId}" : string.Empty);
+
+                var response = await httpClient.GetAsync(urlFragment);
                 var processResult = await response.ProcessResponse<ZsSubscriptions>();
                 if (null != processResult.Error)
                 {
