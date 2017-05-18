@@ -34,11 +34,12 @@
         public async Task<ZsCard> GetAsync(string customerId, string cardId)
         {
             this.client.Configuration.CheckConfig();
-            return await this.GetAsync(this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, customerId, cardId);
+            return await this.GetAsync(this.client.Configuration.ApiBaseUrl, this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, customerId, cardId);
         }
 
-        public async Task<ZsCard> GetAsync(string authToken, string organizationId, string customerId, string cardId)
+        public async Task<ZsCard> GetAsync(string apiBaseUrl, string authToken, string organizationId, string customerId, string cardId)
         {
+            apiBaseUrl.CheckConfigApiBaseUrl();
             authToken.CheckConfigAuthToken();
             organizationId.CheckConfigOrganizationId();
 
@@ -54,7 +55,7 @@
 
             using (var httpClient = new HttpClient())
             {
-                httpClient.Configure(organizationId, authToken);
+                httpClient.Configure(apiBaseUrl, organizationId, authToken);
                 var response = await httpClient.GetAsync(string.Format(CultureInfo.InvariantCulture, ApiResources.ZsGetCard, customerId, cardId));
                 var processResult = await response.ProcessResponse<ZsCardJson>();
                 if (null != processResult.Error)
@@ -69,11 +70,12 @@
         public async Task<ZsCard> CreateAsync(string customerId, ZsCardCreate createInput)
         {
             this.client.Configuration.CheckConfig();
-            return await this.CreateAsync(this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, customerId, createInput);
+            return await this.CreateAsync(this.client.Configuration.ApiBaseUrl, this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, customerId, createInput);
         }
 
-        public async Task<ZsCard> CreateAsync(string authToken, string organizationId, string customerId, ZsCardCreate createInput)
+        public async Task<ZsCard> CreateAsync(string apiBaseUrl, string authToken, string organizationId, string customerId, ZsCardCreate createInput)
         {
+            apiBaseUrl.CheckConfigApiBaseUrl();
             authToken.CheckConfigAuthToken();
             organizationId.CheckConfigOrganizationId();
 
@@ -95,7 +97,7 @@
 
             using (var httpClient = new HttpClient())
             {
-                httpClient.Configure(organizationId, authToken);
+                httpClient.Configure(apiBaseUrl, organizationId, authToken);
                 var content = new StringContent(
                     JsonConvert.SerializeObject(
                         createInput,
@@ -117,11 +119,12 @@
         public async Task<ZsCard> UpdateAsync(string customerId, string cardId, ZsCardUpdate updateInput)
         {
             this.client.Configuration.CheckConfig();
-            return await this.UpdateAsync(this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, customerId, cardId, updateInput);
+            return await this.UpdateAsync(this.client.Configuration.ApiBaseUrl, this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, customerId, cardId, updateInput);
         }
 
-        public async Task<ZsCard> UpdateAsync(string authToken, string organizationId, string customerId, string cardId, ZsCardUpdate updateInput)
+        public async Task<ZsCard> UpdateAsync(string apiBaseUrl, string authToken, string organizationId, string customerId, string cardId, ZsCardUpdate updateInput)
         {
+            apiBaseUrl.CheckConfigApiBaseUrl();
             authToken.CheckConfigAuthToken();
             organizationId.CheckConfigOrganizationId();
 
@@ -148,7 +151,7 @@
 
             using (var httpClient = new HttpClient())
             {
-                httpClient.Configure(organizationId, authToken);
+                httpClient.Configure(apiBaseUrl, organizationId, authToken);
                 var content = new StringContent(JsonConvert.SerializeObject(updateInput), Encoding.UTF8, "application/json");
                 var response = await httpClient.PutAsync(string.Format(CultureInfo.InvariantCulture, ApiResources.ZsPutCard, customerId, cardId), content);
                 var processResult = await response.ProcessResponse<ZsCardJson>();
@@ -164,11 +167,12 @@
         public async Task<bool> DeleteAsync(string customerId, string cardId)
         {
             this.client.Configuration.CheckConfig();
-            return await this.DeleteAsync(this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, customerId, cardId);
+            return await this.DeleteAsync(this.client.Configuration.ApiBaseUrl, this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, customerId, cardId);
         }
 
-        public async Task<bool> DeleteAsync(string authToken, string organizationId, string customerId, string cardId)
+        public async Task<bool> DeleteAsync(string apiBaseUrl, string authToken, string organizationId, string customerId, string cardId)
         {
+            apiBaseUrl.CheckConfigApiBaseUrl();
             authToken.CheckConfigAuthToken();
             organizationId.CheckConfigOrganizationId();
 
@@ -184,7 +188,7 @@
 
             using (var httpClient = new HttpClient())
             {
-                httpClient.Configure(organizationId, authToken);
+                httpClient.Configure(apiBaseUrl, organizationId, authToken);
                 var response = await httpClient.DeleteAsync(string.Format(CultureInfo.InvariantCulture, ApiResources.ZsDeleteCard, customerId, cardId));
                 var processResult = await response.ProcessResponse<bool>();
                 if (null != processResult.Error)

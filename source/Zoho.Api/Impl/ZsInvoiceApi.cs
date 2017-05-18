@@ -35,10 +35,11 @@
         public async Task<ZsInvoice> GetAsync(string id)
         {
             this.client.Configuration.CheckConfig();
-            return await this.GetAsync(this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, id);
+            return await this.GetAsync(this.client.Configuration.ApiBaseUrl, this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, id);
         }
-        public async Task<ZsInvoice> GetAsync(string authToken, string organizationId, string id)
+        public async Task<ZsInvoice> GetAsync(string apiBaseUrl, string authToken, string organizationId, string id)
         {
+            apiBaseUrl.CheckConfigApiBaseUrl();
             authToken.CheckConfigAuthToken();
             organizationId.CheckConfigOrganizationId();
 
@@ -49,7 +50,7 @@
 
             using (var httpClient = new HttpClient())
             {
-                httpClient.Configure(organizationId, authToken);
+                httpClient.Configure(apiBaseUrl, organizationId, authToken);
                 var response = await httpClient.GetAsync(string.Format(CultureInfo.InvariantCulture, ApiResources.ZsGetInvoice, id));
                 var processResult = await response.ProcessResponse<ZsInvoiceJson>();
                 if (null != processResult.Error)
@@ -64,16 +65,17 @@
         public async Task<ZsInvoices> GetAllAsync()
         {
             this.client.Configuration.CheckConfig();
-            return await this.GetAllAsync(this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId);
+            return await this.GetAllAsync(this.client.Configuration.ApiBaseUrl, this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId);
         }
-        public async Task<ZsInvoices> GetAllAsync(string authToken, string organizationId)
+        public async Task<ZsInvoices> GetAllAsync(string apiBaseUrl, string authToken, string organizationId)
         {
+            apiBaseUrl.CheckConfigApiBaseUrl();
             authToken.CheckConfigAuthToken();
             organizationId.CheckConfigOrganizationId();
 
             using (var httpClient = new HttpClient())
             {
-                httpClient.Configure(organizationId, authToken);
+                httpClient.Configure(apiBaseUrl, organizationId, authToken);
                 var response = await httpClient.GetAsync(ApiResources.ZsGetInvoicesAll);
                 var processResult = await response.ProcessResponse<ZsInvoices>();
                 if (null != processResult.Error)
@@ -88,10 +90,11 @@
         public async Task<ZsInvoices> GetAllAsync(ZsInvoiceFilter filterType, string filterId)
         {
             this.client.Configuration.CheckConfig();
-            return await this.GetAllAsync(this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, filterType, filterId);
+            return await this.GetAllAsync(this.client.Configuration.ApiBaseUrl, this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, filterType, filterId);
         }
-        public async Task<ZsInvoices> GetAllAsync(string authToken, string organizationId, ZsInvoiceFilter filterType, string filterId)
+        public async Task<ZsInvoices> GetAllAsync(string apiBaseUrl, string authToken, string organizationId, ZsInvoiceFilter filterType, string filterId)
         {
+            apiBaseUrl.CheckConfigApiBaseUrl();
             authToken.CheckConfigAuthToken();
             organizationId.CheckConfigOrganizationId();
 
@@ -102,7 +105,7 @@
 
             using (var httpClient = new HttpClient())
             {
-                httpClient.Configure(organizationId, authToken);
+                httpClient.Configure(apiBaseUrl, organizationId, authToken);
                 var requestUri = ApiResources.ZsGetInvoicesAll;
                 switch(filterType)
                 {
@@ -128,10 +131,11 @@
         public async Task<ZsInvoice> CollectCharge(string id, string cardId)
         {
             this.client.Configuration.CheckConfig();
-            return await this.CollectCharge(this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, id, cardId);
+            return await this.CollectCharge(this.client.Configuration.ApiBaseUrl, this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, id, cardId);
         }
-        public async Task<ZsInvoice> CollectCharge(string authToken, string organizationId, string id, string cardId)
+        public async Task<ZsInvoice> CollectCharge(string apiBaseUrl, string authToken, string organizationId, string id, string cardId)
         {
+            apiBaseUrl.CheckConfigApiBaseUrl();
             authToken.CheckConfigAuthToken();
             organizationId.CheckConfigOrganizationId();
 
@@ -148,7 +152,7 @@
             var invoiceCollectChargeJson = new ZsInvoiceCollectChargeJson { CardId = cardId };
             using (var httpClient = new HttpClient())
             {
-                httpClient.Configure(organizationId, authToken);
+                httpClient.Configure(apiBaseUrl, organizationId, authToken);
                 var jsonContent = JsonConvert.SerializeObject(
                         invoiceCollectChargeJson,
                         Formatting.None,
@@ -168,10 +172,11 @@
         public async Task<bool> ConvertToVoid(string id)
         {
             this.client.Configuration.CheckConfig();
-            return await this.ConvertToVoid(this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, id);
+            return await this.ConvertToVoid(this.client.Configuration.ApiBaseUrl, this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, id);
         }
-        public async Task<bool> ConvertToVoid(string authToken, string organizationId, string id)
+        public async Task<bool> ConvertToVoid(string apiBaseUrl, string authToken, string organizationId, string id)
         {
+            apiBaseUrl.CheckConfigApiBaseUrl();
             authToken.CheckConfigAuthToken();
             organizationId.CheckConfigOrganizationId();
 
@@ -182,7 +187,7 @@
 
             using (var httpClient = new HttpClient())
             {
-                httpClient.Configure(organizationId, authToken);
+                httpClient.Configure(apiBaseUrl, organizationId, authToken);
                 var response = await httpClient.PostAsync(string.Format(CultureInfo.InvariantCulture, ApiResources.ZsPostInvoiceConvertToVoid, id), null);
                 var processResult = await response.ProcessResponse<bool>();
                 if (null != processResult.Error)
@@ -197,10 +202,11 @@
         public async Task<bool> ConvertToOpen(string id)
         {
             this.client.Configuration.CheckConfig();
-            return await this.ConvertToOpen(this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, id);
+            return await this.ConvertToOpen(this.client.Configuration.ApiBaseUrl, this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, id);
         }
-        public async Task<bool> ConvertToOpen(string authToken, string organizationId, string id)
+        public async Task<bool> ConvertToOpen(string apiBaseUrl, string authToken, string organizationId, string id)
         {
+            apiBaseUrl.CheckConfigApiBaseUrl();
             authToken.CheckConfigAuthToken();
             organizationId.CheckConfigOrganizationId();
 
@@ -211,7 +217,7 @@
 
             using (var httpClient = new HttpClient())
             {
-                httpClient.Configure(organizationId, authToken);
+                httpClient.Configure(apiBaseUrl, organizationId, authToken);
                 var response = await httpClient.PostAsync(string.Format(CultureInfo.InvariantCulture, ApiResources.ZsPostInvoiceConvertToOpen, id), null);
                 var processResult = await response.ProcessResponse<bool>();
                 if (null != processResult.Error)
@@ -226,10 +232,11 @@
         public async Task<bool> EmailInvoice(string id, ZsInvoiceEmailInput emailInput)
         {
             this.client.Configuration.CheckConfig();
-            return await this.EmailInvoice(this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, id, emailInput);
+            return await this.EmailInvoice(this.client.Configuration.ApiBaseUrl, this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, id, emailInput);
         }
-        public async Task<bool> EmailInvoice(string authToken, string organizationId, string id, ZsInvoiceEmailInput emailInput)
+        public async Task<bool> EmailInvoice(string apiBaseUrl, string authToken, string organizationId, string id, ZsInvoiceEmailInput emailInput)
         {
+            apiBaseUrl.CheckConfigApiBaseUrl();
             authToken.CheckConfigAuthToken();
             organizationId.CheckConfigOrganizationId();
 
@@ -251,7 +258,7 @@
 
             using (var httpClient = new HttpClient())
             {
-                httpClient.Configure(organizationId, authToken);
+                httpClient.Configure(apiBaseUrl, organizationId, authToken);
                 var content = new StringContent(
                     JsonConvert.SerializeObject(
                         emailInput,
@@ -273,10 +280,11 @@
         public async Task<bool> WriteOff(string id)
         {
             this.client.Configuration.CheckConfig();
-            return await this.WriteOff(this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, id);
+            return await this.WriteOff(this.client.Configuration.ApiBaseUrl, this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, id);
         }
-        public async Task<bool> WriteOff(string authToken, string organizationId, string id)
+        public async Task<bool> WriteOff(string apiBaseUrl, string authToken, string organizationId, string id)
         {
+            apiBaseUrl.CheckConfigApiBaseUrl();
             authToken.CheckConfigAuthToken();
             organizationId.CheckConfigOrganizationId();
 
@@ -287,7 +295,7 @@
 
             using (var httpClient = new HttpClient())
             {
-                httpClient.Configure(organizationId, authToken);
+                httpClient.Configure(apiBaseUrl, organizationId, authToken);
                 var response = await httpClient.PostAsync(string.Format(CultureInfo.InvariantCulture, ApiResources.ZsPostInvoiceWriteOff, id), null);
                 var processResult = await response.ProcessResponse<bool>();
                 if (null != processResult.Error)
@@ -302,10 +310,11 @@
         public async Task<bool> CancelWriteOff(string id)
         {
             this.client.Configuration.CheckConfig();
-            return await this.CancelWriteOff(this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, id);
+            return await this.CancelWriteOff(this.client.Configuration.ApiBaseUrl, this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, id);
         }
-        public async Task<bool> CancelWriteOff(string authToken, string organizationId, string id)
+        public async Task<bool> CancelWriteOff(string apiBaseUrl, string authToken, string organizationId, string id)
         {
+            apiBaseUrl.CheckConfigApiBaseUrl();
             authToken.CheckConfigAuthToken();
             organizationId.CheckConfigOrganizationId();
 
@@ -316,7 +325,7 @@
 
             using (var httpClient = new HttpClient())
             {
-                httpClient.Configure(organizationId, authToken);
+                httpClient.Configure(apiBaseUrl, organizationId, authToken);
                 var response = await httpClient.PostAsync(string.Format(CultureInfo.InvariantCulture, ApiResources.ZsPostInvoiceCancelWriteOff, id), null);
                 var processResult = await response.ProcessResponse<bool>();
                 if (null != processResult.Error)
@@ -331,10 +340,11 @@
         public async Task<Stream> GetPdfAsync(string id)
         {
             this.client.Configuration.CheckConfig();
-            return await this.GetPdfAsync(this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, id);
+            return await this.GetPdfAsync(this.client.Configuration.ApiBaseUrl, this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, id);
         }
-        public async Task<Stream> GetPdfAsync(string authToken, string organizationId, string id)
+        public async Task<Stream> GetPdfAsync(string apiBaseUrl, string authToken, string organizationId, string id)
         {
+            apiBaseUrl.CheckConfigApiBaseUrl();
             authToken.CheckConfigAuthToken();
             organizationId.CheckConfigOrganizationId();
 
@@ -345,7 +355,7 @@
 
             using (var httpClient = new HttpClient())
             {
-                httpClient.Configure(organizationId, authToken, isPdf: true);
+                httpClient.Configure(apiBaseUrl, organizationId, authToken, isPdf: true);
                 var response = await httpClient.GetAsync(string.Format(CultureInfo.InvariantCulture, ApiResources.ZsGetInvoiceAsPdf, id));
                 if (null == response)
                 {

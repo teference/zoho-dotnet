@@ -34,10 +34,11 @@
         public async Task<ZsAddon> GetAsync(string code)
         {
             this.client.Configuration.CheckConfig();
-            return await this.GetAsync(this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, code);
+            return await this.GetAsync(this.client.Configuration.ApiBaseUrl, this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, code);
         }
-        public async Task<ZsAddon> GetAsync(string authToken, string organizationId, string code)
+        public async Task<ZsAddon> GetAsync(string apiBaseUrl, string authToken, string organizationId, string code)
         {
+            apiBaseUrl.CheckConfigApiBaseUrl();
             authToken.CheckConfigAuthToken();
             organizationId.CheckConfigOrganizationId();
 
@@ -48,7 +49,7 @@
 
             using (var httpClient = new HttpClient())
             {
-                httpClient.Configure(organizationId, authToken);
+                httpClient.Configure(apiBaseUrl, organizationId, authToken);
                 var response = await httpClient.GetAsync(string.Format(CultureInfo.InvariantCulture, ApiResources.ZsGetAddon, code));
                 var processResult = await response.ProcessResponse<ZsAddonJson>();
                 if (null != processResult.Error)
@@ -63,16 +64,17 @@
         public async Task<ZsAddons> GetAllAsync()
         {
             this.client.Configuration.CheckConfig();
-            return await this.GetAllAsync(this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId);
+            return await this.GetAllAsync(this.client.Configuration.ApiBaseUrl, this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId);
         }
-        public async Task<ZsAddons> GetAllAsync(string authToken, string organizationId)
+        public async Task<ZsAddons> GetAllAsync(string apiBaseUrl, string authToken, string organizationId)
         {
+            apiBaseUrl.CheckConfigApiBaseUrl();
             authToken.CheckConfigAuthToken();
             organizationId.CheckConfigOrganizationId();
 
             using (var httpClient = new HttpClient())
             {
-                httpClient.Configure(organizationId, authToken);
+                httpClient.Configure(apiBaseUrl, organizationId, authToken);
                 var response = await httpClient.GetAsync(ApiResources.ZsGetAddonsAll);
                 var processResult = await response.ProcessResponse<ZsAddons>();
                 if (null != processResult.Error)
@@ -87,10 +89,11 @@
         public async Task<ZsAddon> CreateAsync(ZsAddonCreate createInput)
         {
             this.client.Configuration.CheckConfig();
-            return await this.CreateAsync(this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, createInput);
+            return await this.CreateAsync(this.client.Configuration.ApiBaseUrl, this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, createInput);
         }
-        public async Task<ZsAddon> CreateAsync(string authToken, string organizationId, ZsAddonCreate createInput)
+        public async Task<ZsAddon> CreateAsync(string apiBaseUrl, string authToken, string organizationId, ZsAddonCreate createInput)
         {
+            apiBaseUrl.CheckConfigApiBaseUrl();
             authToken.CheckConfigAuthToken();
             organizationId.CheckConfigOrganizationId();
 
@@ -107,7 +110,7 @@
 
             using (var httpClient = new HttpClient())
             {
-                httpClient.Configure(organizationId, authToken);
+                httpClient.Configure(apiBaseUrl, organizationId, authToken);
                 var content = new StringContent(
                     JsonConvert.SerializeObject(
                         createInput,
@@ -129,10 +132,11 @@
         public async Task<ZsAddon> UpdateAsync(string code, ZsAddonUpdate updateInput)
         {
             this.client.Configuration.CheckConfig();
-            return await this.UpdateAsync(this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, code, updateInput);
+            return await this.UpdateAsync(this.client.Configuration.ApiBaseUrl, this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, code, updateInput);
         }
-        public async Task<ZsAddon> UpdateAsync(string authToken, string organizationId, string code, ZsAddonUpdate updateInput)
+        public async Task<ZsAddon> UpdateAsync(string apiBaseUrl, string authToken, string organizationId, string code, ZsAddonUpdate updateInput)
         {
+            apiBaseUrl.CheckConfigApiBaseUrl();
             authToken.CheckConfigAuthToken();
             organizationId.CheckConfigOrganizationId();
 
@@ -154,7 +158,7 @@
 
             using (var httpClient = new HttpClient())
             {
-                httpClient.Configure(organizationId, authToken);
+                httpClient.Configure(apiBaseUrl, organizationId, authToken);
                 var updateJson = JsonConvert.SerializeObject(
                         updateInput,
                         Formatting.None,
@@ -177,10 +181,11 @@
         public async Task<bool> DeleteAsync(string code)
         {
             this.client.Configuration.CheckConfig();
-            return await this.DeleteAsync(this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, code);
+            return await this.DeleteAsync(this.client.Configuration.ApiBaseUrl, this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, code);
         }
-        public async Task<bool> DeleteAsync(string authToken, string organizationId, string code)
+        public async Task<bool> DeleteAsync(string apiBaseUrl, string authToken, string organizationId, string code)
         {
+            apiBaseUrl.CheckConfigApiBaseUrl();
             authToken.CheckConfigAuthToken();
             organizationId.CheckConfigOrganizationId();
 
@@ -191,7 +196,7 @@
 
             using (var httpClient = new HttpClient())
             {
-                httpClient.Configure(organizationId, authToken);
+                httpClient.Configure(apiBaseUrl,organizationId, authToken);
                 var response = await httpClient.DeleteAsync(string.Format(CultureInfo.InvariantCulture, ApiResources.ZsDeleteAddon, code));
                 var processResult = await response.ProcessResponse<bool>();
                 if (null != processResult.Error)
@@ -206,11 +211,12 @@
         public async Task<bool> ActivateAsync(string code)
         {
             this.client.Configuration.CheckConfig();
-            return await this.ActivateAsync(this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, code);
+            return await this.ActivateAsync(this.client.Configuration.ApiBaseUrl, this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, code);
         }
 
-        public async Task<bool> ActivateAsync(string authToken, string organizationId, string code)
+        public async Task<bool> ActivateAsync(string apiBaseUrl, string authToken, string organizationId, string code)
         {
+            apiBaseUrl.CheckConfigApiBaseUrl();
             authToken.CheckConfigAuthToken();
             organizationId.CheckConfigOrganizationId();
 
@@ -221,7 +227,7 @@
 
             using (var httpClient = new HttpClient())
             {
-                httpClient.Configure(organizationId, authToken);
+                httpClient.Configure(apiBaseUrl, organizationId, authToken);
                 var response = await httpClient.PostAsync(string.Format(CultureInfo.InvariantCulture, ApiResources.ZsPostAddonMarkActive, code), null);
                 var processResult = await response.ProcessResponse<bool>();
                 if (null != processResult.Error)
@@ -236,11 +242,12 @@
         public async Task<bool> DeactivateAsync(string code)
         {
             this.client.Configuration.CheckConfig();
-            return await this.DeactivateAsync(this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, code);
+            return await this.DeactivateAsync(this.client.Configuration.ApiBaseUrl, this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, code);
         }
 
-        public async Task<bool> DeactivateAsync(string authToken, string organizationId, string code)
+        public async Task<bool> DeactivateAsync(string apiBaseUrl, string authToken, string organizationId, string code)
         {
+            apiBaseUrl.CheckConfigApiBaseUrl();
             authToken.CheckConfigAuthToken();
             organizationId.CheckConfigOrganizationId();
 
@@ -251,7 +258,7 @@
 
             using (var httpClient = new HttpClient())
             {
-                httpClient.Configure(organizationId, authToken);
+                httpClient.Configure(apiBaseUrl, organizationId, authToken);
                 var response = await httpClient.PostAsync(string.Format(CultureInfo.InvariantCulture, ApiResources.ZsPostAddonMarkInActive, code), null);
                 var processResult = await response.ProcessResponse<bool>();
                 if (null != processResult.Error)

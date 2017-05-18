@@ -14,7 +14,7 @@
 
     internal static class InternalExtensions
     {
-        internal static void Configure(this HttpClient httpClient, string organizationId, string authToken, bool isPdf = false)
+        internal static void Configure(this HttpClient httpClient, string apiBaseUrl, string organizationId, string authToken, bool isPdf = false)
         {
             if (httpClient.DefaultRequestHeaders.CacheControl == null)
             {
@@ -38,7 +38,11 @@
                 httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/pdf"));
             }
 
-            httpClient.BaseAddress = new Uri(ApiResources.ZsRootEndpoint);
+            // Sanity patch for base URL to end with /
+            if (!apiBaseUrl.EndsWith("/"))
+                apiBaseUrl = apiBaseUrl + "/";
+
+            httpClient.BaseAddress = new Uri(apiBaseUrl);
 
             httpClient.DefaultRequestHeaders.Add("authorization", string.Format(CultureInfo.InvariantCulture, "Zoho-authtoken {0}", authToken));
             httpClient.DefaultRequestHeaders.Add("x-com-zoho-subscriptions-organizationid", organizationId);
@@ -60,6 +64,11 @@
             {
                 throw new ArgumentNullException("Zoho API configuration - Authorization token cannot be null");
             }
+
+            if (string.IsNullOrEmpty(configuration.ApiBaseUrl) || configuration.ApiBaseUrl.Trim() == string.Empty || !Uri.IsWellFormedUriString(configuration.ApiBaseUrl, UriKind.RelativeOrAbsolute))
+            {
+                throw new ArgumentNullException("Zoho API configuration - API base URL is not well formed URI");
+            }
         }
 
         internal static void CheckConfigAuthToken(this string authToken)
@@ -75,6 +84,14 @@
             if (string.IsNullOrEmpty(organizationId) || organizationId.Trim() == string.Empty)
             {
                 throw new ArgumentNullException("Zoho API configuration - Organization Id cannot be null");
+            }
+        }
+
+        internal static void CheckConfigApiBaseUrl(this string apiBaseUrl)
+        {
+            if (string.IsNullOrEmpty(apiBaseUrl) || apiBaseUrl.Trim() == string.Empty || !Uri.IsWellFormedUriString(apiBaseUrl, UriKind.RelativeOrAbsolute))
+            {
+                throw new ArgumentNullException("Zoho API configuration - API base URL is not well formed URI");
             }
         }
 

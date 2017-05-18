@@ -34,10 +34,11 @@
         public async Task<ZsPlan> GetAsync(string code)
         {
             this.client.Configuration.CheckConfig();
-            return await this.GetAsync(this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, code);
+            return await this.GetAsync(this.client.Configuration.ApiBaseUrl, this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, code);
         }
-        public async Task<ZsPlan> GetAsync(string authToken, string organizationId, string code)
+        public async Task<ZsPlan> GetAsync(string apiBaseUrl, string authToken, string organizationId, string code)
         {
+            apiBaseUrl.CheckConfigApiBaseUrl();
             authToken.CheckConfigAuthToken();
             organizationId.CheckConfigOrganizationId();
 
@@ -48,7 +49,7 @@
 
             using (var httpClient = new HttpClient())
             {
-                httpClient.Configure(organizationId, authToken);
+                httpClient.Configure(apiBaseUrl, organizationId, authToken);
                 var response = await httpClient.GetAsync(string.Format(CultureInfo.InvariantCulture, ApiResources.ZsGetPlan, code));
                 var processResult = await response.ProcessResponse<ZsPlanJson>();
                 if (null != processResult.Error)
@@ -63,16 +64,17 @@
         public async Task<ZsPlans> GetAllAsync()
         {
             this.client.Configuration.CheckConfig();
-            return await this.GetAllAsync(this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId);
+            return await this.GetAllAsync(this.client.Configuration.ApiBaseUrl, this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId);
         }
-        public async Task<ZsPlans> GetAllAsync(string authToken, string organizationId)
+        public async Task<ZsPlans> GetAllAsync(string apiBaseUrl, string authToken, string organizationId)
         {
+            apiBaseUrl.CheckConfigApiBaseUrl();
             authToken.CheckConfigAuthToken();
             organizationId.CheckConfigOrganizationId();
 
             using (var httpClient = new HttpClient())
             {
-                httpClient.Configure(organizationId, authToken);
+                httpClient.Configure(apiBaseUrl, organizationId, authToken);
                 var response = await httpClient.GetAsync(ApiResources.ZsGetPlansAll);
                 var processResult = await response.ProcessResponse<ZsPlans>();
                 if (null != processResult.Error)
@@ -89,8 +91,9 @@
             this.client.Configuration.CheckConfig();
             return await this.GetAllAsync(this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, productId);
         }
-        public async Task<ZsPlans> GetAllAsync(string authToken, string organizationId, string productId)
+        public async Task<ZsPlans> GetAllAsync(string apiBaseUrl, string authToken, string organizationId, string productId)
         {
+            apiBaseUrl.CheckConfigApiBaseUrl();
             authToken.CheckConfigAuthToken();
             organizationId.CheckConfigOrganizationId();
 
@@ -101,7 +104,7 @@
 
             using (var httpClient = new HttpClient())
             {
-                httpClient.Configure(organizationId, authToken);
+                httpClient.Configure(apiBaseUrl, organizationId, authToken);
                 var queryBuilder = new QueryStringBuilder();
                 queryBuilder.Add("product_id", productId);
                 var finalResourcePath = string.Format(CultureInfo.InvariantCulture, "{0}{1}", ApiResources.ZsGetPlansAll, queryBuilder.ToString());
@@ -119,10 +122,11 @@
         public async Task<ZsPlan> CreateAsync(ZsPlanCreate createInput)
         {
             this.client.Configuration.CheckConfig();
-            return await this.CreateAsync(this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, createInput);
+            return await this.CreateAsync(this.client.Configuration.ApiBaseUrl, this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, createInput);
         }
-        public async Task<ZsPlan> CreateAsync(string authToken, string organizationId, ZsPlanCreate createInput)
+        public async Task<ZsPlan> CreateAsync(string apiBaseUrl, string authToken, string organizationId, ZsPlanCreate createInput)
         {
+            apiBaseUrl.CheckConfigApiBaseUrl();
             authToken.CheckConfigAuthToken();
             organizationId.CheckConfigOrganizationId();
 
@@ -139,7 +143,7 @@
 
             using (var httpClient = new HttpClient())
             {
-                httpClient.Configure(organizationId, authToken);
+                httpClient.Configure(apiBaseUrl, organizationId, authToken);
                 var content = new StringContent(
                     JsonConvert.SerializeObject(
                         createInput,
@@ -161,10 +165,11 @@
         public async Task<ZsPlan> UpdateAsync(string code, ZsPlanUpdate updateInput)
         {
             this.client.Configuration.CheckConfig();
-            return await this.UpdateAsync(this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, code, updateInput);
+            return await this.UpdateAsync(this.client.Configuration.ApiBaseUrl, this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, code, updateInput);
         }
-        public async Task<ZsPlan> UpdateAsync(string authToken, string organizationId, string code, ZsPlanUpdate updateInput)
+        public async Task<ZsPlan> UpdateAsync(string apiBaseUrl, string authToken, string organizationId, string code, ZsPlanUpdate updateInput)
         {
+            apiBaseUrl.CheckConfigApiBaseUrl();
             authToken.CheckConfigAuthToken();
             organizationId.CheckConfigOrganizationId();
 
@@ -186,7 +191,7 @@
 
             using (var httpClient = new HttpClient())
             {
-                httpClient.Configure(organizationId, authToken);
+                httpClient.Configure(apiBaseUrl, organizationId, authToken);
                 var updateJson = JsonConvert.SerializeObject(
                         updateInput,
                         Formatting.None,
@@ -209,10 +214,11 @@
         public async Task<bool> DeleteAsync(string code)
         {
             this.client.Configuration.CheckConfig();
-            return await this.DeleteAsync(this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, code);
+            return await this.DeleteAsync(this.client.Configuration.ApiBaseUrl, this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, code);
         }
-        public async Task<bool> DeleteAsync(string authToken, string organizationId, string code)
+        public async Task<bool> DeleteAsync(string apiBaseUrl, string authToken, string organizationId, string code)
         {
+            apiBaseUrl.CheckConfigApiBaseUrl();
             authToken.CheckConfigAuthToken();
             organizationId.CheckConfigOrganizationId();
 
@@ -223,7 +229,7 @@
 
             using (var httpClient = new HttpClient())
             {
-                httpClient.Configure(organizationId, authToken);
+                httpClient.Configure(apiBaseUrl, organizationId, authToken);
                 var response = await httpClient.DeleteAsync(string.Format(CultureInfo.InvariantCulture, ApiResources.ZsDeletePlan, code));
                 var processResult = await response.ProcessResponse<bool>();
                 if (null != processResult.Error)
@@ -238,11 +244,12 @@
         public async Task<bool> ActivateAsync(string code)
         {
             this.client.Configuration.CheckConfig();
-            return await this.ActivateAsync(this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, code);
+            return await this.ActivateAsync(this.client.Configuration.ApiBaseUrl, this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, code);
         }
 
-        public async Task<bool> ActivateAsync(string authToken, string organizationId, string code)
+        public async Task<bool> ActivateAsync(string apiBaseUrl, string authToken, string organizationId, string code)
         {
+            apiBaseUrl.CheckConfigApiBaseUrl();
             authToken.CheckConfigAuthToken();
             organizationId.CheckConfigOrganizationId();
 
@@ -253,7 +260,7 @@
 
             using (var httpClient = new HttpClient())
             {
-                httpClient.Configure(organizationId, authToken);
+                httpClient.Configure(apiBaseUrl, organizationId, authToken);
                 var response = await httpClient.PostAsync(string.Format(CultureInfo.InvariantCulture, ApiResources.ZsPostPlanMarkActive, code), null);
                 var processResult = await response.ProcessResponse<bool>();
                 if (null != processResult.Error)
@@ -268,11 +275,12 @@
         public async Task<bool> DeactivateAsync(string code)
         {
             this.client.Configuration.CheckConfig();
-            return await this.DeactivateAsync(this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, code);
+            return await this.DeactivateAsync(this.client.Configuration.ApiBaseUrl, this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, code);
         }
 
-        public async Task<bool> DeactivateAsync(string authToken, string organizationId, string code)
+        public async Task<bool> DeactivateAsync(string apiBaseUrl, string authToken, string organizationId, string code)
         {
+            apiBaseUrl.CheckConfigApiBaseUrl();
             authToken.CheckConfigAuthToken();
             organizationId.CheckConfigOrganizationId();
 
@@ -283,7 +291,7 @@
 
             using (var httpClient = new HttpClient())
             {
-                httpClient.Configure(organizationId, authToken);
+                httpClient.Configure(apiBaseUrl, organizationId, authToken);
                 var response = await httpClient.PostAsync(string.Format(CultureInfo.InvariantCulture, ApiResources.ZsPostPlanMarkInActive, code), null);
                 var processResult = await response.ProcessResponse<bool>();
                 if (null != processResult.Error)
