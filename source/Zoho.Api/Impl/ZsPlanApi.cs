@@ -89,7 +89,7 @@
         public async Task<ZsPlans> GetAllAsync(string productId)
         {
             this.client.Configuration.CheckConfig();
-            return await this.GetAllAsync(this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, productId);
+            return await this.GetAllAsync(this.client.Configuration.ApiBaseUrl, this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, productId);
         }
         public async Task<ZsPlans> GetAllAsync(string apiBaseUrl, string authToken, string organizationId, string productId)
         {

@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Zoho.Api</id>
-    <version>0.6.15</version>
+    <version>0.6.16</version>
     <title>Zoho API</title>
     <authors>Jaspalsinh Chauhan</authors>
     <owners>Jaspalsinh Chauhan</owners>
@@ -11,7 +11,7 @@
     <iconUrl>https://raw.githubusercontent.com/teference/zoho-dotnet/master/zoho-logo.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Use Zoho API C#.NET SDK to access Zoho API</description>
-    <releaseNotes>Option to specify Zoho API base URL configurable. **Breaking Changes** - For those who use on call configuration for "OrganizationId" and "Token" - new parameter added to those method calls to provide Zoho API base URL | ZsHostedPageData - Invoice property changed from string to type ZsInvoice</releaseNotes>
+    <releaseNotes>Bug fix: Typo in PlansApi > GetAllAsync - passing wrong number of parameters which created incorrect ApiBaseUrl.</releaseNotes>
     <copyright>Copyright (c) 2017 Teference</copyright>
     <tags>zoho, zoho subscription, zoho api, api, zoho subscription api, zoho subscription webhook</tags>
     <dependencies>
