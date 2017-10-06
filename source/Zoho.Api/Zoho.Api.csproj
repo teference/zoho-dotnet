@@ -160,6 +160,7 @@
     <EmbeddedResource Include="Internals\ApiResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ApiResources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -8,6 +8,8 @@
 
     public sealed class ZsCustomerAddress
     {
+        [JsonProperty("attention")]
+        public string Attention { get; set; }
         [JsonProperty("street")]
         public string Street { get; set; }
         [JsonProperty("city")]

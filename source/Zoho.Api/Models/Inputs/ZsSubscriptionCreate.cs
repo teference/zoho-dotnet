@@ -10,6 +10,9 @@
 
     public sealed class ZsSubscriptionCreate
     {
+        [JsonProperty("customer")]
+        public ZsCustomerInput Customer { get; set; }
+
         [JsonProperty("customer_id")]
         public string CustomerId { get; set; }
 

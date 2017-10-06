@@ -17,6 +17,8 @@
 
         [JsonProperty("display_name")]
         public string DisplayName { get; set; }
+        [JsonProperty("salutation")]
+        public string Salutation { get; set; }
         [JsonProperty("first_name")]
         public string FirstName { get; set; }
         [JsonProperty("last_name")]
@@ -29,6 +31,10 @@
         public string Phone { get; set; }
         [JsonProperty("mobile")]
         public string Mobile { get; set; }
+        [JsonProperty("department")]
+        public string Department { get; set; }
+        [JsonProperty("designation")]
+        public string Designation { get; set; }
         [JsonProperty("website")]
         public string Website { get; set; }
 
@@ -37,10 +43,20 @@
         [JsonProperty("shipping_address")]
         public ZsCustomerAddress ShippingAddress { get; set; }
 
+        [JsonProperty("payment_terms")]
+        public int PaymentTerms { get; set; }
+        [JsonProperty("payment_terms_label")]
+        public string PaymentTermsLabel { get; set; }
         [JsonProperty("currency_code")]
         public string CurrencyCode { get; set; }
         [JsonProperty("ach_supported")]
         public bool IsAchSupported { get; set; }
+        [JsonProperty("twitter")]
+        public bool Twitter { get; set; }
+        [JsonProperty("facebook")]
+        public bool Facebook { get; set; }
+        [JsonProperty("skype")]
+        public bool Skype { get; set; }
         [JsonProperty("notes")]
         public string Notes { get; set; }
 
