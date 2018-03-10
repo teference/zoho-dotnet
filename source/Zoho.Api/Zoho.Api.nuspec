@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Zoho.Api</id>
-    <version>0.6.17</version>
+    <version>0.6.18</version>
     <title>Zoho API</title>
     <authors>Jaspalsinh Chauhan</authors>
     <owners>Jaspalsinh Chauhan</owners>
@@ -11,8 +11,8 @@
     <iconUrl>https://raw.githubusercontent.com/teference/zoho-dotnet/master/zoho-logo.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Use Zoho API C#.NET SDK to access Zoho API</description>
-    <releaseNotes>Github Issue # 5 - New field "Customer" added to create subscription - without customerid | New fields (some) added to Customer Input and Address Input.</releaseNotes>
-    <copyright>Copyright (c) 2017 Teference</copyright>
+    <releaseNotes>Fields added to ZsCustomField entity - CustomFieldId, ValueFormatted, DataType, PlaceHolder, IsActive | Remove ZsCustomFieldEx version with goal to use parent class for all purpose.</releaseNotes>
+    <copyright>Copyright (c) 2018 Teference</copyright>
     <tags>zoho, zoho subscription, zoho api, api, zoho subscription api, zoho subscription webhook</tags>
     <dependencies>
       <dependency id="Microsoft.Bcl.Async"
