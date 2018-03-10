@@ -71,7 +71,7 @@
         [JsonProperty("coupon")]
         public ZsSubscriptionCoupon Coupon { get; set; }
         [JsonProperty("custom_fields")]//
-        public List<ZsCustomFieldEx> CustomFields { get; set; }
+        public List<ZsCustomField> CustomFields { get; set; }
         [JsonProperty("card")]
         public ZsSubscriptionCard Card { get; set; }
         [JsonProperty("notes")]//

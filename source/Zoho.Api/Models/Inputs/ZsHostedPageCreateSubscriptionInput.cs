@@ -60,7 +60,7 @@
         [JsonProperty("starts_at")]
         public DateTime? StartsAt { get; set; }
         [JsonProperty("custom_fields")]
-        public List<ZsCustomFieldEx> CustomFields { get; set; }
+        public List<ZsCustomField> CustomFields { get; set; }
         [JsonProperty("coupon_code")]
         public string CouponCode { get; set; }
         [JsonProperty("salesperson_name")]
