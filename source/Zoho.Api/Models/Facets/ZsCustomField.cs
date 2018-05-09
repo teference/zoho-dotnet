@@ -14,7 +14,7 @@
         public string Value { get; set; }
 
         [JsonProperty("value_formatted")]
-        public bool ValueFormatted { get; set; }
+        public string ValueFormatted { get; set; }
 
         [JsonProperty("label")]
         public string Label { get; set; }
