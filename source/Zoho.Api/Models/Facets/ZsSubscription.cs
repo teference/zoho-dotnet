@@ -99,7 +99,7 @@
         //[JsonProperty("last_billing_at")]
         //public DateTime LastBillingAt { get; set; }
         [JsonProperty("next_billing_at")]//
-        public DateTime NextBillingAt { get; set; }
+        public DateTime? NextBillingAt { get; set; }
         [JsonProperty("created_at")]//
         public DateTime CreatedAtDate { get; set; }
         [JsonProperty("created_time")]//
