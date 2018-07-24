@@ -309,6 +309,9 @@
   <data name="ZsPostSubscriptionAutoCollect" xml:space="preserve">
     <value>subscriptions/{0}/autocollect</value>
   </data>
+  <data name="ZsPostSubscriptionBuyOnetimeAddon" xml:space="preserve">
+    <value>subscriptions/{0}/buyonetimeaddon</value>
+  </data>
   <data name="ZsPostSubscriptionCancel" xml:space="preserve">
     <value>subscriptions/{0}/cancel?cancel_at_end={1}</value>
   </data>

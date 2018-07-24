@@ -36,6 +36,9 @@
         Task<ZsInvoice> AddChargeAsync(string id, double amount, string description);
         Task<ZsInvoice> AddChargeAsync(string apiBaseUrl, string authToken, string organizationId, string id, double amount, string description);
 
+        Task<ZsInvoice> BuyOnetimeAddon(string id, string addon_code, int quantity, double price, string tax_id);
+        Task<ZsInvoice> BuyOnetimeAddon(string apiBaseUrl, string authToken, string organizationId, string id, string addon_code, int quantity, double price, string tax_id);
+
         Task<ZsSubscription> AddContactPerson(string id, List<string> contactPersons);
         Task<ZsSubscription> AddContactPerson(string apiBaseUrl, string authToken, string organizationId, string id, List<string> contactPersons);
 
