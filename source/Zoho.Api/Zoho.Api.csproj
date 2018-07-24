@@ -83,6 +83,7 @@
     <Compile Include="Internals\ZsInvoiceJson.cs" />
     <Compile Include="Internals\ZsPlanJson.cs" />
     <Compile Include="Internals\ZsProductJson.cs" />
+    <Compile Include="Internals\ZsSubscriptionBuyOnetimeAddonJson.cs" />
     <Compile Include="Internals\ZsSubscriptionAddChargeJson.cs" />
     <Compile Include="Internals\ZsSubscriptionAddContactJson.cs" />
     <Compile Include="Internals\ZsSubscriptionAddNoteJson.cs" />

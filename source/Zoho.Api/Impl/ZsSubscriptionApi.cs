@@ -320,6 +320,7 @@
             this.client.Configuration.CheckConfig();
             return await this.AddChargeAsync(this.client.Configuration.ApiBaseUrl, this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, id, amount, description);
         }
+        
         public async Task<ZsInvoice> AddChargeAsync(string apiBaseUrl, string authToken, string organizationId, string id, double amount, string description)
         {
             apiBaseUrl.CheckConfigApiBaseUrl();
@@ -360,12 +361,60 @@
                 return processResult.Data.Invoice;
             }
         }
+        
+        public async Task<ZsInvoice> BuyOnetimeAddon(string id, string addon_code, int quantity, double price, string tax_id)
+        {
+            this.client.Configuration.CheckConfig();
+            return await this.BuyOnetimeAddon(this.client.Configuration.ApiBaseUrl, this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, id, addon_code, quantity, price, tax_id);
+        }
+        
+        public async Task<ZsInvoice> BuyOnetimeAddon(string apiBaseUrl, string authToken, string organizationId, string id, string addon_code, int quantity, double price, string tax_id)
+        {
+            apiBaseUrl.CheckConfigApiBaseUrl();
+            authToken.CheckConfigAuthToken();
+            organizationId.CheckConfigOrganizationId();
+
+            if (string.IsNullOrEmpty(id) || id == string.Empty)
+            {
+                throw new ArgumentNullException("id");
+            }
+
+            if (quantity <= 0)
+            {
+                throw new ArgumentNullException("quantity");
+            }
+
+            if (string.IsNullOrEmpty(addon_code) || addon_code == string.Empty)
+            {
+                throw new ArgumentNullException("addon_code");
+            }
+
+            var subscriptionAddAddonJson = new ZsSubscriptionBuyOnetimeAddonJson { AddonCode = addon_code, Quantity = quantity, Price = price, TaxId = tax_id };
+            using (var httpClient = new HttpClient())
+            {
+                httpClient.Configure(apiBaseUrl, organizationId, authToken);
+                var jsonContent = JsonConvert.SerializeObject(
+                        new { addons = new []{ subscriptionAddAddonJson } },
+                        Formatting.None,
+                        new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
+                var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
+                var response = await httpClient.PostAsync(string.Format(CultureInfo.InvariantCulture, ApiResources.ZsPostSubscriptionBuyOnetimeAddon, id), content);
+                var processResult = await response.ProcessResponse<ZsInvoiceJson>();
+                if (null != processResult.Error)
+                {
+                    throw processResult.Error;
+                }
+
+                return processResult.Data.Invoice;
+            }
+        }
 
         public async Task<ZsSubscription> AddContactPerson(string id, List<string> contactPersons)
         {
             this.client.Configuration.CheckConfig();
             return await this.AddContactPerson(this.client.Configuration.ApiBaseUrl, this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, id, contactPersons);
         }
+        
         public async Task<ZsSubscription> AddContactPerson(string apiBaseUrl, string authToken, string organizationId, string id, List<string> contactPersons)
         {
             apiBaseUrl.CheckConfigApiBaseUrl();
@@ -419,6 +468,7 @@
             this.client.Configuration.CheckConfig();
             return await this.PostponeRenewalAsync(this.client.Configuration.ApiBaseUrl, this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, id, renewalAt);
         }
+        
         public async Task<ZsSubscriptionNote> PostponeRenewalAsync(string apiBaseUrl, string authToken, string organizationId, string id, DateTime renewalAt)
         {
             apiBaseUrl.CheckConfigApiBaseUrl();
@@ -538,6 +588,7 @@
             this.client.Configuration.CheckConfig();
             return await this.DeleteAsync(this.client.Configuration.ApiBaseUrl, this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, id);
         }
+        
         public async Task<bool> DeleteAsync(string apiBaseUrl, string authToken, string organizationId, string id)
         {
             apiBaseUrl.CheckConfigApiBaseUrl();
@@ -568,6 +619,7 @@
             this.client.Configuration.CheckConfig();
             return await this.CancelAsync(this.client.Configuration.ApiBaseUrl, this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, id, cancelAtEndOfCurrentTerm);
         }
+        
         public async Task<ZsSubscription> CancelAsync(string apiBaseUrl, string authToken, string organizationId, string id, bool cancelAtEndOfCurrentTerm)
         {
             apiBaseUrl.CheckConfigApiBaseUrl();
@@ -598,6 +650,7 @@
             this.client.Configuration.CheckConfig();
             return await this.ReactivateAsync(this.client.Configuration.ApiBaseUrl, this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, id);
         }
+        
         public async Task<ZsSubscription> ReactivateAsync(string apiBaseUrl, string authToken, string organizationId, string id)
         {
             apiBaseUrl.CheckConfigApiBaseUrl();
