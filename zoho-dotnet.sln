@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".solution", ".solution", "{D5C07298-7C11-4AA0-BBDB-19AF576BADBB}"
 	ProjectSection(SolutionItems) = preProject
@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zoho.Api", "source\Zoho.Api
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zoho.ApiTest", "test\Zoho.ApiTest\Zoho.ApiTest.csproj", "{44871871-3E0E-4C87-BEE3-419980B607BC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zoho.UnitTests", "test\Zoho.UnitTests\Zoho.UnitTests.csproj", "{473676B3-AD28-4442-BBFE-F2CF8651031F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{44871871-3E0E-4C87-BEE3-419980B607BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{44871871-3E0E-4C87-BEE3-419980B607BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{44871871-3E0E-4C87-BEE3-419980B607BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{473676B3-AD28-4442-BBFE-F2CF8651031F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{473676B3-AD28-4442-BBFE-F2CF8651031F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{473676B3-AD28-4442-BBFE-F2CF8651031F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{473676B3-AD28-4442-BBFE-F2CF8651031F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -40,5 +46,9 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{04FBD287-9BFD-4441-A54D-B38296500154} = {722FA4FA-8F87-4620-9FE9-8D08D3D28662}
 		{44871871-3E0E-4C87-BEE3-419980B607BC} = {3C9BB4EF-70B1-46E5-B57E-6A86148F4DF0}
+		{473676B3-AD28-4442-BBFE-F2CF8651031F} = {3C9BB4EF-70B1-46E5-B57E-6A86148F4DF0}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {97BD005D-A203-47D8-B344-47141A9D8A01}
 	EndGlobalSection
 EndGlobal

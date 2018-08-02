@@ -36,7 +36,6 @@
             this.client.Configuration.CheckConfig();
             return await this.GetAsync(this.client.Configuration.ApiBaseUrl, this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, id);
         }
-
         public async Task<ZsProduct> GetAsync(string apiBaseUrl, string authToken, string organizationId, string id)
         {
             apiBaseUrl.CheckConfigApiBaseUrl();
@@ -62,13 +61,12 @@
             }
         }
 
-        public async Task<ZsProducts> GetAllAsync()
+        public async Task<ZsProducts> GetAllAsync(ZsPage page = null)
         {
             this.client.Configuration.CheckConfig();
-            return await this.GetAllAsync(this.client.Configuration.ApiBaseUrl, this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId);
+            return await this.GetAllAsync(this.client.Configuration.ApiBaseUrl, this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, page);
         }
-
-        public async Task<ZsProducts> GetAllAsync(string apiBaseUrl, string authToken, string organizationId)
+        public async Task<ZsProducts> GetAllAsync(string apiBaseUrl, string authToken, string organizationId, ZsPage page = null)
         {
             apiBaseUrl.CheckConfigApiBaseUrl();
             authToken.CheckConfigAuthToken();
@@ -77,7 +75,7 @@
             using (var httpClient = new HttpClient())
             {
                 httpClient.Configure(apiBaseUrl, organizationId, authToken);
-                var response = await httpClient.GetAsync(ApiResources.ZsGetProductsAll);
+                var response = await httpClient.GetAsync(page.AppendTo(ApiResources.ZsGetProductsAll));
                 var processResult = await response.ProcessResponse<ZsProducts>();
                 if (null != processResult.Error)
                 {
@@ -93,7 +91,6 @@
             this.client.Configuration.CheckConfig();
             return await this.CreateAsync(this.client.Configuration.ApiBaseUrl, this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, createInput);
         }
-
         public async Task<ZsProduct> CreateAsync(string apiBaseUrl, string authToken, string organizationId, ZsProductInput createInput)
         {
             apiBaseUrl.CheckConfigApiBaseUrl();
@@ -137,7 +134,6 @@
             this.client.Configuration.CheckConfig();
             return await this.UpdateAsync(this.client.Configuration.ApiBaseUrl, this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, id, updateInput);
         }
-
         public async Task<ZsProduct> UpdateAsync(string apiBaseUrl, string authToken, string organizationId, string id, ZsProductInput updateInput)
         {
             apiBaseUrl.CheckConfigApiBaseUrl();
@@ -180,7 +176,6 @@
             this.client.Configuration.CheckConfig();
             return await this.DeleteAsync(this.client.Configuration.ApiBaseUrl, this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, id);
         }
-
         public async Task<bool> DeleteAsync(string apiBaseUrl, string authToken, string organizationId, string id)
         {
             apiBaseUrl.CheckConfigApiBaseUrl();
@@ -211,7 +206,6 @@
             this.client.Configuration.CheckConfig();
             return await this.ActivateAsync(this.client.Configuration.ApiBaseUrl, this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, id);
         }
-
         public async Task<bool> ActivateAsync(string apiBaseUrl, string authToken, string organizationId, string id)
         {
             apiBaseUrl.CheckConfigApiBaseUrl();
@@ -242,7 +236,6 @@
             this.client.Configuration.CheckConfig();
             return await this.DeactivateAsync(this.client.Configuration.ApiBaseUrl, this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, id);
         }
-
         public async Task<bool> DeactivateAsync(string apiBaseUrl, string authToken, string organizationId, string id)
         {
             apiBaseUrl.CheckConfigApiBaseUrl();

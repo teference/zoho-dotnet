@@ -11,11 +11,11 @@
         Task<ZsPlan> GetAsync(string code);
         Task<ZsPlan> GetAsync(string apiBaseUrl, string authToken, string organizationId, string code);
 
-        Task<ZsPlans> GetAllAsync();
-        Task<ZsPlans> GetAllAsync(string apiBaseUrl, string authToken, string organizationId);
+        Task<ZsPlans> GetAllAsync(ZsPage page = null);
+        Task<ZsPlans> GetAllAsync(string apiBaseUrl, string authToken, string organizationId, ZsPage page = null);
 
-        Task<ZsPlans> GetAllAsync(string productId);
-        Task<ZsPlans> GetAllAsync(string apiBaseUrl, string authToken, string organizationId, string productId);
+        Task<ZsPlans> GetAllAsync(string productId, ZsPage page = null);
+        Task<ZsPlans> GetAllAsync(string apiBaseUrl, string authToken, string organizationId, string productId, ZsPage page = null);
 
         Task<ZsPlan> CreateAsync(ZsPlanCreate createInput);
         Task<ZsPlan> CreateAsync(string apiBaseUrl, string authToken, string organizationId, ZsPlanCreate createInput);

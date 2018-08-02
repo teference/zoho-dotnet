@@ -11,8 +11,8 @@
         Task<ZsAddon> GetAsync(string code);
         Task<ZsAddon> GetAsync(string apiBaseUrl, string authToken, string organizationId, string code);
 
-        Task<ZsAddons> GetAllAsync();
-        Task<ZsAddons> GetAllAsync(string apiBaseUrl, string authToken, string organizationId);
+        Task<ZsAddons> GetAllAsync(ZsPage page = null);
+        Task<ZsAddons> GetAllAsync(string apiBaseUrl, string authToken, string organizationId, ZsPage page = null);
 
         Task<ZsAddon> CreateAsync(ZsAddonCreate createInput);
         Task<ZsAddon> CreateAsync(string apiBaseUrl, string authToken, string organizationId, ZsAddonCreate createInput);

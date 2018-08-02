@@ -1,4 +1,6 @@
-﻿namespace Teference.Zoho.Api
+﻿using System.Linq;
+
+namespace Teference.Zoho.Api
 {
     #region Namespace
 
@@ -12,54 +14,40 @@
     {
         #region Variable declaration
 
-        private readonly IDictionary<string, string> paramValueCollection = new Dictionary<string, string>();
+        private readonly IDictionary<string, string> parameters = new Dictionary<string, string>();
+
+        private readonly string baseUri;
 
         #endregion
-
+        
         #region Constructor
-
-        public QueryStringBuilder()
+        
+        public QueryStringBuilder(string baseUri)
         {
-            this.StartsWith = '?';
-            this.SeperatesWith = '&';
-            this.ParamValueJoinsWith = '=';
-        }
-
-        public QueryStringBuilder(string param, string value) : this()
-        {
-            this[param] = value;
+            this.baseUri = baseUri;
         }
 
         #endregion
 
         #region Properties
 
-        public char? StartsWith { get; set; }
-
-        public char SeperatesWith { get; set; }
-
-        public char ParamValueJoinsWith { get; set; }
-
         public string[] Keys
         {
-            get
-            {
-                var keyArray = new string[this.paramValueCollection.Keys.Count];
-                this.paramValueCollection.Keys.CopyTo(keyArray, 0);
-                return keyArray;
-            }
+            get { return this.parameters.Keys.ToArray(); }
         }
 
-        public string this[string param]
+        public string this[string paramName]
         {
             get
             {
-                return this.paramValueCollection.ContainsKey(param) ? this.paramValueCollection[param] : null;
+                return this.parameters.ContainsKey(paramName) 
+                     ? this.parameters[paramName] 
+                     : null;
             }
 
             set
             {
-                this.paramValueCollection[param] = value;
+                this.parameters[paramName] = value;
             }
         }
 
@@ -69,43 +57,28 @@
 
         public override string ToString()
         {
-            var tempQueryStringBuilder = new StringBuilder();
-            foreach (var paramValueItem in this.paramValueCollection)
-            {
-                //// Add start with character.
-                if ((tempQueryStringBuilder.Length == 0) && (null != this.StartsWith))
-                {
-                    tempQueryStringBuilder.Append(this.StartsWith);
-                }
-
-                //// Add query string parameter / value seperator.
-                if ((tempQueryStringBuilder.Length > 0) && (tempQueryStringBuilder[tempQueryStringBuilder.Length - 1] != this.StartsWith))
-                {
-                    tempQueryStringBuilder.Append(this.SeperatesWith);
-                }
-
-                //// Normal drill.
-                tempQueryStringBuilder.Append(paramValueItem.Key);
-                tempQueryStringBuilder.Append(this.ParamValueJoinsWith);
-                tempQueryStringBuilder.Append(Uri.EscapeDataString(paramValueItem.Value));
-            }
-
-            return tempQueryStringBuilder.ToString();
+            return this.AppendTo(this.baseUri);
         }
 
-        public bool ContainsParam(string paramName)
+        protected string AppendTo(string uri)
         {
-            return this.paramValueCollection.ContainsKey(paramName);
+            var query = this.parameters.Select(p => string.Format("{0}={1}", p.Key, Uri.EscapeDataString(p.Value)));
+            return uri + "?" + string.Join("&", query);
         }
 
-        public void Add(string param, string value)
+        public bool Contains(string paramName)
         {
-            this.paramValueCollection[param] = value;
+            return this.parameters.ContainsKey(paramName);
+        }
+
+        public void Add(string paramName, string value)
+        {
+            this.parameters[paramName] = value;
         }
 
         public void Remove(string paramName)
         {
-            this.paramValueCollection.Remove(paramName);
+            this.parameters.Remove(paramName);
         }
 
         #endregion

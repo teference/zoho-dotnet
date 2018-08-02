@@ -66,12 +66,12 @@
             }
         }
 
-        public async Task<ZsContactPersons> GetAllAsync(string customerId)
+        public async Task<ZsContactPersons> GetAllAsync(string customerId, ZsPage page = null)
         {
             this.client.Configuration.CheckConfig();
-            return await this.GetAllAsync(this.client.Configuration.ApiBaseUrl, this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, customerId);
+            return await this.GetAllAsync(this.client.Configuration.ApiBaseUrl, this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, customerId, page);
         }
-        public async Task<ZsContactPersons> GetAllAsync(string apiBaseUrl, string authToken, string organizationId, string customerId)
+        public async Task<ZsContactPersons> GetAllAsync(string apiBaseUrl, string authToken, string organizationId, string customerId, ZsPage page = null)
         {
             apiBaseUrl.CheckConfigApiBaseUrl();
             authToken.CheckConfigAuthToken();
@@ -80,7 +80,7 @@
             using (var httpClient = new HttpClient())
             {
                 httpClient.Configure(apiBaseUrl, organizationId, authToken);
-                var response = await httpClient.GetAsync(string.Format(CultureInfo.InvariantCulture, ApiResources.ZsGetContactPersonsAll, customerId));
+                var response = await httpClient.GetAsync(page.AppendTo(string.Format(CultureInfo.InvariantCulture, ApiResources.ZsGetContactPersonsAll, customerId)));
                 var processResult = await response.ProcessResponse<ZsContactPersons>();
                 if (null != processResult.Error)
                 {

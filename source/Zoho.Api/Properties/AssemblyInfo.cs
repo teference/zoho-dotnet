@@ -14,6 +14,7 @@
 
 using System.Reflection;
 using System.Resources;
+using System.Runtime.CompilerServices;
 
 #endregion
 
@@ -22,6 +23,6 @@ using System.Resources;
 [assembly: AssemblyCompany("Teference")]
 [assembly: AssemblyProduct("Zoho API C#.NET SDK")]
 [assembly: AssemblyCopyright("Copyright © Teference 2017")]
-[assembly: NeutralResourcesLanguage("en")]
 [assembly: AssemblyVersion("0.6.21")]
 [assembly: AssemblyFileVersion("0.6.21")]
+[assembly: InternalsVisibleTo("Zoho.UnitTests")]

@@ -62,12 +62,12 @@
             }
         }
 
-        public async Task<ZsInvoices> GetAllAsync()
+        public async Task<ZsInvoices> GetAllAsync(ZsPage page = null)
         {
             this.client.Configuration.CheckConfig();
-            return await this.GetAllAsync(this.client.Configuration.ApiBaseUrl, this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId);
+            return await this.GetAllAsync(this.client.Configuration.ApiBaseUrl, this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, page);
         }
-        public async Task<ZsInvoices> GetAllAsync(string apiBaseUrl, string authToken, string organizationId)
+        public async Task<ZsInvoices> GetAllAsync(string apiBaseUrl, string authToken, string organizationId, ZsPage page = null)
         {
             apiBaseUrl.CheckConfigApiBaseUrl();
             authToken.CheckConfigAuthToken();
@@ -76,7 +76,7 @@
             using (var httpClient = new HttpClient())
             {
                 httpClient.Configure(apiBaseUrl, organizationId, authToken);
-                var response = await httpClient.GetAsync(ApiResources.ZsGetInvoicesAll);
+                var response = await httpClient.GetAsync(page.AppendTo(ApiResources.ZsGetInvoicesAll));
                 var processResult = await response.ProcessResponse<ZsInvoices>();
                 if (null != processResult.Error)
                 {
@@ -87,12 +87,12 @@
             }
         }
 
-        public async Task<ZsInvoices> GetAllAsync(ZsInvoiceFilter filterType, string filterId)
+        public async Task<ZsInvoices> GetAllAsync(ZsInvoiceFilter filterType, string filterId, ZsPage page = null)
         {
             this.client.Configuration.CheckConfig();
-            return await this.GetAllAsync(this.client.Configuration.ApiBaseUrl, this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, filterType, filterId);
+            return await this.GetAllAsync(this.client.Configuration.ApiBaseUrl, this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, filterType, filterId, page);
         }
-        public async Task<ZsInvoices> GetAllAsync(string apiBaseUrl, string authToken, string organizationId, ZsInvoiceFilter filterType, string filterId)
+        public async Task<ZsInvoices> GetAllAsync(string apiBaseUrl, string authToken, string organizationId, ZsInvoiceFilter filterType, string filterId, ZsPage page = null)
         {
             apiBaseUrl.CheckConfigApiBaseUrl();
             authToken.CheckConfigAuthToken();
@@ -106,18 +106,19 @@
             using (var httpClient = new HttpClient())
             {
                 httpClient.Configure(apiBaseUrl, organizationId, authToken);
-                var requestUri = ApiResources.ZsGetInvoicesAll;
+                
+                var requestUri = new QueryStringBuilder(ApiResources.ZsGetInvoicesAll);
                 switch(filterType)
                 {
                     case ZsInvoiceFilter.CustomerId:
-                        requestUri = string.Format(CultureInfo.InvariantCulture, ApiResources.ZsGetInvoicesAllByCustomerId, filterId);
+                        requestUri.Add("customer_id", filterId);
                         break;
                     case ZsInvoiceFilter.SubscriptionId:
-                        requestUri = string.Format(CultureInfo.InvariantCulture, ApiResources.ZsGetInvoicesAllBySubscriptionId, filterId);
+                        requestUri.Add("subscription_id", filterId);
                         break;
                 }
 
-                var response = await httpClient.GetAsync(requestUri);
+                var response = await httpClient.GetAsync(page.AppendTo(requestUri).ToString());
                 var processResult = await response.ProcessResponse<ZsInvoices>();
                 if (null != processResult.Error)
                 {

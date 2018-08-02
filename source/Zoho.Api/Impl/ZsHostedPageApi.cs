@@ -36,7 +36,6 @@
             this.client.Configuration.CheckConfig();
             return await this.GetAsync(this.client.Configuration.ApiBaseUrl, this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, hostedPageId);
         }
-
         public async Task<ZsHostedPageDetail> GetAsync(string apiBaseUrl, string authToken, string organizationId, string hostedPageId)
         {
             apiBaseUrl.CheckConfigApiBaseUrl();
@@ -62,12 +61,12 @@
             }
         }
 
-        public async Task<ZsHostedPages> GetAllAsync()
+        public async Task<ZsHostedPages> GetAllAsync(ZsPage page = null)
         {
             this.client.Configuration.CheckConfig();
-            return await this.GetAllAsync(this.client.Configuration.ApiBaseUrl, this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId);
+            return await this.GetAllAsync(this.client.Configuration.ApiBaseUrl, this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, page);
         }
-        public async Task<ZsHostedPages> GetAllAsync(string apiBaseUrl, string authToken, string organizationId)
+        public async Task<ZsHostedPages> GetAllAsync(string apiBaseUrl, string authToken, string organizationId, ZsPage page = null)
         {
             apiBaseUrl.CheckConfigApiBaseUrl();
             authToken.CheckConfigAuthToken();
@@ -76,7 +75,7 @@
             using (var httpClient = new HttpClient())
             {
                 httpClient.Configure(apiBaseUrl, organizationId, authToken);
-                var response = await httpClient.GetAsync(ApiResources.ZsGetHostedPageAll);
+                var response = await httpClient.GetAsync(page.AppendTo(ApiResources.ZsGetHostedPageAll));
                 var processResult = await response.ProcessResponse<ZsHostedPages>();
                 if (null != processResult.Error)
                 {
@@ -130,7 +129,6 @@
             this.client.Configuration.CheckConfig();
             return await this.UpdateSubscriptionAsync(this.client.Configuration.ApiBaseUrl, this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, hostedPageUpdateSubscription);
         }
-
         public async Task<ZsHostedPage> UpdateSubscriptionAsync(string apiBaseUrl, string authToken, string organizationId, ZsHostedPageUpdateSubscriptionInput hostedPageUpdateSubscription)
         {
             apiBaseUrl.CheckConfigApiBaseUrl();

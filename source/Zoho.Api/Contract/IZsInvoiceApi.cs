@@ -12,11 +12,11 @@
         Task<ZsInvoice> GetAsync(string id);
         Task<ZsInvoice> GetAsync(string apiBaseUrl, string authToken, string organizationId, string id);
 
-        Task<ZsInvoices> GetAllAsync();
-        Task<ZsInvoices> GetAllAsync(string apiBaseUrl, string authToken, string organizationId);
+        Task<ZsInvoices> GetAllAsync(ZsPage page = null);
+        Task<ZsInvoices> GetAllAsync(string apiBaseUrl, string authToken, string organizationId, ZsPage page = null);
 
-        Task<ZsInvoices> GetAllAsync(ZsInvoiceFilter filterType, string filterId);
-        Task<ZsInvoices> GetAllAsync(string apiBaseUrl, string authToken, string organizationId, ZsInvoiceFilter filterType, string filterId);
+        Task<ZsInvoices> GetAllAsync(ZsInvoiceFilter filterType, string filterId, ZsPage page = null);
+        Task<ZsInvoices> GetAllAsync(string apiBaseUrl, string authToken, string organizationId, ZsInvoiceFilter filterType, string filterId, ZsPage page = null);
 
         Task<ZsInvoice> CollectCharge(string id, string cardId);
         Task<ZsInvoice> CollectCharge(string apiBaseUrl, string authToken, string organizationId, string id, string cardId);
