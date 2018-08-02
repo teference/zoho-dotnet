@@ -11,8 +11,8 @@
         Task<ZsCustomer> GetAsync(string id);
         Task<ZsCustomer> GetAsync(string apiBaseUrl, string authToken, string organizationId, string id);
 
-        Task<ZsCustomers> GetAllAsync(QueryStringBuilder queryStringBuilder = null);
-        Task<ZsCustomers> GetAllAsync(string apiBaseUrl, string authToken, string organizationId, QueryStringBuilder queryStringBuilder = null);
+        Task<ZsCustomers> GetAllAsync();
+        Task<ZsCustomers> GetAllAsync(string apiBaseUrl, string authToken, string organizationId);
 
         Task<ZsCustomer> CreateAsync(ZsCustomerInput createInput);
         Task<ZsCustomer> CreateAsync(string apiBaseUrl, string authToken, string organizationId, ZsCustomerInput createInput);

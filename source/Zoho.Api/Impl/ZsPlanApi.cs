@@ -105,10 +105,8 @@
             using (var httpClient = new HttpClient())
             {
                 httpClient.Configure(apiBaseUrl, organizationId, authToken);
-                var queryBuilder = new QueryStringBuilder();
-                queryBuilder.Add("product_id", productId);
-                var finalResourcePath = string.Format(CultureInfo.InvariantCulture, "{0}{1}", ApiResources.ZsGetPlansAll, queryBuilder.ToString());
-                var response = await httpClient.GetAsync(finalResourcePath);
+                var queryBuilder = new QueryStringBuilder("product_id", productId);
+                var response = await httpClient.GetAsync(queryBuilder.AppendTo(ApiResources.ZsGetPlansAll));
                 var processResult = await response.ProcessResponse<ZsPlans>();
                 if (null != processResult.Error)
                 {

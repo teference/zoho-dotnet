@@ -62,12 +62,12 @@
             }
         }
 
-        public async Task<ZsCustomers> GetAllAsync(QueryStringBuilder queryStringBuilder = null)
+        public async Task<ZsCustomers> GetAllAsync()
         {
             this.client.Configuration.CheckConfig();
-            return await this.GetAllAsync(this.client.Configuration.ApiBaseUrl, this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, queryStringBuilder);
+            return await this.GetAllAsync(this.client.Configuration.ApiBaseUrl, this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId);
         }
-        public async Task<ZsCustomers> GetAllAsync(string apiBaseUrl, string authToken, string organizationId, QueryStringBuilder queryStringBuilder = null)
+        public async Task<ZsCustomers> GetAllAsync(string apiBaseUrl, string authToken, string organizationId)
         {
             apiBaseUrl.CheckConfigApiBaseUrl();
             authToken.CheckConfigAuthToken();
@@ -76,7 +76,7 @@
             using (var httpClient = new HttpClient())
             {
                 httpClient.Configure(apiBaseUrl, organizationId, authToken);
-                var response = await httpClient.GetAsync(string.Format(CultureInfo.InvariantCulture, "{0}{1}", ApiResources.ZsGetCustomersAll, null == queryStringBuilder ? string.Empty : queryStringBuilder.ToString()));
+                var response = await httpClient.GetAsync(string.Format(CultureInfo.InvariantCulture, ApiResources.ZsGetCustomersAll));
                 var processResult = await response.ProcessResponse<ZsCustomers>();
                 if (null != processResult.Error)
                 {
