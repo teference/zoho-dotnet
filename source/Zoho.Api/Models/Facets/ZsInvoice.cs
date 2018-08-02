@@ -17,7 +17,31 @@
         public string Number { get; set; }
 
         [JsonProperty("status")]
-        public string Status { get; set; }
+        internal string StatusRaw { get; set; }
+
+        [JsonIgnore]
+        public ZsInvoiceStatus Status
+        {
+            get
+            {
+                switch (this.StatusRaw)
+                {
+                    case "paid":
+                        return ZsInvoiceStatus.Paid;
+                    case "sent":
+                        return ZsInvoiceStatus.Sent;
+                    case "overdue":
+                        return ZsInvoiceStatus.Overdue;
+                    case "partially_paid":
+                        return ZsInvoiceStatus.PartiallyPaid;
+                    case "void":
+                        return ZsInvoiceStatus.Void;
+                    case "pending":
+                    default:
+                        return ZsInvoiceStatus.Pending;
+                }
+            }
+        }
 
         [JsonProperty("invoice_date")]
         public DateTime InvoiceDate { get; set; }

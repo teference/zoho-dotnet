@@ -100,6 +100,7 @@
     <Compile Include="Models\Enums\ZsAddonType.cs" />
     <Compile Include="Models\Enums\ZsInvoiceFilter.cs" />
     <Compile Include="Models\Enums\ZsPaymentGateway.cs" />
+    <Compile Include="Models\Enums\ZsInvoiceStatus.cs" />
     <Compile Include="Models\Enums\ZsStatus.cs" />
     <Compile Include="Models\Enums\ZsSubscriptionFilter.cs" />
     <Compile Include="Models\Facets\ZsAddon.cs" />
