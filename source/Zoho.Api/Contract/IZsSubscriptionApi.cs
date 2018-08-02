@@ -13,10 +13,10 @@
         Task<ZsSubscription> GetAsync(string id);
         Task<ZsSubscription> GetAsync(string apiBaseUrl, string authToken, string organizationId, string id);
 
-        Task<ZsSubscriptions> GetAllAsync();
-        Task<ZsSubscriptions> GetAllAsync(string apiBaseUrl, string authToken, string organizationId);
-        Task<ZsSubscriptions> GetAllAsync(ZsSubscriptionFilter filterType, string filterId);
-        Task<ZsSubscriptions> GetAllAsync(string apiBaseUrl, string authToken, string organizationId, ZsSubscriptionFilter filterType, string filterId);
+        Task<ZsSubscriptions> GetAllAsync(ZsPage page = null);
+        Task<ZsSubscriptions> GetAllAsync(string apiBaseUrl, string authToken, string organizationId, ZsPage page = null);
+        Task<ZsSubscriptions> GetAllAsync(ZsSubscriptionFilter filterType, string filterId, ZsPage page = null);
+        Task<ZsSubscriptions> GetAllAsync(string apiBaseUrl, string authToken, string organizationId, ZsSubscriptionFilter filterType, string filterId, ZsPage page = null);
 
         Task<ZsSubscription> CreateAsync(ZsSubscriptionCreate createInput);
         Task<ZsSubscription> CreateAsync(string apiBaseUrl, string authToken, string organizationId, ZsSubscriptionCreate createInput);

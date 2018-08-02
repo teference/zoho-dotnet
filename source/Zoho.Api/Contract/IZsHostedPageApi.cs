@@ -11,8 +11,8 @@
         Task<ZsHostedPageDetail> GetAsync(string hostedPageId);
         Task<ZsHostedPageDetail> GetAsync(string apiBaseUrl, string authToken, string organizationId, string hostedPageId);
 
-        Task<ZsHostedPages> GetAllAsync();
-        Task<ZsHostedPages> GetAllAsync(string apiBaseUrl, string authToken, string organizationId);
+        Task<ZsHostedPages> GetAllAsync(ZsPage page = null);
+        Task<ZsHostedPages> GetAllAsync(string apiBaseUrl, string authToken, string organizationId, ZsPage page = null);
 
         Task<ZsHostedPage> CreateSubscriptionAsync(ZsHostedPageCreateSubscriptionInput hostedPageCreateSubscription);
         Task<ZsHostedPage> CreateSubscriptionAsync(string apiBaseUrl, string authToken, string organizationId, ZsHostedPageCreateSubscriptionInput hostedPageCreateSubscription);

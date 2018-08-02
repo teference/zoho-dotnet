@@ -61,12 +61,12 @@
             }
         }
 
-        public async Task<ZsAddons> GetAllAsync()
+        public async Task<ZsAddons> GetAllAsync(ZsPage page = null)
         {
             this.client.Configuration.CheckConfig();
-            return await this.GetAllAsync(this.client.Configuration.ApiBaseUrl, this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId);
+            return await this.GetAllAsync(this.client.Configuration.ApiBaseUrl, this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, page);
         }
-        public async Task<ZsAddons> GetAllAsync(string apiBaseUrl, string authToken, string organizationId)
+        public async Task<ZsAddons> GetAllAsync(string apiBaseUrl, string authToken, string organizationId, ZsPage page = null)
         {
             apiBaseUrl.CheckConfigApiBaseUrl();
             authToken.CheckConfigAuthToken();
@@ -75,7 +75,7 @@
             using (var httpClient = new HttpClient())
             {
                 httpClient.Configure(apiBaseUrl, organizationId, authToken);
-                var response = await httpClient.GetAsync(ApiResources.ZsGetAddonsAll);
+                var response = await httpClient.GetAsync(page.AppendTo(ApiResources.ZsGetAddonsAll));
                 var processResult = await response.ProcessResponse<ZsAddons>();
                 if (null != processResult.Error)
                 {
@@ -213,7 +213,6 @@
             this.client.Configuration.CheckConfig();
             return await this.ActivateAsync(this.client.Configuration.ApiBaseUrl, this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, code);
         }
-
         public async Task<bool> ActivateAsync(string apiBaseUrl, string authToken, string organizationId, string code)
         {
             apiBaseUrl.CheckConfigApiBaseUrl();
@@ -244,7 +243,6 @@
             this.client.Configuration.CheckConfig();
             return await this.DeactivateAsync(this.client.Configuration.ApiBaseUrl, this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, code);
         }
-
         public async Task<bool> DeactivateAsync(string apiBaseUrl, string authToken, string organizationId, string code)
         {
             apiBaseUrl.CheckConfigApiBaseUrl();

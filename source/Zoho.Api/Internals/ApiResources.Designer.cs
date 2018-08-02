@@ -277,24 +277,6 @@ namespace Teference.Zoho.Api.Internals {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to invoices?customer_id={0}.
-        /// </summary>
-        internal static string ZsGetInvoicesAllByCustomerId {
-            get {
-                return ResourceManager.GetString("ZsGetInvoicesAllByCustomerId", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to invoices?subscription_id={0}.
-        /// </summary>
-        internal static string ZsGetInvoicesAllBySubscriptionId {
-            get {
-                return ResourceManager.GetString("ZsGetInvoicesAllBySubscriptionId", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to plans/{0}.
         /// </summary>
         internal static string ZsGetPlan {
@@ -345,15 +327,6 @@ namespace Teference.Zoho.Api.Internals {
         internal static string ZsGetSubscriptionsAll {
             get {
                 return ResourceManager.GetString("ZsGetSubscriptionsAll", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to subscriptions?customer_id={0}.
-        /// </summary>
-        internal static string ZsGetSubscriptionsAllByCustomerId {
-            get {
-                return ResourceManager.GetString("ZsGetSubscriptionsAllByCustomerId", resourceCulture);
             }
         }
         
@@ -502,7 +475,7 @@ namespace Teference.Zoho.Api.Internals {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to invoices/{invoice_id}/void.
+        ///   Looks up a localized string similar to invoices/{0}/void.
         /// </summary>
         internal static string ZsPostInvoiceConvertToVoid {
             get {
@@ -741,15 +714,6 @@ namespace Teference.Zoho.Api.Internals {
         internal static string ZsPutSubscription {
             get {
                 return ResourceManager.GetString("ZsPutSubscription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to https://subscriptions.zoho.com/api/v1/.
-        /// </summary>
-        internal static string ZsRootEndpoint {
-            get {
-                return ResourceManager.GetString("ZsRootEndpoint", resourceCulture);
             }
         }
     }

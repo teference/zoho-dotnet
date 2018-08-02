@@ -16,17 +16,15 @@ namespace Teference.Zoho.Api
 
         private readonly IDictionary<string, string> parameters = new Dictionary<string, string>();
 
+        private readonly string baseUri;
+
         #endregion
         
         #region Constructor
         
-        public QueryStringBuilder()
+        public QueryStringBuilder(string baseUri)
         {
-        }
-
-        public QueryStringBuilder(string param, string value)
-        {
-            this[param] = value;
+            this.baseUri = baseUri;
         }
 
         #endregion
@@ -56,8 +54,13 @@ namespace Teference.Zoho.Api
         #endregion
 
         #region Methods
-        
-        public string AppendTo(string uri)
+
+        public override string ToString()
+        {
+            return this.AppendTo(this.baseUri);
+        }
+
+        protected string AppendTo(string uri)
         {
             var query = this.parameters.Select(p => string.Format("{0}={1}", p.Key, Uri.EscapeDataString(p.Value)));
             return uri + "?" + string.Join("&", query);

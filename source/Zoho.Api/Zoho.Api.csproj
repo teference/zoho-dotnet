@@ -52,6 +52,7 @@
     <Compile Include="Contract\IZsProductApi.cs" />
     <Compile Include="Contract\IZsSubscriptionApi.cs" />
     <Compile Include="Contract\IZsHostedPageApi.cs" />
+    <Compile Include="Contract\ZsPage.cs" />
     <Compile Include="Impl\ZsContactPersonApi.cs" />
     <Compile Include="Impl\ZsCardApi.cs" />
     <Compile Include="Impl\SubscriptionApi.cs" />
@@ -81,6 +82,7 @@
     <Compile Include="Internals\ZsHostedPageJson.cs" />
     <Compile Include="Internals\ZsInvoiceCollectChargeJson.cs" />
     <Compile Include="Internals\ZsInvoiceJson.cs" />
+    <Compile Include="Internals\ZsPageExtensions.cs" />
     <Compile Include="Internals\ZsPlanJson.cs" />
     <Compile Include="Internals\ZsProductJson.cs" />
     <Compile Include="Internals\ZsSubscriptionBuyOnetimeAddonJson.cs" />

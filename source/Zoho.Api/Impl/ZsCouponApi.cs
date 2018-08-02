@@ -62,12 +62,12 @@
             }
         }
 
-        public async Task<ZsCoupons> GetAllAsync()
+        public async Task<ZsCoupons> GetAllAsync(ZsPage page = null)
         {
             this.client.Configuration.CheckConfig();
-            return await this.GetAllAsync(this.client.Configuration.ApiBaseUrl, this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId);
+            return await this.GetAllAsync(this.client.Configuration.ApiBaseUrl, this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, page);
         }
-        public async Task<ZsCoupons> GetAllAsync(string apiBaseUrl, string authToken, string organizationId)
+        public async Task<ZsCoupons> GetAllAsync(string apiBaseUrl, string authToken, string organizationId, ZsPage page = null)
         {
             apiBaseUrl.CheckConfigApiBaseUrl();
             authToken.CheckConfigAuthToken();
@@ -76,7 +76,7 @@
             using (var httpClient = new HttpClient())
             {
                 httpClient.Configure(apiBaseUrl, organizationId, authToken);
-                var response = await httpClient.GetAsync(ApiResources.ZsGetCouponsAll);
+                var response = await httpClient.GetAsync(page.AppendTo(ApiResources.ZsGetCouponsAll));
                 var processResult = await response.ProcessResponse<ZsCoupons>();
                 if (null != processResult.Error)
                 {

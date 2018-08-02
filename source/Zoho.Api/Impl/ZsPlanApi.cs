@@ -61,12 +61,12 @@
             }
         }
 
-        public async Task<ZsPlans> GetAllAsync()
+        public async Task<ZsPlans> GetAllAsync(ZsPage page = null)
         {
             this.client.Configuration.CheckConfig();
-            return await this.GetAllAsync(this.client.Configuration.ApiBaseUrl, this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId);
+            return await this.GetAllAsync(this.client.Configuration.ApiBaseUrl, this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, page);
         }
-        public async Task<ZsPlans> GetAllAsync(string apiBaseUrl, string authToken, string organizationId)
+        public async Task<ZsPlans> GetAllAsync(string apiBaseUrl, string authToken, string organizationId, ZsPage page = null)
         {
             apiBaseUrl.CheckConfigApiBaseUrl();
             authToken.CheckConfigAuthToken();
@@ -75,7 +75,7 @@
             using (var httpClient = new HttpClient())
             {
                 httpClient.Configure(apiBaseUrl, organizationId, authToken);
-                var response = await httpClient.GetAsync(ApiResources.ZsGetPlansAll);
+                var response = await httpClient.GetAsync(page.AppendTo(ApiResources.ZsGetPlansAll));
                 var processResult = await response.ProcessResponse<ZsPlans>();
                 if (null != processResult.Error)
                 {
@@ -86,12 +86,12 @@
             }
         }
 
-        public async Task<ZsPlans> GetAllAsync(string productId)
+        public async Task<ZsPlans> GetAllAsync(string productId, ZsPage page = null)
         {
             this.client.Configuration.CheckConfig();
-            return await this.GetAllAsync(this.client.Configuration.ApiBaseUrl, this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, productId);
+            return await this.GetAllAsync(this.client.Configuration.ApiBaseUrl, this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, productId, page);
         }
-        public async Task<ZsPlans> GetAllAsync(string apiBaseUrl, string authToken, string organizationId, string productId)
+        public async Task<ZsPlans> GetAllAsync(string apiBaseUrl, string authToken, string organizationId, string productId, ZsPage page = null)
         {
             apiBaseUrl.CheckConfigApiBaseUrl();
             authToken.CheckConfigAuthToken();
@@ -105,8 +105,11 @@
             using (var httpClient = new HttpClient())
             {
                 httpClient.Configure(apiBaseUrl, organizationId, authToken);
-                var queryBuilder = new QueryStringBuilder("product_id", productId);
-                var response = await httpClient.GetAsync(queryBuilder.AppendTo(ApiResources.ZsGetPlansAll));
+                
+                var requestUri = new QueryStringBuilder(ApiResources.ZsGetPlansAll);
+                requestUri.Add("product_id", productId);
+                
+                var response = await httpClient.GetAsync(page.AppendTo(requestUri).ToString());
                 var processResult = await response.ProcessResponse<ZsPlans>();
                 if (null != processResult.Error)
                 {
@@ -244,7 +247,6 @@
             this.client.Configuration.CheckConfig();
             return await this.ActivateAsync(this.client.Configuration.ApiBaseUrl, this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, code);
         }
-
         public async Task<bool> ActivateAsync(string apiBaseUrl, string authToken, string organizationId, string code)
         {
             apiBaseUrl.CheckConfigApiBaseUrl();
@@ -275,7 +277,6 @@
             this.client.Configuration.CheckConfig();
             return await this.DeactivateAsync(this.client.Configuration.ApiBaseUrl, this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, code);
         }
-
         public async Task<bool> DeactivateAsync(string apiBaseUrl, string authToken, string organizationId, string code)
         {
             apiBaseUrl.CheckConfigApiBaseUrl();

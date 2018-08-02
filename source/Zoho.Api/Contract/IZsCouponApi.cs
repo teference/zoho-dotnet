@@ -11,8 +11,8 @@
         Task<ZsCoupon> GetAsync(string code);
         Task<ZsCoupon> GetAsync(string apiBaseUrl, string authToken, string organizationId, string code);
 
-        Task<ZsCoupons> GetAllAsync();
-        Task<ZsCoupons> GetAllAsync(string apiBaseUrl, string authToken, string organizationId);
+        Task<ZsCoupons> GetAllAsync(ZsPage page = null);
+        Task<ZsCoupons> GetAllAsync(string apiBaseUrl, string authToken, string organizationId, ZsPage page = null);
 
         Task<ZsCoupon> CreateAsync(ZsCouponCreate createInput);
         Task<ZsCoupon> CreateAsync(string apiBaseUrl, string authToken, string organizationId, ZsCouponCreate createInput);

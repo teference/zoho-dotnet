@@ -14,6 +14,7 @@
 
 using System.Reflection;
 using System.Resources;
+using System.Runtime.CompilerServices;
 
 #endregion
 
@@ -25,3 +26,4 @@ using System.Resources;
 [assembly: NeutralResourcesLanguage("en")]
 [assembly: AssemblyVersion("0.6.20")]
 [assembly: AssemblyFileVersion("0.6.20")]
+[assembly: InternalsVisibleTo("Zoho.UnitTests")]
