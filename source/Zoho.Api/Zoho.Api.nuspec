@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Zoho.Api</id>
-    <version>0.6.21</version>
+    <version>0.6.22</version>
     <title>Zoho API</title>
     <authors>Jaspalsinh Chauhan</authors>
     <owners>Jaspalsinh Chauhan</owners>
@@ -12,8 +12,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Use Zoho API C#.NET SDK to access Zoho API</description>
     <releaseNotes>
-      Added Subscription method for "Buy Onetime Addon API"
-      https://www.zoho.com/subscriptions/api/v1/?src=subscriptions-webapp#Subscriptions_Buy_one-time_addon
+      Added missing property - ZsSubscriptionUpdate > ZsSubscriptionUpdateAddon > AddonDescription (addon_description) | PR Merge: kruijs-pixelconcept PR13
     </releaseNotes>
     <copyright>Copyright (c) 2018 Teference</copyright>
     <tags>zoho, zoho subscription, zoho api, api, zoho subscription api, zoho subscription webhook</tags>
