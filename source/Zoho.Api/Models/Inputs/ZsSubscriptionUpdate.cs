@@ -85,6 +85,9 @@
         [JsonProperty("addon_code")]
         public string AddonCode { get; set; }
 
+        [JsonProperty("addon_description")]
+        public string AddonDescription { get; set; }
+
         [JsonProperty(PropertyName = "price", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public double Price { get; set; }
 
