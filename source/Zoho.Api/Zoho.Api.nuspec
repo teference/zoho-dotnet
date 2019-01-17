@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Zoho.Api</id>
-    <version>0.6.22</version>
+    <version>0.6.23</version>
     <title>Zoho API</title>
     <authors>Jaspalsinh Chauhan</authors>
     <owners>Jaspalsinh Chauhan</owners>
@@ -12,9 +12,9 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Use Zoho API C#.NET SDK to access Zoho API</description>
     <releaseNotes>
-      Added missing property - ZsSubscriptionUpdate > ZsSubscriptionUpdateAddon > AddonDescription (addon_description) | PR Merge: kruijs-pixelconcept PR13
+      PR Merge: kruijs-pixelconcept PR14 - Added missing endpoint for settings/taxes | PR Merge: kruijs-pixelconcept PR15 - Added missing member on request model for buy one time add-on on subscription service
     </releaseNotes>
-    <copyright>Copyright (c) 2018 Teference</copyright>
+    <copyright>Copyright (c) 2019 Teference</copyright>
     <tags>zoho, zoho subscription, zoho api, api, zoho subscription api, zoho subscription webhook</tags>
     <dependencies>
       <dependency id="Microsoft.Bcl.Async"
