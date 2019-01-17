@@ -352,12 +352,12 @@
             }
         }
         
-        public async Task<ZsInvoice> BuyOnetimeAddon(string id, string addon_code, int quantity, double price, string tax_id)
+        public async Task<ZsInvoice> BuyOnetimeAddon(string id, string addon_code, int quantity, double price, string tax_id, string addon_description)
         {
             this.client.Configuration.CheckConfig();
-            return await this.BuyOnetimeAddon(this.client.Configuration.ApiBaseUrl, this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, id, addon_code, quantity, price, tax_id);
+            return await this.BuyOnetimeAddon(this.client.Configuration.ApiBaseUrl, this.client.Configuration.AuthToken, this.client.Configuration.OrganizationId, id, addon_code, quantity, price, tax_id, addon_description);
         }
-        public async Task<ZsInvoice> BuyOnetimeAddon(string apiBaseUrl, string authToken, string organizationId, string id, string addon_code, int quantity, double price, string tax_id)
+        public async Task<ZsInvoice> BuyOnetimeAddon(string apiBaseUrl, string authToken, string organizationId, string id, string addon_code, int quantity, double price, string tax_id, string addon_description)
         {
             apiBaseUrl.CheckConfigApiBaseUrl();
             authToken.CheckConfigAuthToken();
@@ -378,7 +378,7 @@
                 throw new ArgumentNullException("addon_code");
             }
 
-            var subscriptionAddAddonJson = new ZsSubscriptionBuyOnetimeAddonJson { AddonCode = addon_code, Quantity = quantity, Price = price, TaxId = tax_id };
+            var subscriptionAddAddonJson = new ZsSubscriptionBuyOnetimeAddonJson { AddonCode = addon_code, Quantity = quantity, Price = price, TaxId = tax_id, AddonDescription = addon_description};
             using (var httpClient = new HttpClient())
             {
                 httpClient.Configure(apiBaseUrl, organizationId, authToken);
