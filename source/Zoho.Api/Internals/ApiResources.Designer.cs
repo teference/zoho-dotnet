@@ -331,6 +331,15 @@ namespace Teference.Zoho.Api.Internals {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to settings/taxes.
+        /// </summary>
+        internal static string ZsGetTaxes {
+            get {
+                return ResourceManager.GetString("ZsGetTaxes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to addons.
         /// </summary>
         internal static string ZsPostAddon {
