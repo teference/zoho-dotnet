@@ -51,5 +51,10 @@
         /// Provides contract(s) API methods for zoho subscription - invoice API fragment.
         /// </summary>
         IZsInvoiceApi Invoices { get; }
+
+        /// <summary>
+        /// Provides contract(s) API methods for zoho subscription - settings API fragment.
+        /// </summary>
+        IZsSettingsApi Settings { get; }
     }
 }

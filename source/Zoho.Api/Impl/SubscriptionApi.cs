@@ -23,6 +23,7 @@
             this.Subscriptions = new ZsSubscriptionApi(this.zohoClient);
             this.HostedPage = new ZsHostedPageApi(this.zohoClient);
             this.Invoices = new ZsInvoiceApi(this.zohoClient);
+            this.Settings = new ZsSettingsApi(this.zohoClient);
         }
 
         #endregion
@@ -39,6 +40,7 @@
         public IZsSubscriptionApi Subscriptions { get; private set; }
         public IZsHostedPageApi HostedPage { get; private set; }
         public IZsInvoiceApi Invoices { get; private set; }
+        public IZsSettingsApi Settings { get; private set; }
 
         #endregion
     }

@@ -207,6 +207,9 @@
   <data name="ZsGetSubscriptionsAll" xml:space="preserve">
     <value>subscriptions</value>
   </data>
+  <data name="ZsGetTaxes" xml:space="preserve">
+    <value>settings/taxes</value>
+  </data>
   <data name="ZsPostAddon" xml:space="preserve">
     <value>addons</value>
   </data>

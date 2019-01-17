@@ -47,6 +47,7 @@
     <Compile Include="Contract\IZsAddonApi.cs" />
     <Compile Include="Contract\IZsCouponApi.cs" />
     <Compile Include="Contract\IZsCustomerApi.cs" />
+    <Compile Include="Contract\IZsSettingsApi.cs" />
     <Compile Include="Contract\IZsInvoiceApi.cs" />
     <Compile Include="Contract\IZsPlanApi.cs" />
     <Compile Include="Contract\IZsProductApi.cs" />
@@ -60,6 +61,7 @@
     <Compile Include="Impl\ZsCouponApi.cs" />
     <Compile Include="Impl\ZsCustomerApi.cs" />
     <Compile Include="Impl\ZsHostedPageApi.cs" />
+    <Compile Include="Impl\ZsSettingsApi.cs" />
     <Compile Include="Impl\ZsInvoiceApi.cs" />
     <Compile Include="Impl\ZsPlanApi.cs" />
     <Compile Include="Impl\ZsProductApi.cs" />
@@ -119,7 +121,9 @@
     <Compile Include="Models\Facets\ZsHostedPageData.cs" />
     <Compile Include="Models\Facets\ZsHostedPageDetail.cs" />
     <Compile Include="Models\Facets\ZsHostedPages.cs" />
+    <Compile Include="Models\Facets\ZsTax.cs" />
     <Compile Include="Models\Facets\ZsInvoice.cs" />
+    <Compile Include="Models\Facets\ZsTaxes.cs" />
     <Compile Include="Models\Facets\ZsInvoices.cs" />
     <Compile Include="Models\Facets\ZsPlanAddon.cs" />
     <Compile Include="Models\Facets\ZsPriceBracket.cs" />
