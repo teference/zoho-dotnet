@@ -6,18 +6,19 @@
     <LangVersion>latest</LangVersion>
     <RootNamespace>Teference.Zoho.Api</RootNamespace>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Zoho.Api.xml</DocumentationFile>
-    <Version>0.6.23</Version>
+    <Version>0.6.24</Version>
     <Copyright>Copyright ©  2019</Copyright>
     <Authors>Jaspalsinh Chauhan</Authors>
-    <PackageLicenseUrl>https://raw.githubusercontent.com/teference/zoho-dotnet/master/LICENSE</PackageLicenseUrl>
+    <PackageLicense>https://raw.githubusercontent.com/teference/zoho-dotnet/master/LICENSE</PackageLicense>
     <PackageProjectUrl>https://github.com/teference/zoho-dotnet</PackageProjectUrl>
     <PackageIconUrl>https://raw.githubusercontent.com/teference/zoho-dotnet/master/zoho-logo.png</PackageIconUrl>
     <Description>Use Zoho API C#.NET SDK to access Zoho API</Description>
-    <PackageReleaseNotes>PR Merge: kruijs-pixelconcept PR14 - Added missing endpoint for settings/taxes
-PR Merge: kruijs-pixelconcept PR15 - Added missing member on request model for buy one time add-on on subscription service
+    <PackageReleaseNotes>PR Merge: kimbirkelund PR16 - Migrate project to DotNet Standard library
 </PackageReleaseNotes>
     <PackageTags>zoho, zoho subscription, zoho api, api, zoho subscription api, zoho subscription webhook</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <AssemblyVersion>0.6.24.0</AssemblyVersion>
+    <FileVersion>0.6.24.0</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

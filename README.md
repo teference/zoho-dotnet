@@ -10,7 +10,7 @@ Zoho API C#.NET SDK
 #### <a name="latest-release"></a>Latest NuGet Release:
 This library can be used from NuGet channel:
 
-* [Zoho API Package](https://www.nuget.org/packages/Zoho.Api/) - Version 0.6.23: `Install-Package Zoho.Api`
+* [Zoho API Package](https://www.nuget.org/packages/Zoho.Api/) - Version 0.6.24: `Install-Package Zoho.Api`
 
 **Please note:** This source and nuget are a work-in-progress state, few or many API methods / calls might be missing.
 
@@ -53,7 +53,7 @@ You can find all possible ways to connect with me at my [blog](http://blog.jsinh
 This work is [licensed](https://raw.githubusercontent.com/teference/zoho-dotnet/master/LICENSE) under:
 
 The MIT License (MIT)
-Copyright (c) 2016 Teference
+Copyright (c) 2019 Teference
 
 #### Lazy Notes (Internal):
 
