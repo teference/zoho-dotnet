@@ -10,19 +10,6 @@
 // ************************************************************************************
 #endregion
 
-#region Namespace
-
-using System.Reflection;
-using System.Resources;
 using System.Runtime.CompilerServices;
 
-#endregion
-
-[assembly: AssemblyTitle("Zoho.Api")]
-[assembly: AssemblyDescription("Zoho Rest API - .NET SDK")]
-[assembly: AssemblyCompany("Teference")]
-[assembly: AssemblyProduct("Zoho API C#.NET SDK")]
-[assembly: AssemblyCopyright("Copyright © Teference 2019")]
-[assembly: AssemblyVersion("0.6.23")]
-[assembly: AssemblyFileVersion("0.6.23")]
 [assembly: InternalsVisibleTo("Zoho.UnitTests")]

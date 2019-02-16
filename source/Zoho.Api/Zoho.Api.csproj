@@ -1,232 +1,45 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{04FBD287-9BFD-4441-A54D-B38296500154}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
     <RootNamespace>Teference.Zoho.Api</RootNamespace>
-    <AssemblyName>Zoho.Api</AssemblyName>
-    <DefaultLanguage>en-US</DefaultLanguage>
-    <FileAlignment>512</FileAlignment>
-    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <TargetFrameworkProfile>Profile328</TargetFrameworkProfile>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Zoho.Api.xml</DocumentationFile>
+    <Version>0.6.23</Version>
+    <Copyright>Copyright ©  2019</Copyright>
+    <Authors>Jaspalsinh Chauhan</Authors>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/teference/zoho-dotnet/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/teference/zoho-dotnet</PackageProjectUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/teference/zoho-dotnet/master/zoho-logo.png</PackageIconUrl>
+    <Description>Use Zoho API C#.NET SDK to access Zoho API</Description>
+    <PackageReleaseNotes>PR Merge: kruijs-pixelconcept PR14 - Added missing endpoint for settings/taxes
+PR Merge: kruijs-pixelconcept PR15 - Added missing member on request model for buy one time add-on on subscription service
+</PackageReleaseNotes>
+    <PackageTags>zoho, zoho subscription, zoho api, api, zoho subscription api, zoho subscription webhook</PackageTags>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\Zoho.Api.xml</DocumentationFile>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\Zoho.Api.xml</DocumentationFile>
-  </PropertyGroup>
+
   <ItemGroup>
-    <!-- A reference to the entire .NET Framework is automatically included -->
+    <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
   </ItemGroup>
+
   <ItemGroup>
-    <Compile Include="Contract\IZsContactPersonApi.cs" />
-    <Compile Include="Contract\IZsCardApi.cs" />
-    <Compile Include="Contract\ISubscriptionApi.cs" />
-    <Compile Include="Contract\IZsAddonApi.cs" />
-    <Compile Include="Contract\IZsCouponApi.cs" />
-    <Compile Include="Contract\IZsCustomerApi.cs" />
-    <Compile Include="Contract\IZsSettingsApi.cs" />
-    <Compile Include="Contract\IZsInvoiceApi.cs" />
-    <Compile Include="Contract\IZsPlanApi.cs" />
-    <Compile Include="Contract\IZsProductApi.cs" />
-    <Compile Include="Contract\IZsSubscriptionApi.cs" />
-    <Compile Include="Contract\IZsHostedPageApi.cs" />
-    <Compile Include="Contract\ZsPage.cs" />
-    <Compile Include="Impl\ZsContactPersonApi.cs" />
-    <Compile Include="Impl\ZsCardApi.cs" />
-    <Compile Include="Impl\SubscriptionApi.cs" />
-    <Compile Include="Impl\ZsAddonApi.cs" />
-    <Compile Include="Impl\ZsCouponApi.cs" />
-    <Compile Include="Impl\ZsCustomerApi.cs" />
-    <Compile Include="Impl\ZsHostedPageApi.cs" />
-    <Compile Include="Impl\ZsSettingsApi.cs" />
-    <Compile Include="Impl\ZsInvoiceApi.cs" />
-    <Compile Include="Impl\ZsPlanApi.cs" />
-    <Compile Include="Impl\ZsProductApi.cs" />
-    <Compile Include="Impl\ZsSubscriptionApi.cs" />
-    <Compile Include="Internals\ApiResources.Designer.cs">
-      <AutoGen>True</AutoGen>
+    <Compile Update="Internals\ApiResources.Designer.cs">
       <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
       <DependentUpon>ApiResources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Internals\InternalExtensions.cs" />
-    <Compile Include="Internals\ProcessEntity.cs" />
-    <Compile Include="Internals\QueryStringBuilder.cs" />
-    <Compile Include="Internals\ZsAddonJson.cs" />
-    <Compile Include="Internals\ZsAddonPlanCodeJson.cs" />
-    <Compile Include="Internals\ZsCardJson.cs" />
-    <Compile Include="Internals\ZsContactPersonJson.cs" />
-    <Compile Include="Internals\ZsCouponJson.cs" />
-    <Compile Include="Internals\ZsCustomerJson.cs" />
-    <Compile Include="Internals\ZsErrorJson.cs" />
-    <Compile Include="Internals\ZsHostedPageJson.cs" />
-    <Compile Include="Internals\ZsInvoiceCollectChargeJson.cs" />
-    <Compile Include="Internals\ZsInvoiceJson.cs" />
-    <Compile Include="Internals\ZsPageExtensions.cs" />
-    <Compile Include="Internals\ZsPlanJson.cs" />
-    <Compile Include="Internals\ZsProductJson.cs" />
-    <Compile Include="Internals\ZsSubscriptionBuyOnetimeAddonJson.cs" />
-    <Compile Include="Internals\ZsSubscriptionAddChargeJson.cs" />
-    <Compile Include="Internals\ZsSubscriptionAddContactJson.cs" />
-    <Compile Include="Internals\ZsSubscriptionAddNoteJson.cs" />
-    <Compile Include="Internals\ZsSubscriptionAutoCollectJson.cs" />
-    <Compile Include="Internals\ZsSubscriptionJson.cs" />
-    <Compile Include="Internals\ZsSubscriptionNoteJson.cs" />
-    <Compile Include="Internals\ZsSubscriptionPostponeRenewalJson.cs" />
-    <Compile Include="Models\Enums\ZsCouponApplyTo.cs" />
-    <Compile Include="Models\Enums\ZsCouponDiscountBy.cs" />
-    <Compile Include="Models\Enums\ZsCouponStatus.cs" />
-    <Compile Include="Models\Enums\ZsCouponType.cs" />
-    <Compile Include="Models\Enums\ZsIntervalUnit.cs" />
-    <Compile Include="Models\Enums\ZsAddonPricingScheme.cs" />
-    <Compile Include="Models\Enums\ZsAddonType.cs" />
-    <Compile Include="Models\Enums\ZsInvoiceFilter.cs" />
-    <Compile Include="Models\Enums\ZsPaymentGateway.cs" />
-    <Compile Include="Models\Enums\ZsInvoiceStatus.cs" />
-    <Compile Include="Models\Enums\ZsStatus.cs" />
-    <Compile Include="Models\Enums\ZsSubscriptionFilter.cs" />
-    <Compile Include="Models\Facets\ZsAddon.cs" />
-    <Compile Include="Models\Facets\ZsCard.cs" />
-    <Compile Include="Models\Facets\ZsContactPerson.cs" />
-    <Compile Include="Models\Facets\ZsContactPersons.cs" />
-    <Compile Include="Models\Facets\ZsCoupon.cs" />
-    <Compile Include="Models\Facets\ZsCoupons.cs" />
-    <Compile Include="Models\Facets\ZsCustomer.cs" />
-    <Compile Include="Models\Facets\ZsCustomerAddress.cs" />
-    <Compile Include="Models\Facets\ZsCustomField.cs" />
-    <Compile Include="Models\Facets\ZsCustomers.cs" />
-    <Compile Include="Models\Facets\ZsHostedPage.cs" />
-    <Compile Include="Models\Facets\ZsHostedPageData.cs" />
-    <Compile Include="Models\Facets\ZsHostedPageDetail.cs" />
-    <Compile Include="Models\Facets\ZsHostedPages.cs" />
-    <Compile Include="Models\Facets\ZsTax.cs" />
-    <Compile Include="Models\Facets\ZsInvoice.cs" />
-    <Compile Include="Models\Facets\ZsTaxes.cs" />
-    <Compile Include="Models\Facets\ZsInvoices.cs" />
-    <Compile Include="Models\Facets\ZsPlanAddon.cs" />
-    <Compile Include="Models\Facets\ZsPriceBracket.cs" />
-    <Compile Include="Models\Facets\ZsAddons.cs" />
-    <Compile Include="Models\Facets\ZsPlan.cs" />
-    <Compile Include="Models\Facets\ZsPlans.cs" />
-    <Compile Include="Models\Facets\ZsProducts.cs" />
-    <Compile Include="IZohoClient.cs" />
-    <Compile Include="Models\Facets\ZsPageContext.cs" />
-    <Compile Include="Models\Facets\ZsProduct.cs" />
-    <Compile Include="Models\Facets\ZsSubscription.cs" />
-    <Compile Include="Models\Facets\ZsSubscriptionNote.cs" />
-    <Compile Include="Models\Facets\ZsSubscriptionPayload.cs" />
-    <Compile Include="Models\Facets\ZsSubscriptions.cs" />
-    <Compile Include="Models\Inputs\ZsAddonCreate.cs" />
-    <Compile Include="Models\Inputs\ZsAddonUpdate.cs" />
-    <Compile Include="Models\Facets\ZsBankAccount.cs" />
-    <Compile Include="Models\Inputs\ZsCardCreate.cs" />
-    <Compile Include="Models\Inputs\ZsCardUpdate.cs" />
-    <Compile Include="Models\Inputs\ZsContactPersonInput.cs" />
-    <Compile Include="Models\Inputs\ZsCouponCreate.cs" />
-    <Compile Include="Models\Inputs\ZsCouponUpdate.cs" />
-    <Compile Include="Models\Inputs\ZsCustomerInput.cs" />
-    <Compile Include="Models\Inputs\ZsHostedPageBuyAddonInput.cs" />
-    <Compile Include="Models\Inputs\ZsHostedPageCreateSubscriptionInput.cs" />
-    <Compile Include="Models\Inputs\ZsHostedPageUpdateCardInput.cs" />
-    <Compile Include="Models\Inputs\ZsHostedPageUpdateSubscriptionInput.cs" />
-    <Compile Include="Models\Inputs\ZsInvoiceEmailInput.cs" />
-    <Compile Include="Models\Inputs\ZsPlanCommon.cs" />
-    <Compile Include="Models\Inputs\ZsPlanCreate.cs" />
-    <Compile Include="Models\Inputs\ZsPlanUpdate.cs" />
-    <Compile Include="Models\Inputs\ZsProductInput.cs" />
-    <Compile Include="Models\Inputs\ZsSubscriptionAddonOption.cs" />
-    <Compile Include="Models\Inputs\ZsSubscriptionCreate.cs" />
-    <Compile Include="Models\Inputs\ZsSubscriptionPlanOption.cs" />
-    <Compile Include="Models\Inputs\ZsSubscriptionUpdate.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ZohoClient.cs" />
-    <Compile Include="ZohoConfig.cs" />
   </ItemGroup>
+
   <ItemGroup>
-    <EmbeddedResource Include="Internals\ApiResources.resx">
+    <EmbeddedResource Update="Internals\ApiResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ApiResources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\portable-net40+sl4+win8+wp71+wpa81\Microsoft.Threading.Tasks.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.Threading.Tasks.Extensions, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\portable-net40+sl4+win8+wp71+wpa81\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Newtonsoft.Json.7.0.1\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.IO, Version=1.5.11.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.Bcl.1.1.10\lib\portable-net40+sl5+win8+wp8+wpa81\System.IO.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Net.Http, Version=1.5.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.Net.Http.2.2.29\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Net.Http.Extensions, Version=1.5.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.Net.Http.2.2.29\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.Extensions.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Net.Http.Primitives, Version=1.5.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.Net.Http.2.2.29\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.Primitives.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Runtime, Version=2.6.10.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.Bcl.1.1.10\lib\portable-net40+sl5+win8+wp8+wpa81\System.Runtime.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Threading.Tasks, Version=2.6.10.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.Bcl.1.1.10\lib\portable-net40+sl5+win8+wp8+wpa81\System.Threading.Tasks.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
-    <None Include="packages.config" />
-    <None Include="Zoho.Api.nuspec" />
-  </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
-  <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
-  </Target>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+
 </Project>
