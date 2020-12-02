@@ -1,6 +1,11 @@
 Zoho API C#.NET SDK
 ===================================
 
+## IMP NOTE:
+* Not maintaining this repo project actively anymore.
+* If you find issues - please reach out with a PR that would solve it. I would try to push NuGET with updates to help as soon as I can.
+* While I am not actively looking out for this work, if anyone is interested to take over as maintainer - please contact me, thanks!
+
 <img src="https://raw.githubusercontent.com/teference/zoho-dotnet/master/zoho-logo.png" alt="Zoho Logo" width="300" height="255">
 
 ### Zoho API implementation in C#.NET
