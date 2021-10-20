@@ -44,7 +44,9 @@
 
             httpClient.BaseAddress = new Uri(apiBaseUrl);
 
-            httpClient.DefaultRequestHeaders.Add("authorization", string.Format(CultureInfo.InvariantCulture, "Zoho-authtoken {0}", authToken));
+
+
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Zoho-oauthtoken", authToken);
             httpClient.DefaultRequestHeaders.Add("x-com-zoho-subscriptions-organizationid", organizationId);
         }
 
